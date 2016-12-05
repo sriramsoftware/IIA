@@ -19,6 +19,7 @@ namespace KQAnalytics3
                 .UseKestrel()
                 .UseConfiguration(config)
                 .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseStartup<Startup>()
                 .Build();
             host.Run();
         }
