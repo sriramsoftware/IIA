@@ -12,6 +12,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "KQAnalytics3", "src\KQAnalytics3\KQAnalytics3.xproj", "{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{F7DE0864-20B9-4BF2-B92F-83AB4B9742EF}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "ImageSharp", "..\Libraries\ImageSharp\src\ImageSharp\ImageSharp.xproj", "{2AA31A1F-142C-43F4-8687-09ABCA4B3A26}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,11 +26,16 @@ Global
 		{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2AA31A1F-142C-43F4-8687-09ABCA4B3A26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AA31A1F-142C-43F4-8687-09ABCA4B3A26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AA31A1F-142C-43F4-8687-09ABCA4B3A26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AA31A1F-142C-43F4-8687-09ABCA4B3A26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2} = {85B2D174-2A21-4745-9E83-B56096395711}
+		{2AA31A1F-142C-43F4-8687-09ABCA4B3A26} = {F7DE0864-20B9-4BF2-B92F-83AB4B9742EF}
 	EndGlobalSection
 EndGlobal
