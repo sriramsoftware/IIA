@@ -14,7 +14,8 @@
     "Microsoft.Extensions.Logging.Console": "1.0.0",
     "ImageSharp": "1.0.0-alpha-000126",
     "LiteDB": "3.0.0-beta2",
-    "AutoMapper": "5.2.0"
+    "AutoMapper": "5.2.0",
+    "Nancy.Authentication.Stateless": "2.0.0-barneyrubble"
   },
 
   "tools": {

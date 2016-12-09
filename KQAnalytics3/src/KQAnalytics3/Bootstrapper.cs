@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using KQAnalytics3.Configuration;
 using KQAnalytics3.Models.Data;
+using KQAnalytics3.Services.Authentication;
 using KQAnalytics3.Utilities;
 using Nancy;
+using Nancy.Authentication.Stateless;
 using Nancy.Bootstrapper;
 using Nancy.Conventions;
 using Nancy.Session;
@@ -33,8 +35,18 @@ namespace KQAnalytics3
             var configFileCont = File.ReadAllText("kqconfig.json");
             KQRegistry.ServerConfiguration = JsonConvert.DeserializeObject<KQServerConfiguration>(configFileCont);
 
-            // TODO: Do any required initialization for Nancy here
+            // Enable cookie sessions
             CookieBasedSessions.Enable(pipelines);
+
+            // Enable authentication
+            StatelessAuthentication.Enable(pipelines, new StatelessAuthenticationConfiguration(ctx =>
+            {
+                // Take API from query string
+                var apiKey = (string)ctx.Request.Query.apiKey.Value;
+
+                // get user identity
+                return ClientAuthenticationService.ResolveClientIdentity(apiKey);
+            }));
 
             // Enable CORS
             pipelines.AfterRequest.AddItemToEndOfPipeline((ctx) =>
