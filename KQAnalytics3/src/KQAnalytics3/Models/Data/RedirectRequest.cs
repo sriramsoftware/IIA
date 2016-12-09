@@ -1,4 +1,4 @@
-﻿namespace KQAnalytics3.Models.Requests
+﻿namespace KQAnalytics3.Models.Data
 {
     public class RedirectRequest : LogRequest
     {

@@ -1,4 +1,4 @@
-﻿using KQAnalytics3.Models.Requests;
+﻿using KQAnalytics3.Models.Data;
 using KQAnalytics3.Services.Database;
 using System.Threading.Tasks;
 

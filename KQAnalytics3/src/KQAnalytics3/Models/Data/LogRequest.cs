@@ -1,6 +1,7 @@
-﻿using System;
+﻿using LiteDB;
+using System;
 
-namespace KQAnalytics3.Models.Requests
+namespace KQAnalytics3.Models.Data
 {
     public class LogRequest
     {
@@ -18,5 +19,8 @@ namespace KQAnalytics3.Models.Requests
         /// Stores the client address
         /// </summary>
         public string OriginAddress { get; set; }
+
+        [BsonId]
+        public ObjectId DatabaseId { get; set; }
     }
 }
