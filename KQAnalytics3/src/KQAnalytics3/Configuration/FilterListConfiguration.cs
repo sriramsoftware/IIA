@@ -2,7 +2,7 @@
 
 namespace KQAnalytics3.Configuration
 {
-    public class BlacklistConfiguration
+    public class FilterListConfiguration
     {
         [JsonProperty("enable")]
         public bool Enable { get; set; }
