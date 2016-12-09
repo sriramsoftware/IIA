@@ -46,6 +46,9 @@ namespace KQAnalytics3.Modules
             if (requestType.HasFlag(DataRequestType.Log))
             {
                 var req = new LogRequest { Identifier = eventIdentifier };
+                // Get client address
+                var clientAddr = GetClientAddress();
+                req.OriginAddress = clientAddr;
                 if (requestType.HasFlag(DataRequestType.Hit))
                 {
                     var hitReq = Mapper.Map<HitRequest>(req);
@@ -64,6 +67,11 @@ namespace KQAnalytics3.Modules
                     // TODO: Log redirect
                 }
             }
+        }
+
+        private string GetClientAddress()
+        {
+            return Request.UserHostAddress;
         }
     }
 }
