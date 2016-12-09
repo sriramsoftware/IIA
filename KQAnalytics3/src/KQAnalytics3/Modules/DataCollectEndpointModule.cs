@@ -24,7 +24,9 @@ namespace KQAnalytics3.Modules
             Get("/r", args =>
             {
                 var processResult = processData(args);
-                return Response.AsRedirect((string)Request.Query.t);
+                var targetUrl = (string)Request.Query.t;
+                // Do additional data logging
+                return Response.AsRedirect(targetUrl);
             });
         }
     }
