@@ -6,5 +6,11 @@ namespace KQAnalytics3.Configuration
     {
         [JsonProperty("cors")]
         public KQServerCorsOptions CorsOptions { get; set; }
+
+        [JsonProperty("blacklist")]
+        public BlacklistConfiguration BlacklistConfiguration { get; set; }
+
+        [JsonProperty("whitelist")]
+        public WhitelistConfiguration WhitelistConfiguration { get; set; }
     }
 }

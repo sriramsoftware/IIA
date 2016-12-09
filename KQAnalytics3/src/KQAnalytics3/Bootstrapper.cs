@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using KQAnalytics3.Configuration;
 using KQAnalytics3.Models.Data;
+using KQAnalytics3.Utilities;
 using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Conventions;
@@ -46,6 +47,28 @@ namespace KQAnalytics3
                     .WithHeader("Access-Control-Allow-Methods", "POST,GET")
                     .WithHeader("Access-Control-Allow-Headers", "Accept, Origin, Content-type");
             });
+
+            // Set up whitelist/blacklist
+            if (KQRegistry.ServerConfiguration.BlacklistConfiguration.Enable && KQRegistry.ServerConfiguration.WhitelistConfiguration.Enable)
+            {
+                throw new ConfigurationException("The whitelist and the blacklist cannot be enabled simultaneously");
+            }
+
+            if (KQRegistry.ServerConfiguration.BlacklistConfiguration.Enable)
+            {
+                pipelines.BeforeRequest.AddItemToStartOfPipeline((ctx) =>
+                {
+                    var userAddr = ctx.Request.UserHostAddress;
+                    foreach (var blacklistedAddress in KQRegistry.ServerConfiguration.BlacklistConfiguration.Hosts)
+                    {
+                        if (WildcardMatcher.IsMatch(userAddr, blacklistedAddress))
+                        {
+                            return new Response().WithStatusCode(HttpStatusCode.Forbidden);
+                        }
+                    }
+                    return null; // Take no action
+                });
+            }
 
             // Initialize object data mapper
             Mapper.Initialize(cfg =>
