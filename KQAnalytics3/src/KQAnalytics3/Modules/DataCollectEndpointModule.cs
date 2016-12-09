@@ -40,19 +40,38 @@ namespace KQAnalytics3.Modules
             });
         }
 
+        private UserSession CreateOrRetrieveSession()
+        {
+            UserSession ret = null;
+            // Check if a stored session is available
+            var storedSessData = Request.Session[SessionStorageService.SessionUserCookieStorageKey];
+            if (storedSessData == null)
+            {
+                // Register and attempt to save session
+                var session = new UserSession
+                {
+                    UserAgent = Request.Headers.UserAgent
+                };
+                Request.Session[SessionStorageService.SessionUserCookieStorageKey] = session.SessionId;
+            }
+            else
+            {
+                // Parse stored session data
+            }
+            return ret;
+        }
+
         /// <summary>
         /// Process and log the request and associated data
         /// </summary>
         private void ProcessRequestData(DataRequestType requestType = DataRequestType.Log)
         {
-            // Register and attempt to save session
-            var session = new UserSession();
-            
+            var currentSession = CreateOrRetrieveSession();            
 
             var eventIdentifier = Guid.NewGuid();
             if (requestType.HasFlag(DataRequestType.Log))
             {
-                var req = new LogRequest { Identifier = eventIdentifier, SessionIdentifier = session.SesionId };
+                var req = new LogRequest { Identifier = eventIdentifier, SessionIdentifier = currentSession.SessionId };
                 // Get client address
                 var clientAddr = GetClientAddress();
                 req.OriginAddress = clientAddr;
@@ -62,6 +81,7 @@ namespace KQAnalytics3.Modules
                     var hitReq = Mapper.Map<HitRequest>(req);
                     if (requestType.HasFlag(DataRequestType.Web))
                     {
+                        hitReq.Referrer = Request.Headers.Referrer;
                         // Attempt to get page URL
                         hitReq.PageIdentifier =
                             Request.Query.u // Query string

@@ -10,5 +10,11 @@ namespace KQAnalytics3.Models.Data
         /// </summary>
         [JsonProperty("pageId")]
         public string PageIdentifier { get; set; }
+
+        /// <summary>
+        /// Stores the REFERER header
+        /// </summary>
+        [JsonProperty("referrer")]
+        public string Referrer { get; set; }
     }
 }
