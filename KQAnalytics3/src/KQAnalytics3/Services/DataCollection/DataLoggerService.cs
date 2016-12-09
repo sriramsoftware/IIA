@@ -33,7 +33,8 @@ namespace KQAnalytics3.Services.DataCollection
             {
                 // Get logged requests collection
                 var loggedRequests = db.GetCollection<LogRequest>(DatabaseAccessService.LoggedRequestDataKey);
-                result = loggedRequests.Find(Query.All(Query.Descending), limit: limit);
+                // Log by descending timestamp
+                result = loggedRequests.Find(Query.All("TimeStamp", Query.Descending), limit: limit);
             }
             return result;
         }
