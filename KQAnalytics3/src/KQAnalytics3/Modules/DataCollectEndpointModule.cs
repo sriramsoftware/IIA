@@ -40,12 +40,17 @@ namespace KQAnalytics3.Modules
             });
         }
 
-        private UserSession CreateOrRetrieveSession()
+        private async Task<UserSession> CreateOrRetrieveSessionAsync()
         {
             UserSession ret = null;
             // Check if a stored session is available
-            var storedSessData = Request.Session[SessionStorageService.SessionUserCookieStorageKey];
-            if (storedSessData == null)
+            var storedSessData = Request.Session[SessionStorageService.SessionUserCookieStorageKey] as string;
+            if (storedSessData != null)
+            {
+                // [Attempt to] Find matching session
+                ret = await SessionStorageService.GetSessionFromIdentifier(storedSessData);
+            }
+            if (storedSessData == null || ret == null)
             {
                 // Register and attempt to save session
                 var session = new UserSession
@@ -54,10 +59,7 @@ namespace KQAnalytics3.Modules
                 };
                 // Store session data
                 Request.Session[SessionStorageService.SessionUserCookieStorageKey] = session.SessionId;
-            }
-            else
-            {
-                // Parse stored session data
+                ret = session;
             }
             return ret;
         }
@@ -67,7 +69,7 @@ namespace KQAnalytics3.Modules
         /// </summary>
         private void ProcessRequestData(DataRequestType requestType = DataRequestType.Log)
         {
-            var currentSession = CreateOrRetrieveSession();            
+            var currentSession = CreateOrRetrieveSessionAsync();
 
             var eventIdentifier = Guid.NewGuid();
             if (requestType.HasFlag(DataRequestType.Log))
