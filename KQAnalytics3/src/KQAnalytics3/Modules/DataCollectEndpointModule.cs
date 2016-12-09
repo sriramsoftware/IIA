@@ -11,12 +11,14 @@ namespace KQAnalytics3.Modules
         public DataCollectEndpointModule()
         {
             // Tracking Post
+            // Data: u - the source URL
             Post("/k", args =>
             {
                 ProcessRequestData(DataRequestType.Log | DataRequestType.Hit | DataRequestType.Web);
                 return new Response().WithStatusCode(HttpStatusCode.OK);
             });
             // Tracking image
+            // Params: u - the source URL
             Get("/k.png", args =>
             {
                 ProcessRequestData(DataRequestType.Log | DataRequestType.Hit | DataRequestType.Web);
@@ -24,6 +26,7 @@ namespace KQAnalytics3.Modules
                 return Response.FromStream(TrackingImageProvider.CreateTrackingPixel(), "image/png");
             });
             // Redirect
+            // Params: t - The target URL
             Get("/r", args =>
             {
                 ProcessRequestData(DataRequestType.Log | DataRequestType.Redirect | DataRequestType.Web);
@@ -46,8 +49,19 @@ namespace KQAnalytics3.Modules
                 if (requestType.HasFlag(DataRequestType.Hit))
                 {
                     var hitReq = Mapper.Map<HitRequest>(req);
-                    
+                    if (requestType.HasFlag(DataRequestType.Web))
+                    {
+                        // Attempt to get page URL
+                        hitReq.PageIdentifier =
+                            Request.Headers["HTTP_REFERER"] // Referer
+                            ?? Request.Query.u // Query string
+                            ?? Request.Form.u; // Form data
+                    }
                     req = hitReq;
+                }
+                else if (requestType.HasFlag(DataRequestType.Redirect))
+                {
+                    // TODO: Log redirect
                 }
             }
         }

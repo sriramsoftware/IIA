@@ -21,7 +21,7 @@ namespace KQAnalytics3.Models.Requests
         Click = 1 << 2,
 
         /// <summary>
-        /// Used to log redirects throughout the app
+        /// Used to log redirects throughout the app. Should not be used with Hit
         /// </summary>
         Redirect = 1 << 3,
 
