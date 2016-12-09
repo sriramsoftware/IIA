@@ -6,10 +6,15 @@ namespace KQAnalytics3.Services.Database
     {
         public static string LoggedRequestDataKey => "lrequests";
 
+        private static LiteDatabase _dbInstance;
+
         public static LiteDatabase OpenOrCreateDefault()
         {
-            //kqanalytics3.lidb
-            return new LiteDatabase("kqanalytics.lidb");
+            if (_dbInstance == null)
+            {
+                _dbInstance = new LiteDatabase("kqanalytics.lidb");
+            }
+            return _dbInstance;
         }
     }
 }
