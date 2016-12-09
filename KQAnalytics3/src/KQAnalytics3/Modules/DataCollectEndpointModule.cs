@@ -25,6 +25,7 @@ namespace KQAnalytics3.Modules
             {
                 var processResult = processData(args);
                 var targetUrl = (string)Request.Query.t;
+                if (targetUrl == null) return new Response().WithStatusCode(HttpStatusCode.BadRequest);
                 // Do additional data logging
                 return Response.AsRedirect(targetUrl);
             });
