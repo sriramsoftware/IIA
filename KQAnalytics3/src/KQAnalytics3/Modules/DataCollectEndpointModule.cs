@@ -60,7 +60,7 @@ namespace KQAnalytics3.Modules
                     {
                         // Attempt to get page URL
                         hitReq.PageIdentifier =
-                            Request.Headers["HTTP_REFERER"] // Referer
+                            Request.Headers.Referrer // Referer
                             ?? Request.Query.u // Query string
                             ?? Request.Form.u; // Form data
                     }

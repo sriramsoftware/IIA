@@ -1,4 +1,6 @@
-﻿using KQAnalytics3.Configuration;
+﻿using AutoMapper;
+using KQAnalytics3.Configuration;
+using KQAnalytics3.Models.Data;
 using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Conventions;
@@ -43,6 +45,14 @@ namespace KQAnalytics3
                 ctx.Response
                     .WithHeader("Access-Control-Allow-Methods", "POST,GET")
                     .WithHeader("Access-Control-Allow-Headers", "Accept, Origin, Content-type");
+            });
+
+            // Initialize object data mapper
+            Mapper.Initialize(cfg =>
+            {
+                // Create maps
+                cfg.CreateMap<LogRequest, HitRequest>();
+                cfg.CreateMap<LogRequest, RedirectRequest>();
             });
         }
     }
