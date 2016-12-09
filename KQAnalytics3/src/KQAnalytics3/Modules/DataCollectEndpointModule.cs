@@ -1,5 +1,4 @@
-﻿using ImageSharp;
-using KQAnalytics3.Data;
+﻿using KQAnalytics3.Data;
 using Nancy;
 using System;
 
@@ -17,7 +16,7 @@ namespace KQAnalytics3.Modules
             Get("/k.png", args =>
             {
                 var processResult = processData(args);
-                return Response.FromStream(TrackingImageProvider.TrackingPixelStream, "image/png");
+                return Response.FromStream(TrackingImageProvider.CreateTrackingPixel(), "image/png");
             });
         }
     }

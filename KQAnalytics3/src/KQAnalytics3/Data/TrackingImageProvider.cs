@@ -6,17 +6,21 @@ namespace KQAnalytics3.Data
 {
     public static class TrackingImageProvider
     {
-        public static Stream TrackingPixelStream { get; }
-
         static TrackingImageProvider()
         {
+        }
+
+        public static Stream CreateTrackingPixel()
+        {
             // Create tracking pixel image
+            var outputStream = new MemoryStream();
             var trackingPixelImg = new Image(1, 1);
             using (var imgPixels = trackingPixelImg.Lock())
             {
                 imgPixels[0, 0] = Color.Transparent;
             }
-            trackingPixelImg.Save(TrackingPixelStream, new PngEncoder());
+            trackingPixelImg.Save(outputStream, new PngEncoder());
+            return outputStream;
         }
     }
 }
