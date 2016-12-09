@@ -1,8 +1,11 @@
-﻿using Nancy;
+﻿using KQAnalytics3.Configuration;
+using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Conventions;
 using Nancy.Session;
 using Nancy.TinyIoc;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace KQAnalytics3
 {
@@ -22,6 +25,11 @@ namespace KQAnalytics3
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
             base.ApplicationStartup(container, pipelines);
+
+            // Read KQConfig configuration file
+            var configFileCont = File.ReadAllText("kqconfig.json");
+            KQRegistry.ServerConfiguration = JsonConvert.DeserializeObject<KQServerConfiguration>(configFileCont);
+
 
             // TODO: Do any required initialization for Nancy here
             CookieBasedSessions.Enable(pipelines, new CookieBasedSessionsConfiguration

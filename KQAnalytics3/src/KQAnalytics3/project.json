@@ -44,6 +44,7 @@
       "wwwroot",
       "web.config",
       "hosting.json",
+      "kqconfig.json",
       "Views"
     ]
   },
