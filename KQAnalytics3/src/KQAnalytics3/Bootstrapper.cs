@@ -31,10 +31,7 @@ namespace KQAnalytics3
             KQRegistry.ServerConfiguration = JsonConvert.DeserializeObject<KQServerConfiguration>(configFileCont);
 
             // TODO: Do any required initialization for Nancy here
-            CookieBasedSessions.Enable(pipelines, new CookieBasedSessionsConfiguration
-            {
-                // TODO: Configuration
-            });
+            CookieBasedSessions.Enable(pipelines);
 
             // Enable CORS
             pipelines.AfterRequest.AddItemToEndOfPipeline((ctx) =>
