@@ -12,8 +12,11 @@ fi
 # Restore packages
 dotnet restore --configfile ./build/NuGet.config
 
+# Change to project dir
+cd KQAnalytics3/src/KQAnalytics3
+
 # Build
-dotnet build -c Release KQAnalytics3/src/KQAnalytics3
+dotnet build -c Release
 
 # Publish
-dotnet publish -c Release KQAnalytics3/src/KQAnalytics3
+dotnet publish -c Release
