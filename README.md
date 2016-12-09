@@ -15,6 +15,8 @@ KQ can be used everywhere from webpages to desktop apps to mobile apps to gain v
 - Comprehensive configuration options
   - Blacklist and Whitelist
   - CORS configuration for external hosting
+- High performance NoSQL database backend
+- REST API for retreiving data
 
 ## Rearchitecturing from v2
 
