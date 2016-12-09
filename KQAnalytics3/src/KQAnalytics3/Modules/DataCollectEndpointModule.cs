@@ -1,4 +1,6 @@
-﻿using KQAnalytics3.Data;
+﻿using AutoMapper;
+using KQAnalytics3.Data;
+using KQAnalytics3.Models.Requests;
 using Nancy;
 using System;
 
@@ -8,27 +10,46 @@ namespace KQAnalytics3.Modules
     {
         public DataCollectEndpointModule()
         {
-            var processData = new Func<dynamic, object>(args =>
-            {
-                return "0";
-            });
             // Tracking Post
-            Post("/k", processData);
+            Post("/k", args =>
+            {
+                ProcessRequestData(DataRequestType.Log | DataRequestType.Hit | DataRequestType.Web);
+                return new Response().WithStatusCode(HttpStatusCode.OK);
+            });
             // Tracking image
             Get("/k.png", args =>
             {
-                var processResult = processData(args);
+                ProcessRequestData(DataRequestType.Log | DataRequestType.Hit | DataRequestType.Web);
+                // Send tracking pixel
                 return Response.FromStream(TrackingImageProvider.CreateTrackingPixel(), "image/png");
             });
             // Redirect
             Get("/r", args =>
             {
-                var processResult = processData(args);
+                ProcessRequestData(DataRequestType.Log | DataRequestType.Redirect | DataRequestType.Web);
                 var targetUrl = (string)Request.Query.t;
                 if (targetUrl == null) return new Response().WithStatusCode(HttpStatusCode.BadRequest);
                 // Do additional data logging
                 return Response.AsRedirect(targetUrl);
             });
+        }
+
+        /// <summary>
+        /// Process and log the request and associated data
+        /// </summary>
+        private void ProcessRequestData(DataRequestType requestType = DataRequestType.Log)
+        {
+            var eventIdentifier = Guid.NewGuid();
+            if (requestType.HasFlag(DataRequestType.Log))
+            {
+                var req = new LogRequest { Identifier = eventIdentifier };
+                if (requestType.HasFlag(DataRequestType.Hit))
+                {
+                    var hitReq = Mapper.Map<HitRequest>(req);
+                    
+                    req = hitReq;
+                }
+            }
         }
     }
 }
