@@ -12,11 +12,19 @@ namespace KQAnalytics3.Modules
             {
                 return "0";
             });
+            // Tracking Post
             Post("/k", processData);
+            // Tracking image
             Get("/k.png", args =>
             {
                 var processResult = processData(args);
                 return Response.FromStream(TrackingImageProvider.CreateTrackingPixel(), "image/png");
+            });
+            // Redirect
+            Get("/r", args =>
+            {
+                var processResult = processData(args);
+                return Response.AsRedirect((string)Request.Query.t);
             });
         }
     }
