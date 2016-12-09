@@ -1,16 +1,20 @@
-﻿using LiteDB;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 
 namespace KQAnalytics3.Models.Data
 {
-    public class LogRequest
+    public class LogRequest : DatabaseObject
     {
         /// <summary>
         /// Stores an identifier that should be unique to the request
         /// </summary>
         [JsonProperty("id")]
         public Guid Identifier { get; set; }
+
+        /// <summary>
+        /// Stores the identifier for the corresponding session. Can be used to look up a session
+        /// </summary>
+        public Guid SessionIdentifier { get; set; }
 
         /// <summary>
         /// Stores the query URL to the KQ server
@@ -29,9 +33,5 @@ namespace KQAnalytics3.Models.Data
         /// </summary>
         [JsonProperty("timestamp")]
         public DateTime TimeStamp { get; internal set; } = DateTime.Now;
-
-        [JsonIgnore]
-        [BsonId]
-        public ObjectId DatabaseId { get; set; }
     }
 }

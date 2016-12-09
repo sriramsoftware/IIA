@@ -45,10 +45,14 @@ namespace KQAnalytics3.Modules
         /// </summary>
         private void ProcessRequestData(DataRequestType requestType = DataRequestType.Log)
         {
+            // Register and attempt to save session
+            var session = new UserSession();
+            
+
             var eventIdentifier = Guid.NewGuid();
             if (requestType.HasFlag(DataRequestType.Log))
             {
-                var req = new LogRequest { Identifier = eventIdentifier };
+                var req = new LogRequest { Identifier = eventIdentifier, SessionIdentifier = session.SesionId };
                 // Get client address
                 var clientAddr = GetClientAddress();
                 req.OriginAddress = clientAddr;
