@@ -2,6 +2,8 @@
 using KQAnalytics3.Services.DataCollection;
 using Nancy;
 using Nancy.Security;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace KQAnalytics3.Modules
 {
@@ -13,11 +15,12 @@ namespace KQAnalytics3.Modules
             this.RequiresAuthentication();
 
             // Limit is the max number of log requests to return. Default 100
-            Get("/query/{limit}", args =>
+            Get("/query/{limit}", async args =>
             {
                 var itemLimit = args.limit ?? 100;
+                var data = (IEnumerable<LogRequest>)await DataLoggerService.QueryRequests(itemLimit);
                 return Response.AsJson(
-                    (LogRequest[])DataLoggerService.QueryRequests(itemLimit).ToArray()
+                    data.ToArray()
                 );
             });
         }
