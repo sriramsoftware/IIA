@@ -15,7 +15,7 @@ from source.
 
 Eventually, you can get binary releases [here](https://github.com/0xFireball/KQAnalytics3/releases).
 
-1. Install .NET Core tooling
+1. Install .NET Core tooling vLatest
 1. `git clone --recursive https://github.com/0xFireball/KQAnalytics3.git`
 1. `dotnet restore` to get dependencies (you may need ImageSharp NuGet feed)
 1. `dotnet publish -c Release` to build portable binaries
