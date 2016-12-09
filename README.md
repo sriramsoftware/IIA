@@ -8,6 +8,19 @@ KQ Analytics version 3.x
 KQ Analytics provides a simple and open analytics solution for your internet service.
 KQ can be used everywhere from webpages to desktop apps to mobile apps to gain valuable analytics data.
 
+## Install
+
+For now, while KQ is in an early development phase, you will have to build
+from source.
+
+Eventually, you can get binary releases [here](releases).
+
+1. Install .NET Core tooling
+1. `git clone --recursive https://github.com/0xFireball/KQAnalytics3.git`
+1. `dotnet restore` to get dependencies (you may need ImageSharp NuGet feed)
+1. `dotnet publish -c Release` to build portable binaries
+1. `dotnet KQAnalytics3.dll` to run the portable application. 
+
 ## Features
 
 - Rich data logging
