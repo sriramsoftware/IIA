@@ -8,7 +8,16 @@ KQ Analytics version 3.x
 KQ Analytics provides a simple and open analytics solution for your internet service.
 KQ can be used everywhere from webpages to desktop apps to mobile apps to gain valuable analytics data.
 
+## Features
+
+- Rich data logging
+- Data tagging and indexing
+- Comprehensive configuration options
+  - Blacklist and Whitelist
+  - CORS configuration for external hosting
+
 ## Rearchitecturing from v2
+
 [KQ Analytics 2](https://github.com/exaphaser/KQAnalytics)
 was built on PHP.
 KQ Analytics 3 is being rebuilt from scratch as a partial port of v2.0, but will be designed in a more extensible way.
