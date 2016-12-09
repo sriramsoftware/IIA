@@ -1,6 +1,8 @@
 ﻿using Nancy;
 using Nancy.Bootstrapper;
 using Nancy.Conventions;
+using Nancy.Cryptography;
+using Nancy.Session;
 using Nancy.TinyIoc;
 
 namespace KQAnalytics3
@@ -23,6 +25,10 @@ namespace KQAnalytics3
             base.ApplicationStartup(container, pipelines);
 
             //TODO: Do any required initialization for Nancy here
+            CookieBasedSessions.Enable(pipelines, new CookieBasedSessionsConfiguration {
+                // TODO: Configuration
+            });
+            
         }
     }
 }
