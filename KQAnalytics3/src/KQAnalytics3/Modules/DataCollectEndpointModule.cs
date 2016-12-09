@@ -17,22 +17,22 @@ namespace KQAnalytics3.Modules
             // Data: u - the source URL
             Post("/k", args =>
             {
-                ProcessRequestDataAsync(DataRequestType.Log | DataRequestType.Hit | DataRequestType.Web);
+                await ProcessRequestDataAsync(DataRequestType.Log | DataRequestType.Hit | DataRequestType.Web);
                 return new Response().WithStatusCode(HttpStatusCode.OK);
             });
             // Tracking image
             // Params: u - the source URL
-            Get("/k.png", args =>
+            Get("/k.png", async args =>
             {
-                ProcessRequestDataAsync(DataRequestType.Log | DataRequestType.Hit | DataRequestType.Web);
+                await ProcessRequestDataAsync(DataRequestType.Log | DataRequestType.Hit | DataRequestType.Web);
                 // Send tracking pixel
                 return Response.FromStream(TrackingImageProvider.CreateTrackingPixel(), "image/png");
             });
             // Redirect
             // Params: t - The target URL
-            Get("/r", args =>
+            Get("/r", async args =>
             {
-                ProcessRequestDataAsync(DataRequestType.Log | DataRequestType.Redirect | DataRequestType.Web);
+                await ProcessRequestDataAsync(DataRequestType.Log | DataRequestType.Redirect | DataRequestType.Web);
                 var targetUrl = (string)Request.Query.t;
                 if (targetUrl == null) return new Response().WithStatusCode(HttpStatusCode.BadRequest);
                 // Do additional data logging
