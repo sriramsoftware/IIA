@@ -2,8 +2,10 @@
 using KQAnalytics3.Services.DataCollection;
 using Nancy;
 using Nancy.Security;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace KQAnalytics3.Modules
 {
@@ -18,10 +20,9 @@ namespace KQAnalytics3.Modules
             Get("/query/{limit}", async args =>
             {
                 var itemLimit = args.limit ?? 100;
-                var data = (IEnumerable<LogRequest>)await DataLoggerService.QueryRequests(itemLimit);
-                return Response.AsJson(
-                    data.ToArray()
-                );
+                var data = await DataLoggerService.QueryRequests(itemLimit);
+                var responseData = (string)JsonConvert.SerializeObject(data);
+                return Response.AsText(responseData, "application/json");
             });
         }
     }
