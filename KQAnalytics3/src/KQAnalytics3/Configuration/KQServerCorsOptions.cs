@@ -5,6 +5,6 @@ namespace KQAnalytics3.Configuration
     public class KQServerCorsOptions
     {
         [JsonProperty("origins")]
-        public string[] Origins = new string[0];
+        public string[] Origins { get; set; } = new string[0];
     }
 }
