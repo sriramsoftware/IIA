@@ -10,7 +10,8 @@ namespace KQAnalytics3.Modules
         {
             var processData = new Func<dynamic, object>(args =>
             {
-                return "hi";
+
+                return "0";
             });
             Post("/k", processData);
             Get("/k.png", args =>
