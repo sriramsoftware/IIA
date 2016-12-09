@@ -60,9 +60,9 @@ namespace KQAnalytics3.Modules
                     {
                         // Attempt to get page URL
                         hitReq.PageIdentifier =
-                            Request.Headers.Referrer // Referer
-                            ?? Request.Query.u // Query string
-                            ?? Request.Form.u; // Form data
+                            Request.Query.u // Query string
+                            ?? Request.Form.u // Form data
+                            ?? Request.Headers.Referrer; // Referer
                     }
                     req = hitReq;
                 }
