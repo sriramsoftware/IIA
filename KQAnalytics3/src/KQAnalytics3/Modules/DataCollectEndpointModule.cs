@@ -49,6 +49,7 @@ namespace KQAnalytics3.Modules
                 // Get client address
                 var clientAddr = GetClientAddress();
                 req.OriginAddress = clientAddr;
+                req.KQApiNode = Request.Url;
                 if (requestType.HasFlag(DataRequestType.Hit))
                 {
                     var hitReq = Mapper.Map<HitRequest>(req);
