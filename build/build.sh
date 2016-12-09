@@ -9,6 +9,10 @@ if [ -d $artifactsFolder ]; then
   rm -R $artifactsFolder
 fi
 
+# Dotnet info
+
+dotnet --version
+
 # Restore packages
 dotnet restore --configfile ./build/NuGet.config
 

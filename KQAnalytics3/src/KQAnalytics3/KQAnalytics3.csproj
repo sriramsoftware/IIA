@@ -74,7 +74,8 @@
     <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
   </PropertyGroup>
   <Target Name="PostpublishScript" AfterTargets="Publish" Condition=" '$(IsCrossTargetingBuild)' != 'true' ">
-    
+    <!-- Copy Content-->
+	
   </Target>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
