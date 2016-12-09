@@ -49,12 +49,16 @@ namespace KQAnalytics3
             });
 
             // Set up whitelist/blacklist
-            if (KQRegistry.ServerConfiguration.BlacklistConfiguration.Enable && KQRegistry.ServerConfiguration.WhitelistConfiguration.Enable)
+            if (KQRegistry.ServerConfiguration.BlacklistConfiguration != null
+                && KQRegistry.ServerConfiguration.BlacklistConfiguration.Enable
+                && KQRegistry.ServerConfiguration.WhitelistConfiguration != null
+                && KQRegistry.ServerConfiguration.WhitelistConfiguration.Enable)
             {
                 throw new ConfigurationException("The whitelist and the blacklist cannot be enabled simultaneously");
             }
 
-            if (KQRegistry.ServerConfiguration.BlacklistConfiguration.Enable)
+            if (KQRegistry.ServerConfiguration.BlacklistConfiguration != null
+                && KQRegistry.ServerConfiguration.BlacklistConfiguration.Enable)
             {
                 pipelines.BeforeRequest.AddItemToStartOfPipeline((ctx) =>
                 {
@@ -70,7 +74,8 @@ namespace KQAnalytics3
                 });
             }
 
-            if (KQRegistry.ServerConfiguration.WhitelistConfiguration.Enable)
+            if (KQRegistry.ServerConfiguration.WhitelistConfiguration != null
+                && KQRegistry.ServerConfiguration.WhitelistConfiguration.Enable)
             {
                 pipelines.BeforeRequest.AddItemToStartOfPipeline((ctx) =>
                 {
