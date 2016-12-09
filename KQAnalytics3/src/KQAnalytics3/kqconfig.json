@@ -6,5 +6,6 @@
   },
   "dataApiKeys": [
     "qwertyuiop1234567890"
-  ]
+  ],
+  "databaseCryptoPass": "1234"
 }

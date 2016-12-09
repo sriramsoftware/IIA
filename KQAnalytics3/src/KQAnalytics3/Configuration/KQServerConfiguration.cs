@@ -15,5 +15,8 @@ namespace KQAnalytics3.Configuration
 
         [JsonProperty("dataApiKeys")]
         public string[] DataApiKeys { get; set; } = new string[0];
+
+        [JsonProperty("databaseCryptoPass")]
+        public string DatabaseEncryptionPassword { get; set; }
     }
 }
