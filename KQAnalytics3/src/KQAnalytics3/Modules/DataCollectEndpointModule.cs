@@ -17,14 +17,14 @@ namespace KQAnalytics3.Modules
             // Data: u - the source URL
             Post("/k", args =>
             {
-                ProcessRequestData(DataRequestType.Log | DataRequestType.Hit | DataRequestType.Web);
+                ProcessRequestDataAsync(DataRequestType.Log | DataRequestType.Hit | DataRequestType.Web);
                 return new Response().WithStatusCode(HttpStatusCode.OK);
             });
             // Tracking image
             // Params: u - the source URL
             Get("/k.png", args =>
             {
-                ProcessRequestData(DataRequestType.Log | DataRequestType.Hit | DataRequestType.Web);
+                ProcessRequestDataAsync(DataRequestType.Log | DataRequestType.Hit | DataRequestType.Web);
                 // Send tracking pixel
                 return Response.FromStream(TrackingImageProvider.CreateTrackingPixel(), "image/png");
             });
@@ -32,7 +32,7 @@ namespace KQAnalytics3.Modules
             // Params: t - The target URL
             Get("/r", args =>
             {
-                ProcessRequestData(DataRequestType.Log | DataRequestType.Redirect | DataRequestType.Web);
+                ProcessRequestDataAsync(DataRequestType.Log | DataRequestType.Redirect | DataRequestType.Web);
                 var targetUrl = (string)Request.Query.t;
                 if (targetUrl == null) return new Response().WithStatusCode(HttpStatusCode.BadRequest);
                 // Do additional data logging
@@ -57,6 +57,8 @@ namespace KQAnalytics3.Modules
                 {
                     UserAgent = Request.Headers.UserAgent
                 };
+                // Register session in database
+
                 // Store session data
                 Request.Session[SessionStorageService.SessionUserCookieStorageKey] = session.SessionId;
                 ret = session;
@@ -67,9 +69,9 @@ namespace KQAnalytics3.Modules
         /// <summary>
         /// Process and log the request and associated data
         /// </summary>
-        private void ProcessRequestData(DataRequestType requestType = DataRequestType.Log)
+        private async Task ProcessRequestDataAsync(DataRequestType requestType = DataRequestType.Log)
         {
-            var currentSession = CreateOrRetrieveSessionAsync();
+            var currentSession = await CreateOrRetrieveSessionAsync();
 
             var eventIdentifier = Guid.NewGuid();
             if (requestType.HasFlag(DataRequestType.Log))

@@ -22,5 +22,22 @@ namespace KQAnalytics3.Services.DataCollection
 
             return ret;
         }
+
+        public static async Task SaveSession(UserSession session)
+        {
+            var db = DatabaseAccessService.OpenOrCreateDefault();
+            // Get logged requests collection
+            var loggedRequests = db.GetCollection<UserSession>(DatabaseAccessService.LoggedRequestDataKey);
+            // Use ACID transaction
+            using (var trans = db.BeginTrans())
+            {
+                // Insert new session into database
+                loggedRequests.Insert(session);
+
+                trans.Commit();
+            }
+            // Index requests by identifier
+            loggedRequests.EnsureIndex(x => x.SessionId);
+        }
     }
 }
