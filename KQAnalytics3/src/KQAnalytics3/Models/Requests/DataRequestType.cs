@@ -21,7 +21,8 @@ namespace KQAnalytics3.Models.Requests
         Click = 1 << 2,
 
         /// <summary>
-        /// Used to log redirects throughout the app. Should not be used with Hit
+        /// Used to log redirects throughout the app. Should not be used with Hit.
+        /// Implies the Web flag, but it should still be specified.
         /// </summary>
         Redirect = 1 << 3,
 

@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using KQAnalytics3.Data;
 using KQAnalytics3.Models.Requests;
+using KQAnalytics3.Services.DataCollection;
 using Nancy;
 using System;
+using System.Threading.Tasks;
 
 namespace KQAnalytics3.Modules
 {
@@ -66,7 +68,20 @@ namespace KQAnalytics3.Modules
                 else if (requestType.HasFlag(DataRequestType.Redirect))
                 {
                     // TODO: Log redirect
+                    var redirReq = Mapper.Map<RedirectRequest>(req);
+                    // This flag IMPLIES the Web flag
+                    if (requestType.HasFlag(DataRequestType.Web))
+                    {
+                        // Get target URL and save
+                        redirReq.DestinationUrl = Request.Query.t;
+                    }
+                    req = redirReq;
                 }
+                // Save data using Logger service, on the thread pool
+                var saveDataTask = Task.Factory.StartNew(async () =>
+                {
+                    await DataLoggerService.Log(req);
+                });
             }
         }
 
