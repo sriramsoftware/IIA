@@ -3,5 +3,8 @@
     "origins": [
       "*"
     ]
-  }
+  },
+  "dataApiKeys": [
+    "qwertyuiop1234567890"
+  ]
 }

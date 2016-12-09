@@ -12,5 +12,8 @@ namespace KQAnalytics3.Configuration
 
         [JsonProperty("whitelist")]
         public FilterListConfiguration WhitelistConfiguration { get; set; }
+
+        [JsonProperty("dataApiKeys")]
+        public string[] DataApiKeys { get; set; } = new string[0];
     }
 }
