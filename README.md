@@ -13,7 +13,7 @@ KQ can be used everywhere from webpages to desktop apps to mobile apps to gain v
 For now, while KQ is in an early development phase, you will have to build
 from source.
 
-Eventually, you can get binary releases [here](releases).
+Eventually, you can get binary releases [here](https://github.com/0xFireball/KQAnalytics3/releases).
 
 1. Install .NET Core tooling
 1. `git clone --recursive https://github.com/0xFireball/KQAnalytics3.git`
