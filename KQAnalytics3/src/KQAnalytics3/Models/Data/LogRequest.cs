@@ -1,4 +1,5 @@
 ﻿using LiteDB;
+using Newtonsoft.Json;
 using System;
 
 namespace KQAnalytics3.Models.Data
@@ -25,6 +26,7 @@ namespace KQAnalytics3.Models.Data
         /// </summary>
         public DateTime TimeStamp { get; internal set; } = DateTime.Now;
 
+        [JsonIgnore]
         [BsonId]
         public ObjectId DatabaseId { get; set; }
     }
