@@ -13,29 +13,31 @@ namespace KQAnalytics3.Services.DataCollection
     {
         public static async Task Log(LogRequest request)
         {
-            using (var db = DatabaseAccessService.OpenOrCreateDefault())
+            var db = DatabaseAccessService.OpenOrCreateDefault();
+            // Get logged requests collection
+            var loggedRequests = db.GetCollection<LogRequest>(DatabaseAccessService.LoggedRequestDataKey);
+            // Use ACID transaction
+            using (var trans = db.BeginTrans())
             {
-                // Get logged requests collection
-                var loggedRequests = db.GetCollection<LogRequest>(DatabaseAccessService.LoggedRequestDataKey);
-
                 // Insert new request into database
                 loggedRequests.Insert(request);
 
-                // Index requests by date
-                loggedRequests.EnsureIndex(x => x.TimeStamp);
+                trans.Commit();
             }
+            // Index requests by date
+            loggedRequests.EnsureIndex(x => x.TimeStamp);
         }
 
         public static async Task<IEnumerable<LogRequest>> QueryRequests(int limit)
         {
             IEnumerable<LogRequest> result;
-            using (var db = DatabaseAccessService.OpenOrCreateDefault())
-            {
-                // Get logged requests collection
-                var loggedRequests = db.GetCollection<LogRequest>(DatabaseAccessService.LoggedRequestDataKey);
-                // Log by descending timestamp
-                result = loggedRequests.Find(Query.All("TimeStamp", Query.Descending), limit: limit);
-            }
+            var db = DatabaseAccessService.OpenOrCreateDefault();
+
+            // Get logged requests collection
+            var loggedRequests = db.GetCollection<LogRequest>(DatabaseAccessService.LoggedRequestDataKey);
+            // Log by descending timestamp
+            result = loggedRequests.Find(Query.All("TimeStamp", Query.Descending), limit: limit);
+
             return result;
         }
     }
