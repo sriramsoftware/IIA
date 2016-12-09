@@ -70,6 +70,23 @@ namespace KQAnalytics3
                 });
             }
 
+            if (KQRegistry.ServerConfiguration.WhitelistConfiguration.Enable)
+            {
+                pipelines.BeforeRequest.AddItemToStartOfPipeline((ctx) =>
+                {
+                    var userAddr = ctx.Request.UserHostAddress;
+                    foreach (var whitelistedAddress in KQRegistry.ServerConfiguration.BlacklistConfiguration.Hosts)
+                    {
+                        if (WildcardMatcher.IsMatch(userAddr, whitelistedAddress))
+                        {
+                            return null; // Pass it on
+                        }
+                    }
+                    // Not on whitelist
+                    return new Response().WithStatusCode(HttpStatusCode.Forbidden);
+                });
+            }
+
             // Initialize object data mapper
             Mapper.Initialize(cfg =>
             {
