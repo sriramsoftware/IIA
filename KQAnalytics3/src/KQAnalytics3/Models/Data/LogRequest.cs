@@ -20,6 +20,11 @@ namespace KQAnalytics3.Models.Data
         /// </summary>
         public string OriginAddress { get; set; }
 
+        /// <summary>
+        /// Stores the date and time the request was created
+        /// </summary>
+        public DateTime TimeStamp { get; internal set; } = DateTime.Now;
+
         [BsonId]
         public ObjectId DatabaseId { get; set; }
     }

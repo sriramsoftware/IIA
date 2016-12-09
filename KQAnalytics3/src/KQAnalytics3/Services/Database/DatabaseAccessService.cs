@@ -4,7 +4,7 @@ namespace KQAnalytics3.Services.Database
 {
     public static class DatabaseAccessService
     {
-        public static string UsersCollectionDatabaseKey => "Users";
+        public static string LoggedRequestDataKey => "lrequests";
 
         public static LiteDatabase OpenOrCreateDefault()
         {

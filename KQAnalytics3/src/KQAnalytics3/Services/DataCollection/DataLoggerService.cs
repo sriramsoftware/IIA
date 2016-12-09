@@ -13,7 +13,14 @@ namespace KQAnalytics3.Services.DataCollection
         {
             using (var db = DatabaseAccessService.OpenOrCreateDefault())
             {
-                // TODO: ...
+                // Get logged requests collection
+                var loggedRequests = db.GetCollection<LogRequest>(DatabaseAccessService.LoggedRequestDataKey);
+
+                // Insert new request into database
+                loggedRequests.Insert(request);
+
+                // Index requests by date
+                loggedRequests.EnsureIndex(x => x.TimeStamp);
             }
         }
     }
