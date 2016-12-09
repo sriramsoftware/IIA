@@ -30,7 +30,6 @@ namespace KQAnalytics3
             var configFileCont = File.ReadAllText("kqconfig.json");
             KQRegistry.ServerConfiguration = JsonConvert.DeserializeObject<KQServerConfiguration>(configFileCont);
 
-
             // TODO: Do any required initialization for Nancy here
             CookieBasedSessions.Enable(pipelines, new CookieBasedSessionsConfiguration
             {
@@ -40,9 +39,13 @@ namespace KQAnalytics3
             // Enable CORS
             pipelines.AfterRequest.AddItemToEndOfPipeline((ctx) =>
             {
-                ctx.Response.WithHeader("Access-Control-Allow-Origin", "*")
-                                .WithHeader("Access-Control-Allow-Methods", "POST,GET")
-                                .WithHeader("Access-Control-Allow-Headers", "Accept, Origin, Content-type");
+                foreach (var origin in KQRegistry.ServerConfiguration.CorsOptions.Origins)
+                {
+                    ctx.Response.WithHeader("Access-Control-Allow-Origin", origin);
+                }
+                ctx.Response
+                    .WithHeader("Access-Control-Allow-Methods", "POST,GET")
+                    .WithHeader("Access-Control-Allow-Headers", "Accept, Origin, Content-type");
             });
         }
     }

@@ -10,7 +10,6 @@ namespace KQAnalytics3.Modules
         {
             var processData = new Func<dynamic, object>(args =>
             {
-
                 return "0";
             });
             Post("/k", processData);

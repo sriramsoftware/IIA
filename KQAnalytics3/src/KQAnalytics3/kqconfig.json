@@ -1,5 +1,5 @@
 ﻿{
-  "cors-config": {
+  "cors": {
     "origins": [
       "*"
     ]
