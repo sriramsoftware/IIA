@@ -52,6 +52,7 @@ namespace KQAnalytics3.Modules
                 {
                     UserAgent = Request.Headers.UserAgent
                 };
+                // Store session data
                 Request.Session[SessionStorageService.SessionUserCookieStorageKey] = session.SessionId;
             }
             else
