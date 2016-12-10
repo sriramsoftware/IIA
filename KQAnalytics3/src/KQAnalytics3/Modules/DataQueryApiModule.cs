@@ -2,7 +2,6 @@
 using KQAnalytics3.Utilities;
 using Nancy;
 using Nancy.Security;
-using Newtonsoft.Json;
 
 namespace KQAnalytics3.Modules
 {
@@ -23,6 +22,7 @@ namespace KQAnalytics3.Modules
             });
 
             // Query SessionData
+            // Id is the ID of the session to find
             Get("/query/sessiondata/{id}", async args =>
             {
                 var data = await SessionStorageService.GetSessionFromIdentifier((string)args.id);
