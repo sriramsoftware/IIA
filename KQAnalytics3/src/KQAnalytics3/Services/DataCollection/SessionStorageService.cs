@@ -14,11 +14,10 @@ namespace KQAnalytics3.Services.DataCollection
 
             var db = DatabaseAccessService.OpenOrCreateDefault();
 
-            // Get logged requests collection
-            var loggedRequests = db.GetCollection<UserSession>(DatabaseAccessService.LoggedRequestDataKey);
-            // Log by descending timestamp
+            // Get stored sessions collection
+            var storedSessions = db.GetCollection<UserSession>(DatabaseAccessService.LoggedRequestDataKey);
 
-            ret = loggedRequests.FindOne(x => x.SessionId == identifier);
+            ret = storedSessions.FindOne(x => x.SessionId == identifier);
 
             return ret;
         }
