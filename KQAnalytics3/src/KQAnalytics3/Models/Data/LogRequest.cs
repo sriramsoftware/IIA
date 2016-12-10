@@ -14,6 +14,7 @@ namespace KQAnalytics3.Models.Data
         /// <summary>
         /// Stores the identifier for the corresponding session. Can be used to look up a session
         /// </summary>
+        [JsonProperty("sessionId")]
         public string SessionIdentifier { get; set; }
 
         /// <summary>
