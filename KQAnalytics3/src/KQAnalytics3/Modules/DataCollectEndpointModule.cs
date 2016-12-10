@@ -15,7 +15,7 @@ namespace KQAnalytics3.Modules
         {
             // Tracking Post
             // Data: u - the source URL
-            Post("/k", args =>
+            Post("/k", async args =>
             {
                 await ProcessRequestDataAsync(DataRequestType.Log | DataRequestType.Hit | DataRequestType.Web);
                 return new Response().WithStatusCode(HttpStatusCode.OK);
@@ -58,6 +58,7 @@ namespace KQAnalytics3.Modules
                     UserAgent = Request.Headers.UserAgent
                 };
                 // Register session in database
+                await SessionStorageService.SaveSession(session);
 
                 // Store session data
                 Request.Session[SessionStorageService.SessionUserCookieStorageKey] = session.SessionId;
