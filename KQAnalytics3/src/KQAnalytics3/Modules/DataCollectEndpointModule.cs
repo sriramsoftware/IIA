@@ -55,7 +55,8 @@ namespace KQAnalytics3.Modules
                 // Register and attempt to save session
                 var session = new UserSession
                 {
-                    UserAgent = Request.Headers.UserAgent
+                    UserAgent = Request.Headers.UserAgent,
+                    StartTime = DateTime.Now
                 };
                 // Register session in database
                 await SessionStorageService.SaveSession(session);
@@ -77,7 +78,12 @@ namespace KQAnalytics3.Modules
             var eventIdentifier = Guid.NewGuid();
             if (requestType.HasFlag(DataRequestType.Log))
             {
-                var req = new LogRequest { Identifier = eventIdentifier, SessionIdentifier = currentSession.SessionId };
+                var req = new LogRequest
+                {
+                    Identifier = eventIdentifier,
+                    SessionIdentifier = currentSession.SessionId,
+                    TimeStamp = DateTime.Now,
+                };
                 // Get client address
                 var clientAddr = GetClientAddress();
                 req.OriginAddress = clientAddr;

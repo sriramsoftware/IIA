@@ -12,6 +12,6 @@ namespace KQAnalytics3.Models.Data
         public string UserAgent { get; set; }
 
         [JsonProperty("startTime")]
-        public DateTime StartTime { get; set; } = DateTime.Now;
+        public DateTime StartTime { get; set; }
     }
 }

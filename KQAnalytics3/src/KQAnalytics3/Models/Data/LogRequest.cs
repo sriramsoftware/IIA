@@ -33,6 +33,6 @@ namespace KQAnalytics3.Models.Data
         /// Stores the date and time the request was created
         /// </summary>
         [JsonProperty("timestamp")]
-        public DateTime TimeStamp { get; internal set; } = DateTime.Now;
+        public DateTime TimeStamp { get; set; }
     }
 }
