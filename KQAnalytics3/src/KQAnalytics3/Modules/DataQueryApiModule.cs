@@ -17,7 +17,7 @@ namespace KQAnalytics3.Modules
             Get("/query/logrequests/{limit}", async args =>
             {
                 var itemLimit = args.limit as int? ?? 100;
-                var data = await DataLoggerService.QueryRequests(itemLimit);
+                var data = await DataLoggerService.QueryRequestsAsync(itemLimit);
                 return Response.AsJsonNet(data);
             });
 
@@ -25,7 +25,7 @@ namespace KQAnalytics3.Modules
             // Id is the ID of the session to find
             Get("/query/sessiondata/{id}", async args =>
             {
-                var data = await SessionStorageService.GetSessionFromIdentifier((string)args.id);
+                var data = await SessionStorageService.GetSessionFromIdentifierAsync((string)args.id);
                 return Response.AsJsonNet(data);
             });
         }

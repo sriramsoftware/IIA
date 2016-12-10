@@ -8,7 +8,7 @@ namespace KQAnalytics3.Services.DataCollection
     {
         public static string SessionUserCookieStorageKey => "kq_session";
 
-        public static async Task<UserSession> GetSessionFromIdentifier(string identifier)
+        public static async Task<UserSession> GetSessionFromIdentifierAsync(string identifier)
         {
             UserSession ret = null;
 
@@ -23,7 +23,7 @@ namespace KQAnalytics3.Services.DataCollection
             return ret;
         }
 
-        public static async Task SaveSession(UserSession session)
+        public static async Task SaveSessionAsync(UserSession session)
         {
             var db = DatabaseAccessService.OpenOrCreateDefault();
             // Get logged requests collection

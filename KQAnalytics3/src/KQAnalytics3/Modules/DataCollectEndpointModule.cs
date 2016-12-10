@@ -48,7 +48,7 @@ namespace KQAnalytics3.Modules
             if (storedSessData != null)
             {
                 // [Attempt to] Find matching session
-                ret = await SessionStorageService.GetSessionFromIdentifier(storedSessData);
+                ret = await SessionStorageService.GetSessionFromIdentifierAsync(storedSessData);
             }
             if (storedSessData == null || ret == null)
             {
@@ -59,7 +59,7 @@ namespace KQAnalytics3.Modules
                     StartTime = DateTime.Now
                 };
                 // Register session in database
-                await SessionStorageService.SaveSession(session);
+                await SessionStorageService.SaveSessionAsync(session);
 
                 // Store session data
                 Request.Session[SessionStorageService.SessionUserCookieStorageKey] = session.SessionId;
@@ -117,7 +117,7 @@ namespace KQAnalytics3.Modules
                 // Save data using Logger service, on the thread pool
                 var saveDataTask = Task.Factory.StartNew(async () =>
                 {
-                    await DataLoggerService.Log(req);
+                    await DataLoggerService.LogAsync(req);
                 });
             }
         }

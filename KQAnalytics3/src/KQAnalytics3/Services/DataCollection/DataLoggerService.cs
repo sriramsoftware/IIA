@@ -11,7 +11,7 @@ namespace KQAnalytics3.Services.DataCollection
     /// </summary>
     public static class DataLoggerService
     {
-        public static async Task Log(LogRequest request)
+        public static async Task LogAsync(LogRequest request)
         {
             var db = DatabaseAccessService.OpenOrCreateDefault();
             // Get logged requests collection
@@ -28,7 +28,7 @@ namespace KQAnalytics3.Services.DataCollection
             loggedRequests.EnsureIndex(x => x.TimeStamp);
         }
 
-        public static async Task<IEnumerable<LogRequest>> QueryRequests(int limit)
+        public static async Task<IEnumerable<LogRequest>> QueryRequestsAsync(int limit)
         {
             IEnumerable<LogRequest> result;
             var db = DatabaseAccessService.OpenOrCreateDefault();
