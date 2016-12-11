@@ -16,5 +16,8 @@ namespace KQAnalytics3.Models.Data
         /// </summary>
         [JsonProperty("referrer")]
         public string Referrer { get; set; }
+
+        [JsonProperty("kind")]
+        public string Kind { get; } = "hit";
     }
 }
