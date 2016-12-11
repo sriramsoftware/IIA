@@ -42,7 +42,7 @@ namespace KQAnalytics3
             StatelessAuthentication.Enable(pipelines, new StatelessAuthenticationConfiguration(ctx =>
             {
                 // Take API from query string
-                var apiKey = (string)ctx.Request.Query.apiKey.Value;
+                var apiKey = (string)ctx.Request.Query.apikey.Value;
 
                 // get user identity
                 return ClientAuthenticationService.ResolveClientIdentity(apiKey);
