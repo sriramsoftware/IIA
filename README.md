@@ -29,7 +29,22 @@ Eventually, you can get binary releases [here](https://github.com/0xFireball/KQA
   - Blacklist and Whitelist
   - CORS configuration for external hosting
 - High performance NoSQL database backend
-- REST API for retreiving data
+- Powerful, fully-featured REST API for retreiving data
+- Cross-platform service, deploy to cloud, Docker, and more
+
+KQ Analyzer Community edition is available under the AGPLv3 license!
+
+## Exclusive Enterprise Edition
+
+The exclusive, private enterprise edition of KQ Analytics v3 will include the following additional features:
+
+Enterprise edition is completely free while in the development phase!
+
+- Everything in KQ Analytics Community Edition
+- Built-in data analyzer and visualization tools
+- Plugin support for dynamically loading custom code
+- Web-based administration dashboard
+- More soon!
 
 ## Rearchitecturing from v2
 
