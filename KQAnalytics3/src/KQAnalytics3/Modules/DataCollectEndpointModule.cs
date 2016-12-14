@@ -115,7 +115,11 @@ namespace KQAnalytics3.Modules
                 }
                 else if (requestType.HasFlag(DataRequestType.Tag))
                 {
-                    // TODO
+                    // Log with custom data
+                    var tagReq = Mapper.Map<TagRequest>(req);
+                    tagReq.Tag = Request.Form.tag;
+                    tagReq.ExtraData = Request.Form.data;
+                    req = tagReq;
                 }
                 else if (requestType.HasFlag(DataRequestType.Redirect))
                 {

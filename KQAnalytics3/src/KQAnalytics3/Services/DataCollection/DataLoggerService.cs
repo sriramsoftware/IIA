@@ -13,31 +13,35 @@ namespace KQAnalytics3.Services.DataCollection
     {
         public static async Task LogAsync(LogRequest request)
         {
-            var db = DatabaseAccessService.OpenOrCreateDefault();
-            // Get logged requests collection
-            var loggedRequests = db.GetCollection<LogRequest>(DatabaseAccessService.LoggedRequestDataKey);
-            // Use ACID transaction
-            using (var trans = db.BeginTrans())
+            await Task.Run(() =>
             {
-                // Insert new request into database
-                loggedRequests.Insert(request);
+                var db = DatabaseAccessService.OpenOrCreateDefault();
+                // Get logged requests collection
+                var loggedRequests = db.GetCollection<LogRequest>(DatabaseAccessService.LoggedRequestDataKey);
+                // Use ACID transaction
+                using (var trans = db.BeginTrans())
+                {
+                    // Insert new request into database
+                    loggedRequests.Insert(request);
 
-                trans.Commit();
-            }
-            // Index requests by date
-            loggedRequests.EnsureIndex(x => x.TimeStamp);
+                    trans.Commit();
+                }
+                // Index requests by date
+                loggedRequests.EnsureIndex(x => x.TimeStamp);
+                loggedRequests.EnsureIndex(x => x.Kind);
+            });
         }
 
         public static async Task<IEnumerable<LogRequest>> QueryRequestsAsync(int limit)
         {
-            IEnumerable<LogRequest> result;
             var db = DatabaseAccessService.OpenOrCreateDefault();
-
-            // Get logged requests collection
-            var loggedRequests = db.GetCollection<LogRequest>(DatabaseAccessService.LoggedRequestDataKey);
-            // Log by descending timestamp
-            result = loggedRequests.Find(Query.All("TimeStamp", Query.Descending), limit: limit);
-
+            var result = await Task.Run(() =>
+            {
+                // Get logged requests collection
+                var loggedRequests = db.GetCollection<LogRequest>(DatabaseAccessService.LoggedRequestDataKey);
+                // Log by descending timestamp
+                return loggedRequests.Find(Query.All(nameof(LogRequest.TimeStamp), Query.Descending), limit: limit);
+            });
             return result;
         }
     }
