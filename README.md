@@ -38,6 +38,8 @@ Eventually, you can get binary releases [here](https://github.com/0xFireball/KQA
 - Powerful, fully-featured REST API for retreiving data
   - Set custom API keys, and use them to retrieve collected data
   - Filter stored data and events by tag and custom fields
+  - Versatile analysis tools that operate on dynamically retrieved data
+  can be built on the API
 - Cross-platform service, deploy to cloud, Docker, and more
   - Built on the .NET Core platform
 
@@ -47,17 +49,21 @@ KQAnalytics3 Community edition is available under the AGPLv3 license!
 
 The exclusive, private enterprise edition of KQ Analytics v3 will include the following additional features:
 
-Enterprise edition is completely free while in the development phase!
+The Enterprise edition is completely free while in the development phase!
 
-- Everything in KQ Analytics Community Edition
-- Built-in data analyzer and visualization tools
-- Plugin support for dynamically loading custom code
+- **Everything in KQAnalytics3 Community Edition**
+- Built-in, integrated data analyzer and visualization tools
+- Plugin support for dynamically loading custom code\*
 - Web-based administration dashboard
 - More soon!
 
+### Notes
+
+#### The \* indicates that the feature will likely be merged back to Community when finished
+
 ## Rearchitecturing from v2
 
-[KQ Analytics 2](https://github.com/exaphaser/KQAnalytics)
+[KQ Analytics2](https://github.com/exaphaser/KQAnalytics)
 was built on PHP.
 KQAnalytics3 is being rebuilt from scratch as a partial port of v2.0, but will be designed in a more extensible way.
 It will have its own standalone server which should be reverse proxied to the outside world. As a result:
