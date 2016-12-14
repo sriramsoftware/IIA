@@ -1,7 +1,7 @@
 
 # KQ Analytics 3
 
-KQ Analytics version 3.x
+KQ Analytics generation 3
 
 ## About
 
@@ -32,7 +32,7 @@ Eventually, you can get binary releases [here](https://github.com/0xFireball/KQA
 - Powerful, fully-featured REST API for retreiving data
 - Cross-platform service, deploy to cloud, Docker, and more
 
-KQ Analyzer Community edition is available under the AGPLv3 license!
+KQAnalytics3 Community edition is available under the AGPLv3 license!
 
 ## Exclusive Enterprise Edition
 
@@ -50,7 +50,7 @@ Enterprise edition is completely free while in the development phase!
 
 [KQ Analytics 2](https://github.com/exaphaser/KQAnalytics)
 was built on PHP.
-KQ Analytics 3 is being rebuilt from scratch as a partial port of v2.0, but will be designed in a more extensible way.
+KQAnalytics3 is being rebuilt from scratch as a partial port of v2.0, but will be designed in a more extensible way.
 It will have its own standalone server which should be reverse proxied to the outside world. As a result:
 
 - Installation will be slightly more complex (it's no longer a simple bunch of PHP scripts)
