@@ -18,6 +18,6 @@ namespace KQAnalytics3.Models.Data
         public string Referrer { get; set; }
 
         [JsonProperty("kind")]
-        public string Kind { get; } = "hit";
+        public override string Kind { get; } = "hit";
     }
 }

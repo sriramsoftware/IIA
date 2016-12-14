@@ -8,6 +8,6 @@ namespace KQAnalytics3.Models.Data
         public string DestinationUrl { get; set; }
 
         [JsonProperty("kind")]
-        public string Kind { get; } = "redirect";
+        public override string Kind { get; } = "redirect";
     }
 }

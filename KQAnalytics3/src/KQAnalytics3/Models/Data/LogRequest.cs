@@ -41,5 +41,8 @@ namespace KQAnalytics3.Models.Data
         /// </summary>
         [JsonProperty("requestType")]
         public DataRequestType RequestType { get; set; }
+
+        [JsonProperty("kind")]
+        public virtual string Kind { get; } = "log";
     }
 }
