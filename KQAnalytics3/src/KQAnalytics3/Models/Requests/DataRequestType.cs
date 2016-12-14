@@ -32,7 +32,7 @@ namespace KQAnalytics3.Models.Requests
         Web = 1 << 4,
 
         /// <summary>
-        /// Indicates that the request was manually tagged
+        /// Indicates that the request was manually tagged. Should not be used with Hit
         /// </summary>
         Tag = 1 << 5,
     }

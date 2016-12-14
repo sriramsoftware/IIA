@@ -13,13 +13,23 @@ namespace KQAnalytics3.Modules
     {
         public DataCollectEndpointModule()
         {
-            // Tracking Post
+            // Tracking Post. Intended to be used from web apps
             // Data: u - the source URL
             Post("/k", async args =>
             {
                 await ProcessRequestDataAsync(DataRequestType.Log | DataRequestType.Hit | DataRequestType.Web);
                 return new Response().WithStatusCode(HttpStatusCode.OK);
             });
+
+            // Custom data post. Intended for tagging with custom data
+            // Data: tag - A short custom tag field
+            // Data: data - A custom data field that holds a string
+            Post("/c", async args =>
+            {
+                await ProcessRequestDataAsync(DataRequestType.Log | DataRequestType.Tag);
+                return new Response().WithStatusCode(HttpStatusCode.OK);
+            });
+
             // Tracking image
             // Params: u - the source URL
             Get("/k.png", async args =>
@@ -102,6 +112,10 @@ namespace KQAnalytics3.Modules
                             ?? Request.Headers.Referrer; // Referer
                     }
                     req = hitReq;
+                }
+                else if (requestType.HasFlag(DataRequestType.Tag))
+                {
+                    // TODO
                 }
                 else if (requestType.HasFlag(DataRequestType.Redirect))
                 {
