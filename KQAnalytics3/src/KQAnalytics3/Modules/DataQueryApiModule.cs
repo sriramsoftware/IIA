@@ -14,7 +14,7 @@ namespace KQAnalytics3.Modules
 
             // Query Log Requests
             // Limit is the max number of log requests to return. Default 100
-            Get("/query/logrequests/{limit}", async args =>
+            Get("/query/logrequests/{limit:int}", async args =>
             {
                 var itemLimit = args.limit as int? ?? 100;
                 var data = await DataLoggerService.QueryRequestsAsync(itemLimit);
@@ -24,10 +24,11 @@ namespace KQAnalytics3.Modules
             // Query Tagged Requests
             // Tag is the tag to filter by
             // Limit is the max number of log requests to return. Default 100
-            Get("/query/tagged/{limit}/{tag}", async args =>
+            Get("/query/tagged/{limit:int}/{tags?}", async args =>
             {
                 var itemLimit = args.limit as int? ?? 100;
-                var data = await DataLoggerService.QueryRequestsAsync(itemLimit);
+                var filterTags = (args.tag as string)?.Split(',');
+                var data = await DataLoggerService.QueryTaggedRequestsAsync(itemLimit, filterTags);
                 return Response.AsJsonNet(data);
             });
 
