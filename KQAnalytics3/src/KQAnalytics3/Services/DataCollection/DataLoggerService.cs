@@ -2,6 +2,7 @@
 using KQAnalytics3.Services.Database;
 using LiteDB;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace KQAnalytics3.Services.DataCollection
@@ -62,6 +63,24 @@ namespace KQAnalytics3.Services.DataCollection
                 var loggedRequests = db.GetCollection<LogRequest>(DatabaseAccessService.LoggedRequestDataKey);
                 // Log by descending timestamp
                 return loggedRequests.Find(Query.All(nameof(LogRequest.TimeStamp), Query.Descending), limit: limit);
+            });
+            return result;
+        }
+
+        public static async Task<IEnumerable<TagRequest>> QueryTaggedRequestsAsync(int limit, string[] filterTags = null)
+        {
+            var db = DatabaseAccessService.OpenOrCreateDefault();
+            var result = await Task.Run(() =>
+            {
+                // Get tagged requests collection
+                var taggedRequests = db.GetCollection<TagRequest>(DatabaseAccessService.TaggedRequestDataKey);
+                // Log by descending timestamp
+                return taggedRequests.Find(
+                    Query.And(
+                        Query.All(nameof(TagRequest.TimeStamp), Query.Descending),
+                        Query.Where(nameof(TagRequest.Tag), v => filterTags == null || filterTags.Contains(v.AsString))
+                    ), limit: limit
+                );
             });
             return result;
         }

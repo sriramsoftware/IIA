@@ -21,6 +21,16 @@ namespace KQAnalytics3.Modules
                 return Response.AsJsonNet(data);
             });
 
+            // Query Tagged Requests
+            // Tag is the tag to filter by
+            // Limit is the max number of log requests to return. Default 100
+            Get("/query/tagged/{limit}/{tag}", async args =>
+            {
+                var itemLimit = args.limit as int? ?? 100;
+                var data = await DataLoggerService.QueryRequestsAsync(itemLimit);
+                return Response.AsJsonNet(data);
+            });
+
             // Query SessionData
             // Id is the ID of the session to find
             Get("/query/sessiondata/{id}", async args =>
