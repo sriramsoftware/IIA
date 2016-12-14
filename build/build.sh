@@ -13,11 +13,16 @@ fi
 
 dotnet --version
 
+echo "Restoring packages..."
 # Restore packages
 dotnet restore --configfile ../build/NuGet.config
 
+echo "Building project..."
+
 # Build
-dotnet build -c Release KQAnalytics3/KQAnalytics3.sln
+dotnet build -c Release KQAnalytics3/src/KQAnalytics3
+
+echo "Publishing project..."
 
 # Publish
-dotnet publish -c Release KQAnalytics3/KQAnalytics3.sln
+dotnet publish -c Release KQAnalytics3/src/KQAnalytics3
