@@ -23,14 +23,23 @@ Eventually, you can get binary releases [here](https://github.com/0xFireball/KQA
 
 ## Features
 
-- Rich data logging
-- Data tagging and indexing
+- Rich, automated data logging
+- Data tagging and indexing for fast retrieval
+  - Tags allow filtering event types during analysis
+  - Ability to store arbitrary custom data specific to your application
 - Comprehensive configuration options
   - Blacklist and Whitelist
   - CORS configuration for external hosting
+    - Block unwanted origins from triggering events
+    - Protect against spam data
 - High performance NoSQL database backend
+  - Powered by LiteDB, which is highly optimized
+  - In-memory cache for faster responses and processing
 - Powerful, fully-featured REST API for retreiving data
+  - Set custom API keys, and use them to retrieve collected data
+  - Filter stored data and events by tag and custom fields
 - Cross-platform service, deploy to cloud, Docker, and more
+  - Built on the .NET Core platform
 
 KQAnalytics3 Community edition is available under the AGPLv3 license!
 
