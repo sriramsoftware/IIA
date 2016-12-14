@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using KQAnalytics3.Models.Requests;
+using Newtonsoft.Json;
 using System;
 
 namespace KQAnalytics3.Models.Data
@@ -34,5 +35,11 @@ namespace KQAnalytics3.Models.Data
         /// </summary>
         [JsonProperty("timestamp")]
         public DateTime TimeStamp { get; set; }
+
+        /// <summary>
+        /// Stores the request type flags
+        /// </summary>
+        [JsonProperty("requestType")]
+        public DataRequestType RequestType { get; set; }
     }
 }

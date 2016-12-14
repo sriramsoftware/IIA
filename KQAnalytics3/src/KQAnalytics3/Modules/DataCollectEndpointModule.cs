@@ -83,6 +83,7 @@ namespace KQAnalytics3.Modules
                     Identifier = eventIdentifier,
                     SessionIdentifier = currentSession.SessionId,
                     TimeStamp = DateTime.Now,
+                    RequestType = requestType
                 };
                 // Get client address
                 var clientAddr = GetClientAddress();

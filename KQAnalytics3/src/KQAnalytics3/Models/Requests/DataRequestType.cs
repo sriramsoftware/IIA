@@ -30,5 +30,10 @@ namespace KQAnalytics3.Models.Requests
         /// Indicates that the target application is a web app
         /// </summary>
         Web = 1 << 4,
+
+        /// <summary>
+        /// Indicates that the request was manually tagged
+        /// </summary>
+        Tag = 1 << 5,
     }
 }
