@@ -11,7 +11,7 @@ namespace KQAnalytics3.Services.DataCollection
     /// </summary>
     public static class DataLoggerService
     {
-        public static async Task LogAsync(LogRequest request)
+        public static async Task SaveLogRequestAsync(LogRequest request)
         {
             await Task.Run(() =>
             {
@@ -29,6 +29,27 @@ namespace KQAnalytics3.Services.DataCollection
                 // Index requests by date
                 loggedRequests.EnsureIndex(x => x.TimeStamp);
                 loggedRequests.EnsureIndex(x => x.Kind);
+            });
+        }
+
+        public static async Task SaveTagRequestAsync(TagRequest request)
+        {
+            await Task.Run(() =>
+            {
+                var db = DatabaseAccessService.OpenOrCreateDefault();
+                // Get logged requests collection
+                var tagRequests = db.GetCollection<TagRequest>(DatabaseAccessService.TaggedRequestDataKey);
+                // Use ACID transaction
+                using (var trans = db.BeginTrans())
+                {
+                    // Insert new request into database
+                    tagRequests.Insert(request);
+
+                    trans.Commit();
+                }
+                // Index requests by date
+                tagRequests.EnsureIndex(x => x.TimeStamp);
+                tagRequests.EnsureIndex(x => x.Tag);
             });
         }
 

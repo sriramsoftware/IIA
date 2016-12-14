@@ -136,8 +136,16 @@ namespace KQAnalytics3.Modules
                 // Save data using Logger service, on the thread pool
                 var saveDataTask = Task.Factory.StartNew(async () =>
                 {
-                    await DataLoggerService.LogAsync(req);
+                    await DataLoggerService.SaveLogRequestAsync(req);
                 });
+                // Custom saving
+                if (req is TagRequest)
+                {
+                    var saveTagTask = Task.Factory.StartNew(async () =>
+                    {
+                        await DataLoggerService.SaveTagRequestAsync((TagRequest)req);
+                    });
+                }
             }
         }
 
