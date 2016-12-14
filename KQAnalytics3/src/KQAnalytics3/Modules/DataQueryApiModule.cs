@@ -27,7 +27,7 @@ namespace KQAnalytics3.Modules
             Get("/query/tagged/{limit:int}/{tags?}", async args =>
             {
                 var itemLimit = args.limit as int? ?? 100;
-                var filterTags = (args.tag as string)?.Split(',');
+                var filterTags = (args != null) ? ((string)args.tags).Split(',') : null;
                 var data = await DataLoggerService.QueryTaggedRequestsAsync(itemLimit, filterTags);
                 return Response.AsJsonNet(data);
             });

@@ -17,7 +17,6 @@
     },
     "KQAnalytics3": {
       "commandName": "Project",
-      "launchBrowser": true,
       "launchUrl": "http://localhost:8020",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
