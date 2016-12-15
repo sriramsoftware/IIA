@@ -33,7 +33,8 @@ namespace KQAnalytics3
 
             // Read KQConfig configuration file
             var configFileCont = File.ReadAllText("kqconfig.json");
-            KQRegistry.ServerConfiguration = JsonConvert.DeserializeObject<KQServerConfiguration>(configFileCont);
+            KQRegistry.ServerConfiguration = new KQServerConfiguration(); // Load default configuration
+            JsonConvert.PopulateObject(configFileCont, KQRegistry.ServerConfiguration); // Merge with custom configuration
 
             // Enable cookie sessions
             CookieBasedSessions.Enable(pipelines);
