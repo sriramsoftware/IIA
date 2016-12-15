@@ -32,7 +32,7 @@ namespace KQAnalytics3
             base.ApplicationStartup(container, pipelines);
 
             // Read KQConfig configuration file
-            var configFileCont = File.ReadAllText("kqconfig.json");
+            var configFileCont = File.ReadAllText(KQRegistry.CommonConfigurationFileName);
             KQRegistry.ServerConfiguration = new KQServerConfiguration(); // Load default configuration
             JsonConvert.PopulateObject(configFileCont, KQRegistry.ServerConfiguration); // Merge with custom configuration
 

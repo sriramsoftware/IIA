@@ -7,5 +7,6 @@ namespace KQAnalytics3
     {
         public static KQServerConfiguration ServerConfiguration { get; set; }
         public static IMapper RequestDataMapper { get; set; }
+        public static string CommonConfigurationFileName => "kqconfig.json";
     }
 }
