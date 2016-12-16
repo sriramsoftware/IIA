@@ -1,6 +1,7 @@
 ﻿using KQAnalytics3.Configuration.Access;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 
 namespace KQAnalytics3.Services.Authentication
@@ -12,11 +13,13 @@ namespace KQAnalytics3.Services.Authentication
 
         public static IEnumerable<Claim> GetAuthClaims(ApiAccessKey accessKey)
         {
-            return new Claim[]
+            var claimList = new List<Claim>
             {
                 new Claim(AuthTypeKey, "stateless"),
-                new Claim(AccessScopeKey, accessKey.AccessScopes.ToString())
             };
+            var accessScopeClaims = accessKey.AccessScopes.Select(accessScope => new Claim(AccessScopeKey, accessScope.ToString()));
+            claimList.AddRange(accessScopeClaims);
+            return claimList;
         }
 
         public static ApiAccessScope GetAccessScope(Claim accessScopeClaim)
