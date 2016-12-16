@@ -3,6 +3,8 @@
 
 KQ Analytics generation 3
 
+[![Build Status](https://travis-ci.org/0xFireball/KQAnalytics3.svg?branch=master)](https://travis-ci.org/0xFireball/KQAnalytics3)
+
 ## About
 
 KQ Analytics provides a simple and open analytics solution for your internet service.
