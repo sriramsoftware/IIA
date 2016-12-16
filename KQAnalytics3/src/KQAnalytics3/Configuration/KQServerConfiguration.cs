@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using KQAnalytics3.Configuration.Access;
+using Newtonsoft.Json;
 
 namespace KQAnalytics3.Configuration
 {
@@ -13,8 +14,8 @@ namespace KQAnalytics3.Configuration
         [JsonProperty("whitelist")]
         public FilterListConfiguration WhitelistConfiguration { get; set; }
 
-        [JsonProperty("dataApiKeys")]
-        public string[] DataApiKeys { get; set; } = new string[0];
+        [JsonProperty("apiKeys")]
+        public ApiAccessKey[] ApiKeys { get; set; } = new ApiAccessKey[0];
 
         [JsonProperty("databaseCryptoPass")]
         public string DatabaseEncryptionPassword { get; set; }
