@@ -3,7 +3,7 @@
 
 ## Development Stage
 
-### v0.4.0
+### v0.4.0-beta
 
 - Major new feature: granular API key permission
 - Keys in configuration file are now incompatible with previous versions. Each
