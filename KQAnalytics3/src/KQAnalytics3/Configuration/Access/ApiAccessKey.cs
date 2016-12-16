@@ -11,6 +11,7 @@ namespace KQAnalytics3.Configuration.Access
 
         // Types of data
         QueryLogRequests,
+        QueryTagRequests,
     }
 
     public class ApiAccessKey

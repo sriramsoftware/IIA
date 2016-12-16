@@ -7,21 +7,23 @@ using Nancy;
 
 namespace KQAnalytics3.Modules.Api.Query
 {
-    public class LogRequestQueryModule : NancyModule
+    public class TagRequestQueryModule : NancyModule
     {
-        public LogRequestQueryModule() : base("/api")
+        public TagRequestQueryModule() : base("/api")
         {
             this.RequiresAllClaims(ClientApiAccessValidator.GetAccessClaimListFromScopes(new[] {
                 ApiAccessScope.Read,
-                ApiAccessScope.QueryLogRequests
+                ApiAccessScope.QueryTagRequests
             }));
 
-            // Query Log Requests
+            // Query Tagged Requests
+            // Tag is the tag to filter by
             // Limit is the max number of log requests to return. Default 100
-            Get("/query/logrequests/{limit:int}", async args =>
+            Get("/query/tagged/{limit:int}/{tags?}", async args =>
             {
                 var itemLimit = args.limit as int? ?? 100;
-                var data = await DataLoggerService.QueryRequestsAsync(itemLimit);
+                var filterTags = (args != null) ? ((string)args.tags).Split(',') : null;
+                var data = await DataLoggerService.QueryTaggedRequestsAsync(itemLimit, filterTags);
                 return Response.AsJsonNet(data);
             });
         }
