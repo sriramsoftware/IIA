@@ -92,7 +92,7 @@ namespace KQAnalytics3.Modules
                 {
                     Identifier = eventIdentifier,
                     SessionIdentifier = currentSession.SessionId,
-                    TimeStamp = DateTime.Now,
+                    Timestamp = DateTime.Now,
                     RequestType = requestType
                 };
                 // Get client address

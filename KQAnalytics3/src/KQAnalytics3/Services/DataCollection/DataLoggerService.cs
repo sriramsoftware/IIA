@@ -28,7 +28,7 @@ namespace KQAnalytics3.Services.DataCollection
                     trans.Commit();
                 }
                 // Index requests by date
-                loggedRequests.EnsureIndex(x => x.TimeStamp);
+                loggedRequests.EnsureIndex(x => x.Timestamp);
                 loggedRequests.EnsureIndex(x => x.Kind);
             });
         }
@@ -49,7 +49,7 @@ namespace KQAnalytics3.Services.DataCollection
                     trans.Commit();
                 }
                 // Index requests by date
-                tagRequests.EnsureIndex(x => x.TimeStamp);
+                tagRequests.EnsureIndex(x => x.Timestamp);
                 tagRequests.EnsureIndex(x => x.Tag);
             });
         }
@@ -62,7 +62,7 @@ namespace KQAnalytics3.Services.DataCollection
                 // Get logged requests collection
                 var loggedRequests = db.GetCollection<LogRequest>(DatabaseAccessService.LoggedRequestDataKey);
                 // Log by descending timestamp
-                return loggedRequests.Find(Query.All(nameof(LogRequest.TimeStamp), Query.Descending), limit: limit);
+                return loggedRequests.Find(Query.All(nameof(LogRequest.Timestamp), Query.Descending), limit: limit);
             });
             return result;
         }
@@ -77,7 +77,7 @@ namespace KQAnalytics3.Services.DataCollection
                 // Log by descending timestamp
                 return taggedRequests.Find(
                     Query.And(
-                        Query.All(nameof(TagRequest.TimeStamp), Query.Descending),
+                        Query.All(nameof(TagRequest.Timestamp), Query.Descending),
                         Query.Where(nameof(TagRequest.Tag), v => filterTags == null || filterTags.Contains(v.AsString))
                     ), limit: limit
                 );

@@ -34,7 +34,7 @@ namespace KQAnalytics3.Models.Data
         /// Stores the date and time the request was created
         /// </summary>
         [JsonProperty("timestamp")]
-        public DateTime TimeStamp { get; set; }
+        public DateTime Timestamp { get; set; }
 
         /// <summary>
         /// Stores the request type flags
