@@ -1,5 +1,6 @@
 ﻿using KQAnalytics3.Models.Data;
 using KQAnalytics3.Services.Database;
+using KQAnalytics3.Utilities;
 using LiteDB;
 using System.Collections.Generic;
 using System.Linq;
@@ -78,7 +79,7 @@ namespace KQAnalytics3.Services.DataCollection
                 return taggedRequests.Find(
                     Query.And(
                         Query.All(nameof(TagRequest.Timestamp), Query.Descending),
-                        Query.Where(nameof(TagRequest.Tag), v => filterTags == null || filterTags.Contains(v.AsString))
+                        Query.Where(nameof(TagRequest.Tag), v => filterTags == null || filterTags.Any(f => WildcardMatcher.IsMatch(v.AsString, f)))
                     ), limit: limit
                 );
             });

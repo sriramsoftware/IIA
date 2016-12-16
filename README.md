@@ -37,6 +37,8 @@ Eventually, you can get binary releases [here](https://github.com/0xFireball/KQA
   - In-memory cache for faster responses and processing
 - Powerful, fully-featured REST API for retreiving data
   - Set custom API keys, and use them to retrieve collected data
+	- API keys can have permission scopes and granular permissions,
+		allowing you to build clients that have varying levels of access to data
   - Filter stored data and events by tag and custom fields
   - Versatile analysis tools that operate on dynamically retrieved data
   can be built on the API
