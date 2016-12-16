@@ -4,9 +4,13 @@ namespace KQAnalytics3.Configuration.Access
 {
     public enum ApiAccessScope
     {
+        // General
         Read,
         Write,
-        Admin
+        Admin,
+
+        // Types of data
+        QueryLogRequests,
     }
 
     public class ApiAccessKey
