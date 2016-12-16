@@ -30,6 +30,9 @@ namespace KQAnalytics3
             KQRegistry.ServerConfiguration = new KQServerConfiguration(); // Load default configuration
             JsonConvert.PopulateObject(configFileCont, KQRegistry.ServerConfiguration); // Merge with custom configuration
 
+            // Reload caches
+            KQRegistry.UpdateKeyCache();
+
             // Enable cookie sessions
             CookieBasedSessions.Enable(pipelines);
 

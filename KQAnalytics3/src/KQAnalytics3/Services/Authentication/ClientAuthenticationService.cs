@@ -8,8 +8,7 @@ namespace KQAnalytics3.Services.Authentication
     {
         public static ClaimsPrincipal ResolveClientIdentity(string apiKey)
         {
-            // TODO!
-            if (KQRegistry.ServerConfiguration.ApiKeys.Contains(apiKey))
+            if (KQRegistry.KeyCache.KeyStrings.Contains(apiKey))
             {
                 // Give client identity
                 return new ClaimsPrincipal(new GenericIdentity("data client", "stateless"));
