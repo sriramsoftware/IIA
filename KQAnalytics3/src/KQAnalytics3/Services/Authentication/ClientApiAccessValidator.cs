@@ -15,7 +15,7 @@ namespace KQAnalytics3.Services.Authentication
         {
             var claimList = new List<Claim>
             {
-                new Claim(AuthTypeKey, "stateless"),
+                new Claim(AuthTypeKey, RemoteAuthTypes.StatelessKey),
             };
             var accessScopeClaims = accessKey.AccessScopes.Select(accessScope => new Claim(AccessScopeKey, accessScope.ToString()));
             claimList.AddRange(accessScopeClaims);
