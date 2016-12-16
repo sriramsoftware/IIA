@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using System.Security.Claims;
-using System.Security.Principal;
+﻿using System.Security.Claims;
 
 namespace KQAnalytics3.Services.Authentication
 {
@@ -8,10 +6,13 @@ namespace KQAnalytics3.Services.Authentication
     {
         public static ClaimsPrincipal ResolveClientIdentity(string apiKey)
         {
-            if (KQRegistry.KeyCache.KeyStrings.Contains(apiKey))
+            var currentKey = KQRegistry.KeyCache.FindKeyByKeyString(apiKey);
+            if (currentKey != null)
             {
                 // Give client identity
-                return new ClaimsPrincipal(new GenericIdentity("data client", "stateless"));
+                var keyAuthClaims = ClientApiAccessValidator.GetAuthClaims(currentKey);
+                return new ClaimsPrincipal(new ClaimsIdentity(keyAuthClaims));
+                //return new ClaimsPrincipal(new GenericIdentity("data client", "stateless"));
             }
             return null;
         }
