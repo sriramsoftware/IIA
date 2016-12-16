@@ -53,13 +53,16 @@ namespace KQAnalytics3
             // Enable CORS
             pipelines.AfterRequest.AddItemToEndOfPipeline((ctx) =>
             {
-                foreach (var origin in KQRegistry.ServerConfiguration.CorsOptions.Origins)
+                if (KQRegistry.ServerConfiguration.CorsOptions != null)
                 {
-                    ctx.Response.WithHeader("Access-Control-Allow-Origin", origin);
+                    foreach (var origin in KQRegistry.ServerConfiguration.CorsOptions.Origins)
+                    {
+                        ctx.Response.WithHeader("Access-Control-Allow-Origin", origin);
+                    }
+                    ctx.Response
+                        .WithHeader("Access-Control-Allow-Methods", "POST,GET")
+                        .WithHeader("Access-Control-Allow-Headers", "Accept, Origin, Content-type");
                 }
-                ctx.Response
-                    .WithHeader("Access-Control-Allow-Methods", "POST,GET")
-                    .WithHeader("Access-Control-Allow-Headers", "Accept, Origin, Content-type");
             });
 
             // Set up whitelist/blacklist
