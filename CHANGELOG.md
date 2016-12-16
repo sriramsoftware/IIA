@@ -1,13 +1,13 @@
 
 # KQ Analytics 3 Changelog
 
-## Development Stage
+## Development Stage (v0.x)
 
 ### v0.4.0-beta
 
 - Major new feature: granular API key permission
 - Keys in configuration file are now incompatible with previous versions. Each
-	key can now be granted a specific set of permissions
+ key can now be granted a specific set of permissions
 
 ### v0.3.1
 
