@@ -1,4 +1,5 @@
-﻿using Nancy;
+﻿using KQAnalytics3.Metadata;
+using Nancy;
 
 namespace KQAnalytics3.Modules.WebClient
 {
@@ -6,7 +7,7 @@ namespace KQAnalytics3.Modules.WebClient
     {
         public WebClientInfoModule()
         {
-            Get("/info", _ => $"KQ Analytics");
+            Get("/info", _ => $"{KQAnalyticsServerInfo.KQAnalyticsProductName}");
         }
     }
 }
