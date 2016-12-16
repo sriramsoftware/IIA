@@ -1,10 +1,9 @@
 ﻿using KQAnalytics3.Configuration.Access;
 using KQAnalytics3.Services.Authentication;
+using KQAnalytics3.Services.Authentication.Security;
 using KQAnalytics3.Services.DataCollection;
 using KQAnalytics3.Utilities;
 using Nancy;
-using Nancy.Security;
-using System;
 
 namespace KQAnalytics3.Modules.Api.Query
 {
@@ -12,12 +11,10 @@ namespace KQAnalytics3.Modules.Api.Query
     {
         public LogRequestQueryModule()
         {
-            var requiredClaims = ClientApiAccessValidator.GetAccessClaimListFromScopes(new [] {
+            this.RequiresAllClaims(ClientApiAccessValidator.GetAccessClaimListFromScopes(new[] {
                 ApiAccessScope.Read,
                 ApiAccessScope.QueryLogRequests
-            });
-            this.RequiresClaims();
-            //this.RequiresClaims(/*... TODO ...*/);
+            }));
 
             // Query Log Requests
             // Limit is the max number of log requests to return. Default 100
