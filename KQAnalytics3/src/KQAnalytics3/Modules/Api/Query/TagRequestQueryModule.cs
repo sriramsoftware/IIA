@@ -18,11 +18,11 @@ namespace KQAnalytics3.Modules.Api.Query
 
             // Query Tagged Requests
             // Tag is the tag to filter by
-            // Limit is the max number of log requests to return. Default 100
-            Get("/query/tagged/{tags?}/{limit:int?}", async args =>
+            // Limit is the max number of log requests to return
+            Get("/query/tagged/{tags}/{limit:int}", async args =>
             {
                 var itemLimit = args.limit as int? ?? 100;
-                var filterTags = (args != null) ? ((string)args.tags).Split(',') : null;
+                var filterTags = (args.tags != null) ? ((string)args.tags).Split(',') : null;
                 var data = await DataLoggerService.QueryTaggedRequestsAsync(itemLimit, filterTags);
                 return Response.AsJsonNet(data);
             });
