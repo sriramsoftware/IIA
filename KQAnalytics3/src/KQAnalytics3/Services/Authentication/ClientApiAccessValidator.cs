@@ -15,7 +15,7 @@ namespace KQAnalytics3.Services.Authentication
             return new Claim[]
             {
                 new Claim(AuthTypeKey, "stateless"),
-                new Claim(AccessScopeKey, accessKey.AccessScope.ToString())
+                new Claim(AccessScopeKey, accessKey.AccessScopes.ToString())
             };
         }
 

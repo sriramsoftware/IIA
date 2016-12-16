@@ -14,7 +14,7 @@ namespace KQAnalytics3.Configuration.Access
         [JsonProperty("key")]
         public string Key { get; set; }
 
-        [JsonProperty("scope")]
-        public ApiAccessScope AccessScope { get; set; } = ApiAccessScope.Read;
+        [JsonProperty("scopes")]
+        public ApiAccessScope[] AccessScopes { get; set; } = new[] { ApiAccessScope.Read };
     }
 }
