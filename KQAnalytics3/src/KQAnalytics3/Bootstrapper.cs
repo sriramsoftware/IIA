@@ -25,10 +25,14 @@ namespace KQAnalytics3
         {
             base.ApplicationStartup(container, pipelines);
 
+            // Load default configuration
+            KQRegistry.ServerConfiguration = new KQServerConfiguration();
             // Read KQConfig configuration file
-            var configFileCont = File.ReadAllText(KQRegistry.CommonConfigurationFileName);
-            KQRegistry.ServerConfiguration = new KQServerConfiguration(); // Load default configuration
-            JsonConvert.PopulateObject(configFileCont, KQRegistry.ServerConfiguration); // Merge with custom configuration
+            if (File.Exists(KQRegistry.CommonConfigurationFileName))
+            {
+                var configFileCont = File.ReadAllText(KQRegistry.CommonConfigurationFileName);
+                JsonConvert.PopulateObject(configFileCont, KQRegistry.ServerConfiguration); // Merge with custom configuration
+            }
 
             // Reload caches
             KQRegistry.UpdateKeyCache();
