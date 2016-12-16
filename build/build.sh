@@ -22,6 +22,11 @@ echo "Building project..."
 # Build
 dotnet build -c Release KQAnalytics3/src/KQAnalytics3
 
+echo "Running tests..."
+
+# Run tests
+dotnet test KQAnalytics3/test/KQAnalytics3.Tests
+
 echo "Publishing project..."
 
 # Publish
