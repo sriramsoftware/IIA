@@ -3,6 +3,9 @@
 
 ## Development Stage (v0.x)
 
+### v0.4.1
+- Patch bugfix: configuration file is now optional
+
 ### v0.4.0-beta
 
 - Major new feature: granular API key permission
