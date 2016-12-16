@@ -14,7 +14,7 @@ namespace KQAnalytics3.Modules.Api.Query
             this.RequiresAllClaims(ClientApiAccessValidator.GetAccessClaimListFromScopes(new[] {
                 ApiAccessScope.Read,
                 ApiAccessScope.QueryLogRequests
-            }));
+            }), ClientApiAccessValidator.GetAccessClaim(ApiAccessScope.Admin));
 
             // Query Log Requests
             // Limit is the max number of log requests to return. Default 100

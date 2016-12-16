@@ -22,6 +22,11 @@ namespace KQAnalytics3.Services.Authentication
             return claimList;
         }
 
+        public static Claim GetAccessClaim(ApiAccessScope scope)
+        {
+            return new Claim(AccessScopeKey, scope.ToString());
+        }
+
         public static ApiAccessScope GetAccessScope(Claim accessScopeClaim)
         {
             return (ApiAccessScope)Enum.Parse(typeof(ApiAccessScope), accessScopeClaim.Value);

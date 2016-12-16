@@ -14,7 +14,7 @@ namespace KQAnalytics3.Modules.Api.Query
             this.RequiresAllClaims(ClientApiAccessValidator.GetAccessClaimListFromScopes(new[] {
                 ApiAccessScope.Read,
                 ApiAccessScope.QueryTagRequests
-            }));
+            }), ClientApiAccessValidator.GetAccessClaim(ApiAccessScope.Admin));
 
             // Query Tagged Requests
             // Tag is the tag to filter by
