@@ -118,11 +118,13 @@ namespace KQAnalytics3.Modules
                         hitReq.PageIdentifier =
                             Request.Query.u // Query string
                             ?? Request.Form.u // Form data
-                            ?? Request.Headers.Referrer; // Referer
+                            ?? Request.Headers.Referrer; // Referrer
                                                          // Check if FetchScript
                         if (requestType.HasFlag(DataRequestType.FetchScript))
                         {
-                            
+                            // Map to FetchScriptRequest
+                            var fetchScriptReq = Mapper.Map<FetchScriptRequest>(req);
+                            hitReq = fetchScriptReq;
                         }
                     }
                     req = hitReq;
