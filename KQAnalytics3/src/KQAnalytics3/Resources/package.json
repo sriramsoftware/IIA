@@ -9,6 +9,7 @@
   "author": "0xFireball",
   "license": "UNLICENSED",
   "devDependencies": {
-    "babel-cli": "^6.18.0"
+    "babel-cli": "^6.18.0",
+    "babel-preset-babili": "0.0.9"
   }
 }
