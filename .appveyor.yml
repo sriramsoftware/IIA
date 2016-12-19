@@ -6,3 +6,6 @@ build_script:
  - dotnet restore KQAnalytics3 --configfile ./build/NuGet.config
  - dotnet build -c Release KQAnalytics3/src/KQAnalytics3
  - dotnet publish -c Release KQAnalytics3/src/KQAnalytics3
+ # Publish
+ after_build:
+  - 7z a -r DeIonizer.zip %APPVEYOR_BUILD_FOLDER%\KQAnalytics3\src\KQAnalytics3\bin\Release\netcoreapp1.0\publish\*.*
