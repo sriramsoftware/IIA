@@ -2,7 +2,7 @@ version: 'build-{build}'
 install:
  - git submodule update --init --recursive
 test: off
-before_build:
+script:
  - dotnet restore KQAnalytics3 --configfile ./build/NuGet.config
  - dotnet build -c Release KQAnalytics3/src/KQAnalytics3
  - dotnet publish -c Release KQAnalytics3/src/KQAnalytics3
