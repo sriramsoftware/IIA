@@ -35,5 +35,10 @@ namespace KQAnalytics3.Models.Requests
         /// Indicates that the request was manually tagged. Should not be used with Hit
         /// </summary>
         Tag = 1 << 5,
+
+        /// <summary>
+        /// Indicates that this was a request to retrieve the tracking script
+        /// </summary>
+        FetchScript,
     }
 }

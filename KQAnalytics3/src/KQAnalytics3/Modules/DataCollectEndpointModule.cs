@@ -38,6 +38,13 @@ namespace KQAnalytics3.Modules
                 // Send tracking pixel
                 return Response.FromStream(TrackingImageProvider.CreateTrackingPixel(), "image/png");
             });
+            // Tracking script
+            // Params: u - the source URL
+            Get("k.js", async args =>
+            {
+                await ProcessRequestDataAsync(DataRequestType.Log | DataRequestType.Hit | DataRequestType.Web | DataRequestType.FetchScript);
+                return Response.FromStream(TrackingScriptProvider.CreateTrackingScript(), "application/javascript");
+            });
             // Redirect
             // Params: t - The target URL
             Get("/r", async args =>
@@ -101,7 +108,9 @@ namespace KQAnalytics3.Modules
                 req.KQApiNode = Request.Url;
                 if (requestType.HasFlag(DataRequestType.Hit))
                 {
+                    // Map to Hit request
                     var hitReq = Mapper.Map<HitRequest>(req);
+                    // Check if also a web request
                     if (requestType.HasFlag(DataRequestType.Web))
                     {
                         hitReq.Referrer = Request.Headers.Referrer;
@@ -110,9 +119,15 @@ namespace KQAnalytics3.Modules
                             Request.Query.u // Query string
                             ?? Request.Form.u // Form data
                             ?? Request.Headers.Referrer; // Referer
+                                                         // Check if FetchScript
+                        if (requestType.HasFlag(DataRequestType.FetchScript))
+                        {
+                            
+                        }
                     }
                     req = hitReq;
                 }
+                // Tag is not compatible with Hit
                 else if (requestType.HasFlag(DataRequestType.Tag))
                 {
                     // Log with custom data
@@ -121,6 +136,7 @@ namespace KQAnalytics3.Modules
                     tagReq.ExtraData = Request.Form.data;
                     req = tagReq;
                 }
+                // Redirect is not compatible with Tag or Hit
                 else if (requestType.HasFlag(DataRequestType.Redirect))
                 {
                     // TODO: Log redirect
