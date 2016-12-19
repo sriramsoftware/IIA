@@ -8,4 +8,4 @@ build_script:
  - dotnet publish -c Release KQAnalytics3/src/KQAnalytics3
 # Publish
 after_build:
- - 7z a -r DeIonizer.zip %APPVEYOR_BUILD_FOLDER%\KQAnalytics3\src\KQAnalytics3\bin\Release\netcoreapp1.0\publish\*.*
+ - 7z a -r KQAnalytics3-CE.zip %APPVEYOR_BUILD_FOLDER%\KQAnalytics3\src\KQAnalytics3\bin\Release\netcoreapp1.0\publish\*.*
