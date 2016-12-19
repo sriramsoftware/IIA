@@ -3,6 +3,8 @@
 
 ## Alpha Stage (v0.x-ax)
 
+### v0.6.0-a1 (Due December 26, 2016)
+
 ## Development Stage (v0.x)
 
 ### v0.5.0-dev

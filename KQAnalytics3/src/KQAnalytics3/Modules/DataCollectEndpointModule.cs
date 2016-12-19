@@ -123,7 +123,7 @@ namespace KQAnalytics3.Modules
                         if (requestType.HasFlag(DataRequestType.FetchScript))
                         {
                             // Map to FetchScriptRequest
-                            var fetchScriptReq = Mapper.Map<FetchScriptRequest>(req);
+                            var fetchScriptReq = Mapper.Map<FetchScriptRequest>(hitReq);
                             hitReq = fetchScriptReq;
                         }
                     }

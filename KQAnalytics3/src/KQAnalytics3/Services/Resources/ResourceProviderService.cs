@@ -4,12 +4,12 @@ namespace KQAnalytics3.Services.Resources
 {
     public static class ResourceProviderService
     {
-        public static string ResourceBasePath => Path.Combine("Resources");
+        public static string ResourceBasePath => Path.Combine(KQRegistry.CurrentDirectory, "Resources");
 
         public static Stream GetResource(string resourcePath)
         {
             var resCompletePath = Path.Combine(ResourceBasePath, resourcePath);
-            return File.OpenRead(resourcePath);
+            return File.OpenRead(resCompletePath);
         }
 
         public static string ReadResourceContents(string resourcePath)

@@ -9,16 +9,18 @@ namespace KQAnalytics3
     {
         public static void Main(string[] args)
         {
+            var currentDir = Directory.GetCurrentDirectory();
+            KQRegistry.CurrentDirectory = currentDir;
             var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
+                .SetBasePath(currentDir)
                 .AddCommandLine(args)
-                .AddJsonFile(Path.Combine(Directory.GetCurrentDirectory(), "hosting.json"), false)
+                .AddJsonFile(Path.Combine(currentDir, "hosting.json"), false)
                 .Build();
 
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseConfiguration(config)
-                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseContentRoot(currentDir)
                 .UseStartup<Startup>()
                 .Build();
             host.Run();
