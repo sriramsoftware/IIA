@@ -4,7 +4,7 @@ namespace KQAnalytics3.Services.Resources
 {
     public static class ResourceProviderService
     {
-        public static string ResourceBasePath => Path.Combine(KQRegistry.CurrentDirectory, "Resources");
+        public static string ResourceBasePath => Path.Combine(KQRegistry.CurrentDirectory, "Resources", "lib");
 
         public static Stream GetResource(string resourcePath)
         {

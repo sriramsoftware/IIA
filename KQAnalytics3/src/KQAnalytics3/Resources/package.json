@@ -4,8 +4,11 @@
   "description": "KQAnalytics3 static resource",
   "main": "kq3.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src -d lib"
   },
   "author": "0xFireball",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "babel-cli": "^6.18.0"
+  }
 }
