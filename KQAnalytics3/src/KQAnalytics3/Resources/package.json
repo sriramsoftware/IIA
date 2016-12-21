@@ -4,7 +4,7 @@
   "description": "KQAnalytics3 static resource",
   "main": "kq3.js",
   "scripts": {
-    "build": "babel src -d lib"
+    "build": "babel src --out-file lib/kq3.js"
   },
   "author": "0xFireball",
   "license": "UNLICENSED",
