@@ -50,6 +50,25 @@ class KQApi {
       data: data
     })
   }
+  static sendTagData (tag, data) {
+    this.sendTag(tag, JSON.stringify(data))
+  }
+}
+
+KQApi.Events = class {
+  static click (e) {
+    e = window.e || e
+    if (e.target.tagName !== 'A') { // filter A elements
+      return
+    }
+    let el = e.target
+    let d = new Date().toISOString()
+    KQApi.sendTagData('linkClick', {
+      tgt: el.href,
+      tx: el.text,
+      d: d
+    })
+  }
 }
 
 var sid = window.localStorage.getItem('sid') || KQUtils.mid()
@@ -65,3 +84,9 @@ KQApi.configure({
 })
 
 KQApi.sendHit()
+
+if (document.addEventListener) {
+  document.addEventListener('click', KQApi.Events.click, false)
+} else {
+  document.attachEvent('onclick', KQApi.Events.click)
+}

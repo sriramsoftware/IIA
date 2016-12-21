@@ -25,6 +25,7 @@ namespace KQAnalytics3.Modules
             // Custom data post. Intended for tagging with custom data
             // Data: tag - A short custom tag field
             // Data: data - A custom data field that holds a string
+            // Data: sid - cross domain tracking id
             Post("/c", async args =>
             {
                 await ProcessRequestDataAsync(DataRequestType.Log | DataRequestType.Tag);
