@@ -1,4 +1,4 @@
-﻿function mkuid (lnt) {
+﻿function mkuid(lnt) {
   var text = ''
   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
   for (var i = 0; i < lnt; i++) {

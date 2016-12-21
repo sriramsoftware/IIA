@@ -10,6 +10,7 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "babel-cli": "^6.18.0",
+    "babel-plugin-uglify": "^1.0.2",
     "babel-preset-babili": "0.0.9",
     "babel-preset-env": "^1.1.4"
   }

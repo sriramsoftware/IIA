@@ -1,3 +1,4 @@
 {
-  "presets": ["env", "babili"]
+  "presets": ["env", "babili"],
+  "sourceMap": true
 }
