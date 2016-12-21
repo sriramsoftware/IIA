@@ -114,6 +114,7 @@ namespace KQAnalytics3
             {
                 // Create maps
                 cfg.CreateMap<LogRequest, HitRequest>();
+                cfg.CreateMap<HitRequest, FetchScriptRequest>();
                 cfg.CreateMap<LogRequest, RedirectRequest>();
                 cfg.CreateMap<LogRequest, TagRequest>();
             });

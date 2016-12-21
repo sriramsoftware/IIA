@@ -51,7 +51,8 @@
       "wwwroot",
       "web.config",
       "hosting.json",
-      "Views"
+      "Views",
+      "Resources"
     ]
   },
 

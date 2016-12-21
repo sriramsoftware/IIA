@@ -1,12 +1,20 @@
 
 # KQ Analytics 3 Changelog
 
+## Alpha Stage (v0.x-ax)
+
+### v0.6.0-a1 (Due December 26, 2016)
+
 ## Development Stage (v0.x)
+
+### v0.5.0-dev
+- Add tracking script for more advanced automated web tracking
+  - Log requests for the tracking script
 
 ### v0.4.1
 - Patch bugfix: configuration file is now optional
 
-### v0.4.0-beta
+### v0.4.0-dev
 
 - Major new feature: granular API key permission
 - Keys in configuration file are now incompatible with previous versions. Each
@@ -22,4 +30,4 @@
 
 ### Previous versions
 
-- Other stuff. Logs were not kept at this time.
+- Other stuff. Logs were not kept prior to this time.
