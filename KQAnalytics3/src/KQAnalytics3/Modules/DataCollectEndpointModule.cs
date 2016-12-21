@@ -58,20 +58,31 @@ namespace KQAnalytics3.Modules
             });
         }
 
-        private async Task<UserSession> CreateOrRetrieveSessionAsync()
+        /// <summary>
+        /// Creates or retrieves a session for the user
+        /// </summary>
+        /// <param name="customId">A custom session ID. This will take precedence over an existing session.</param>
+        /// <returns>A Tuple that contains the session object and a boolean indicating whether the session was newly created</returns>
+        private async Task<Tuple<UserSession, bool>> CreateOrRetrieveSessionAsync(Guid? customId = null)
         {
             UserSession ret = null;
+            var newSession = true; // Whether the session is new
             // Check if a stored session is available
             var storedSessData = Request.Session[SessionStorageService.SessionUserCookieStorageKey] as string;
-            if (storedSessData != null)
+            if (storedSessData != null && customId == null)
             {
                 // [Attempt to] Find matching session
                 ret = await SessionStorageService.GetSessionFromIdentifierAsync(storedSessData);
+                if (ret != null)
+                {
+                    // Session was already available
+                    newSession = false;
+                }
             }
-            if (storedSessData == null || ret == null)
+            if (storedSessData == null || ret == null || customId != null)
             {
                 // Register and attempt to save session
-                var session = new UserSession
+                var session = new UserSession(customId ?? Guid.NewGuid())
                 {
                     UserAgent = Request.Headers.UserAgent,
                     StartTime = DateTime.Now
@@ -82,8 +93,9 @@ namespace KQAnalytics3.Modules
                 // Store session data
                 Request.Session[SessionStorageService.SessionUserCookieStorageKey] = session.SessionId;
                 ret = session;
+                newSession = true;
             }
-            return ret;
+            return new Tuple<UserSession, bool>(ret, newSession);
         }
 
         /// <summary>
@@ -91,7 +103,23 @@ namespace KQAnalytics3.Modules
         /// </summary>
         private async Task ProcessRequestDataAsync(DataRequestType requestType = DataRequestType.Log)
         {
-            var currentSession = await CreateOrRetrieveSessionAsync();
+            Guid? sessionIdentifier = null; // Null means it will be automatically created
+            // A cross-domain TID can be specified
+            var sentTid = (string)Request.Form.tid;
+            // TODO: Maybe validation to ensure TID is not being overwritten
+            if (sentTid != null)
+            {
+                Guid resultSessGuid;
+                if (Guid.TryParse(sentTid, out resultSessGuid))
+                {
+                    // TODO: Possibly note that session used custom ID
+                    sessionIdentifier = resultSessGuid;
+                }
+            }
+
+            var sessionInfo = await CreateOrRetrieveSessionAsync(sessionIdentifier);
+            var currentSession = sessionInfo.Item1;
+            var newSession = sessionInfo.Item2;
 
             var eventIdentifier = Guid.NewGuid();
             if (requestType.HasFlag(DataRequestType.Log))
@@ -127,10 +155,6 @@ namespace KQAnalytics3.Modules
                             var fetchScriptReq = Mapper.Map<FetchScriptRequest>(hitReq);
                             hitReq = fetchScriptReq;
                         }
-
-                        // A cross-domain TID can be specified
-                        var sentTid = Request.Form.tid;
-                        
                     }
                     req = hitReq;
                 }
