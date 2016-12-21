@@ -45,6 +45,8 @@ Eventually, you can get binary releases [here](https://github.com/0xFireball/KQA
   - Versatile analysis tools that operate on dynamically retrieved data
   can be built on the API
 - Easy integration with existing webpages and applications with client libraries
+  - Client side web library automatically sets up basic events, and provides
+  an client API allowing creators to integrate KQAnalytics3 into the application
 - Cross-platform service, deploy to cloud, Docker, and more
   - Built on the .NET Core platform
 

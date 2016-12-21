@@ -10,6 +10,12 @@
 ### v0.5.0-dev
 - Add tracking script for more advanced automated web tracking
   - Log requests for the tracking script
+- Cross domain session ID workaround
+- Tracking script with automated sending and API
+  - Automatically sends hit event, without needing to configure tracking pixel
+  - Send basic events automatically
+  - Inject a JS API allowing creators to trigger custom events in their code, and
+  to integrate KQAnalytics3 into their web application
 
 ### v0.4.1
 - Patch bugfix: configuration file is now optional
