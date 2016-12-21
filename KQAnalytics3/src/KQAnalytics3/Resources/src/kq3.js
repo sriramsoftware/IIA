@@ -30,5 +30,5 @@ String.prototype.format = function () {
     // ok
     // this.responseText
   }
-  xhr.send(`u=${ul}`)
+  xhr.send(`u=${ul}&tid={tid}`)
 })()
