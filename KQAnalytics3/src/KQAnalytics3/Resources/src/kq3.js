@@ -1,36 +1,67 @@
-﻿function mid () {
-  function s4 () {
-    return Math.floor((1 + Math.random()) * 0x10000)
-      .toString(16)
-      .substring(1)
+﻿class KQUtils {
+  static serialize (obj) {
+    var str = []
+    for (var p in obj) {
+      if (obj.hasOwnProperty(p)) {
+        str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]))
+      }
+    }
+    return str.join('&')
   }
-  return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-    s4() + '-' + s4() + s4() + s4()
+  static mid () {
+    function s4 () {
+      return Math.floor((1 + Math.random()) * 0x10000)
+        .toString(16)
+        .substring(1)
+    }
+    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
+      s4() + '-' + s4() + s4() + s4()
+  }
+  static sendPost (url, data, callback) {
+    var xhr = new window.XMLHttpRequest()
+    xhr.open('POST', url, true)
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+    xhr.onload = function () {
+      // ok
+      // this.responseText
+      if (callback) {
+        callback(this.responseText)
+      }
+    }
+    xhr.send(KQUtils.serialize(data))
+  }
 }
 
-let kc = window._kqdaq || {}
-let kqs = kc['s']
-if (kqs.substr(-1) !== '/') kqs += '/'
-let ul = kc['u']
-let tid = kc['tid']
-let sid = window.localStorage.getItem('sid') || mid()
-window.localStorage.setItem('sid', sid)
-let rd = `u=${ul}&tid=${tid}`
-
-String.prototype.format = function () {
-  let args = arguments
-  return this.replace(/{(\d+)}/g, function (match, number) {
-    return typeof args[number] !== 'undefined' ? args[number] : match
-  })
-};
-
-(function () {
-  var xhr = new window.XMLHttpRequest()
-  xhr.open('POST', kqs + 'k', true)
-  xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
-  xhr.onload = function () {
-    // ok
-    // this.responseText
+class KQApi {
+  static configure (opts) {
+    this.kc = opts
   }
-  xhr.send(rd)
-})()
+  static sendHit (ul) {
+    KQUtils.sendPost(this.kc.s + 'k', {
+      u: this.kc.ul,
+      sid: this.kc.sid
+    })
+  }
+  static sendTag (tag, data) {
+    KQUtils.sendPost(this.kc.s + 'c', {
+      u: this.kc.ul,
+      sid: this.kc.sid,
+      tag: tag,
+      data: data
+    })
+  }
+}
+
+var sid = window.localStorage.getItem('sid') || KQUtils.mid()
+window.localStorage.setItem('sid', sid)
+
+var _kqd = window._kqd || {}
+var kqs = _kqd.s
+if (kqs.substr(-1) !== '/') kqs += '/'
+KQApi.configure({
+  s: kqs,
+  ul: _kqd.u,
+  sid: _kqd.sid || sid
+})
+
+KQApi.sendHit()
