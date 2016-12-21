@@ -15,7 +15,7 @@ namespace KQAnalytics3.Modules
         {
             // Tracking Post. Intended to be used from web apps
             // Data: u - the source URL
-            // Data: tid - cross domain tracking id
+            // Data: sid - cross domain tracking id
             Post("/k", async args =>
             {
                 await ProcessRequestDataAsync(DataRequestType.Log | DataRequestType.Hit | DataRequestType.Web);
@@ -104,13 +104,13 @@ namespace KQAnalytics3.Modules
         private async Task ProcessRequestDataAsync(DataRequestType requestType = DataRequestType.Log)
         {
             Guid? sessionIdentifier = null; // Null means it will be automatically created
-            // A cross-domain TID can be specified
-            var sentTid = (string)Request.Form.tid;
-            // TODO: Maybe validation to ensure TID is not being overwritten
-            if (sentTid != null)
+            // A cross-domain SID can be specified
+            var sentSessId = (string)Request.Form.sid;
+            // TODO: Maybe validation to ensure SID is not being overwritten
+            if (sentSessId != null)
             {
                 Guid resultSessGuid;
-                if (Guid.TryParse(sentTid, out resultSessGuid))
+                if (Guid.TryParse(sentSessId, out resultSessGuid))
                 {
                     // TODO: Possibly note that session used custom ID
                     sessionIdentifier = resultSessGuid;
