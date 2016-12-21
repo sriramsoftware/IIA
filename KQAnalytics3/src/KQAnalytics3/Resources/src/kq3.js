@@ -26,11 +26,10 @@ String.prototype.format = function () {
 (function () {
   var xhr = new window.XMLHttpRequest()
   xhr.open('POST', kqs + 'k', true)
-  xhr.setRequestHeader('Content-type', 'application/x-www-form-ulencoded')
+  xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
   xhr.onload = function () {
     // ok
     // this.responseText
   }
   xhr.send(rd)
-  console.log(xhr)
 })()
