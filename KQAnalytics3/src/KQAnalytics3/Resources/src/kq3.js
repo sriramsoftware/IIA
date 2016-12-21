@@ -10,8 +10,8 @@
 let kc = window._kqdaq || {}
 let kqs = kc['s']
 if (kqs.substr(-1) !== '/') kqs += '/'
-let url = kc['u']
-let trackingId = kc['tid']
+let ul = kc['u']
+let tid = kc['tid']
 let sid = window.localStorage.getItem('sid') || mkuid(26)
 window.localStorage.setItem('sid', sid)
 
@@ -23,9 +23,12 @@ String.prototype.format = function () {
 };
 
 (function () {
-  // TODO
-  var request = new window.XMLHttpRequest()
-  request.open('POST', '/my/url', true)
-  request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8')
-  request.send({})
+  var xhr = new window.XMLHttpRequest()
+  xhr.open('POST', kqs, true)
+  xhr.setRequestHeader('Content-type', 'application/x-www-form-ulencoded')
+  xhr.onload = function () {
+    // ok
+    // this.responseText
+  }
+  xhr.send(`u=${ul}`)
 })()

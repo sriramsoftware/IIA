@@ -15,6 +15,7 @@ namespace KQAnalytics3.Modules
         {
             // Tracking Post. Intended to be used from web apps
             // Data: u - the source URL
+            // Data: tid - cross domain tracking id
             Post("/k", async args =>
             {
                 await ProcessRequestDataAsync(DataRequestType.Log | DataRequestType.Hit | DataRequestType.Web);
@@ -126,6 +127,10 @@ namespace KQAnalytics3.Modules
                             var fetchScriptReq = Mapper.Map<FetchScriptRequest>(hitReq);
                             hitReq = fetchScriptReq;
                         }
+
+                        // A cross-domain TID can be specified
+                        var sentTid = Request.Form.tid;
+                        
                     }
                     req = hitReq;
                 }
