@@ -14,6 +14,7 @@ let ul = kc['u']
 let tid = kc['tid']
 let sid = window.localStorage.getItem('sid') || mkuid(26)
 window.localStorage.setItem('sid', sid)
+let rd = `u=${ul}&tid=${tid}`
 
 String.prototype.format = function () {
   let args = arguments
@@ -24,11 +25,12 @@ String.prototype.format = function () {
 
 (function () {
   var xhr = new window.XMLHttpRequest()
-  xhr.open('POST', kqs, true)
+  xhr.open('POST', kqs + 'k', true)
   xhr.setRequestHeader('Content-type', 'application/x-www-form-ulencoded')
   xhr.onload = function () {
     // ok
     // this.responseText
   }
-  xhr.send(`u=${ul}&tid={tid}`)
+  xhr.send(rd)
+  console.log(xhr)
 })()

@@ -145,8 +145,8 @@ namespace KQAnalytics3.Modules
                         hitReq.Referrer = Request.Headers.Referrer;
                         // Attempt to get page URL
                         hitReq.PageIdentifier =
-                            Request.Query.u // Query string
-                            ?? Request.Form.u // Form data
+                            (string)Request.Query.u // Query string
+                            ?? (string)Request.Form.u // Form data
                             ?? Request.Headers.Referrer; // Referrer
                                                          // Check if FetchScript
                         if (requestType.HasFlag(DataRequestType.FetchScript))
