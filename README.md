@@ -12,8 +12,9 @@ KQ can be used everywhere from webpages to desktop apps to mobile apps to gain v
 
 ## Install
 
-For now, while KQ is in an early development phase, you will have to build
-from source.
+KQAnalytics3 is still in an early development phase.
+**Preview** and **Alpha** builds are now
+[available from the official website](https://iridiumion.xyz/#/projects/kqanalytics3).
 
 Eventually, you can get binary releases [here](https://github.com/0xFireball/KQAnalytics3/releases).
 
