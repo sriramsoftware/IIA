@@ -10,33 +10,39 @@ namespace KQAnalytics3.Services.DataCollection
 
         public static async Task<UserSession> GetSessionFromIdentifierAsync(string identifier)
         {
-            UserSession ret = null;
+            return await Task.Run(() =>
+            {
+                UserSession ret = null;
 
-            var db = DatabaseAccessService.OpenOrCreateDefault();
+                var db = DatabaseAccessService.OpenOrCreateDefault();
 
-            // Get stored sessions collection
-            var storedSessions = db.GetCollection<UserSession>(DatabaseAccessService.LoggedRequestDataKey);
+                // Get stored sessions collection
+                var storedSessions = db.GetCollection<UserSession>(DatabaseAccessService.LoggedRequestDataKey);
 
-            ret = storedSessions.FindOne(x => x.SessionId == identifier);
+                ret = storedSessions.FindOne(x => x.SessionId == identifier);
 
-            return ret;
+                return ret;
+            });
         }
 
         public static async Task SaveSessionAsync(UserSession session)
         {
-            var db = DatabaseAccessService.OpenOrCreateDefault();
-            // Get logged requests collection
-            var loggedRequests = db.GetCollection<UserSession>(DatabaseAccessService.LoggedRequestDataKey);
-            // Use ACID transaction
-            using (var trans = db.BeginTrans())
+            await Task.Run(() =>
             {
-                // Insert new session into database
-                loggedRequests.Insert(session);
+                var db = DatabaseAccessService.OpenOrCreateDefault();
+                // Get logged requests collection
+                var loggedRequests = db.GetCollection<UserSession>(DatabaseAccessService.LoggedRequestDataKey);
+                // Use ACID transaction
+                using (var trans = db.BeginTrans())
+                {
+                    // Insert new session into database
+                    loggedRequests.Insert(session);
 
-                trans.Commit();
-            }
-            // Index requests by identifier
-            loggedRequests.EnsureIndex(x => x.SessionId);
+                    trans.Commit();
+                }
+                // Index requests by identifier
+                loggedRequests.EnsureIndex(x => x.SessionId);
+            });
         }
     }
 }
