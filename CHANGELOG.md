@@ -7,6 +7,10 @@
 
 ## Development Stage (v0.x)
 
+### v0.5.1-dev
+
+- Improvement: Use asynchronous Tasks for I/O
+
 ### v0.5.0-preview
 - Add tracking script for more advanced automated web tracking
   - Log requests for the tracking script
