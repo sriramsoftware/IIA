@@ -63,6 +63,7 @@ The Enterprise edition is completely free while in the development phase!
 - Built-in, integrated data analyzer and visualization tools
 - Plugin support for dynamically loading custom code\*
 - Web-based administration dashboard
+- Soon, integration with the platform of Project AlphaOsmium (unreleased)
 - More soon!
 
 ### Notes
