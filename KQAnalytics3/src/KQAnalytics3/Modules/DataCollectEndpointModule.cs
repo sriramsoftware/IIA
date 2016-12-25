@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace KQAnalytics3.Modules
 {
-    public class DataCollectEndpointModule : NancyModule
+    public class DataCollectEndpointModule : KQBaseModule
     {
         public DataCollectEndpointModule()
         {

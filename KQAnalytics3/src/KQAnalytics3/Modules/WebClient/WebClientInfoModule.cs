@@ -1,9 +1,8 @@
 ﻿using KQAnalytics3.Metadata;
-using Nancy;
 
 namespace KQAnalytics3.Modules.WebClient
 {
-    public class WebClientInfoModule : NancyModule
+    public class WebClientInfoModule : KQBaseModule
     {
         public WebClientInfoModule()
         {

@@ -3,11 +3,10 @@ using KQAnalytics3.Services.Authentication;
 using KQAnalytics3.Services.Authentication.Security;
 using KQAnalytics3.Services.DataCollection;
 using KQAnalytics3.Utilities;
-using Nancy;
 
 namespace KQAnalytics3.Modules.Api.Query
 {
-    public class TagRequestQueryModule : NancyModule
+    public class TagRequestQueryModule : KQBaseModule
     {
         public TagRequestQueryModule() : base("/api")
         {

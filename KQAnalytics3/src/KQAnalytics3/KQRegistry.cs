@@ -11,6 +11,7 @@ namespace KQAnalytics3
         public static string CommonConfigurationFileName => "kqconfig.json";
         public static ApiKeyCache KeyCache { get; private set; } = new ApiKeyCache();
         public static string CurrentDirectory { get; set; }
+        public static string KQBasePath { get; set; } = "/kq";
 
         public static void UpdateKeyCache()
         {
