@@ -14,10 +14,10 @@ namespace KQAnalytics3.Services.DataCollection
             {
                 UserSession ret = null;
 
-                var db = DatabaseAccessService.OpenOrCreateDefault();
+                var db = KQRegistry.DatabaseAccessService.OpenOrCreateDefault();
 
                 // Get stored sessions collection
-                var storedSessions = db.GetCollection<UserSession>(DatabaseAccessService.LoggedRequestDataKey);
+                var storedSessions = db.GetCollection<UserSession>(DatabaseConstants.LoggedRequestDataKey);
 
                 ret = storedSessions.FindOne(x => x.SessionId == identifier);
 
@@ -29,9 +29,9 @@ namespace KQAnalytics3.Services.DataCollection
         {
             await Task.Run(() =>
             {
-                var db = DatabaseAccessService.OpenOrCreateDefault();
+                var db = KQRegistry.DatabaseAccessService.OpenOrCreateDefault();
                 // Get logged requests collection
-                var loggedRequests = db.GetCollection<UserSession>(DatabaseAccessService.LoggedRequestDataKey);
+                var loggedRequests = db.GetCollection<UserSession>(DatabaseConstants.LoggedRequestDataKey);
                 // Use ACID transaction
                 using (var trans = db.BeginTrans())
                 {

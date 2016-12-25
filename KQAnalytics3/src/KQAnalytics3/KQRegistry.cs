@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using KQAnalytics3.Configuration;
 using KQAnalytics3.Configuration.Access;
+using KQAnalytics3.Services.Database;
 
 namespace KQAnalytics3
 {
@@ -12,6 +13,9 @@ namespace KQAnalytics3
         public static ApiKeyCache KeyCache { get; private set; } = new ApiKeyCache();
         public static string CurrentDirectory { get; set; }
         public static string KQBasePath { get; set; } = "/kq";
+
+        // Database access
+        public static IDatabaseAccessService DatabaseAccessService = new DatabaseAccessService();
 
         public static void UpdateKeyCache()
         {
