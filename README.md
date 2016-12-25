@@ -42,8 +42,8 @@ KQAnalytics3 is still in an early development phase.
   - In-memory cache for faster responses and processing
 - Powerful, fully-featured REST API for retreiving data
   - Set custom API keys, and use them to retrieve collected data
-	- API keys can have permission scopes and granular permissions,
-		allowing you to build clients that have varying levels of access to data
+  - API keys can have permission scopes and granular permissions,
+    allowing you to build clients that have varying levels of access to data
   - Filter stored data and events by tag and custom fields
   - Versatile analysis tools that operate on dynamically retrieved data
   can be built on the API
@@ -52,6 +52,7 @@ KQAnalytics3 is still in an early development phase.
   an client API allowing creators to integrate KQAnalytics3 into the application
 - Cross-platform service, deploy to cloud, Docker, and more
   - Built on the .NET Core platform
+- (WIP) Plugin support for dynamically loading custom code
 
 KQAnalytics3 Community edition is available under the AGPLv3 license!
 
@@ -63,7 +64,6 @@ The Enterprise edition is completely free while in the development phase!
 
 - **Everything in KQAnalytics3 Community Edition**
 - Built-in, integrated data analyzer and visualization tools
-- Plugin support for dynamically loading custom code\*
 - Web-based administration dashboard
 - Soon, integration with the platform of Project AlphaOsmium (unreleased)
 - More soon!
