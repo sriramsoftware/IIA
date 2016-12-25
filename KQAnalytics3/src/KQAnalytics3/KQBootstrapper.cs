@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using KQAnalytics3.Models.Data;
+using KQAnalytics3.PluginCore;
 using KQAnalytics3.Services.Authentication;
 using KQAnalytics3.Utilities;
 using Nancy;
@@ -21,6 +22,9 @@ namespace KQAnalytics3
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
             base.ApplicationStartup(container, pipelines);
+
+            // Load plugins
+            KQPluginAggregator.LoadAllPlugins();
 
             // Enable cookie sessions
             CookieBasedSessions.Enable(pipelines);
