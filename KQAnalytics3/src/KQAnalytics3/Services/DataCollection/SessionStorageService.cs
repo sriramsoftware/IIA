@@ -8,7 +8,7 @@ namespace KQAnalytics3.Services.DataCollection
     {
         public static string SessionUserCookieStorageKey => "kq_session";
 
-        public static async Task<UserSession> GetSessionFromIdentifierAsync(string identifier)
+        public async Task<UserSession> GetSessionFromIdentifierAsync(string identifier)
         {
             return await Task.Run(() =>
             {
@@ -25,7 +25,7 @@ namespace KQAnalytics3.Services.DataCollection
             });
         }
 
-        public static async Task SaveSessionAsync(UserSession session)
+        public async Task SaveSessionAsync(UserSession session)
         {
             await Task.Run(() =>
             {

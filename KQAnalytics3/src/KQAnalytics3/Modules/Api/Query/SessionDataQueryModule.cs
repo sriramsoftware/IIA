@@ -10,16 +10,18 @@ namespace KQAnalytics3.Modules.Api.Query
     {
         public SessionDataQueryModule() : base("/api")
         {
-            this.RequiresAllClaims(ClientApiAccessValidator.GetAccessClaimListFromScopes(new[] {
+            var accessValidator = new ClientApiAccessValidator();
+            this.RequiresAllClaims(accessValidator.GetAccessClaimListFromScopes(new[] {
                 ApiAccessScope.Read,
                 ApiAccessScope.QuerySessionData
-            }), ClientApiAccessValidator.GetAccessClaim(ApiAccessScope.Admin));
+            }), accessValidator.GetAccessClaim(ApiAccessScope.Admin));
 
             // Query SessionData
             // Id is the ID of the session to find
             Get("/query/sessiondata/{id}", async args =>
             {
-                var data = await SessionStorageService.GetSessionFromIdentifierAsync((string)args.id);
+                var sessionStorageService = new SessionStorageService();
+                var data = await sessionStorageService.GetSessionFromIdentifierAsync((string)args.id);
                 return Response.AsJsonNet(data);
             });
         }

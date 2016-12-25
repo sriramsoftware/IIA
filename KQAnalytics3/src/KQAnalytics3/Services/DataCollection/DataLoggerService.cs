@@ -11,9 +11,9 @@ namespace KQAnalytics3.Services.DataCollection
     /// <summary>
     /// A static instance of a logger service that can be used to log data to the database
     /// </summary>
-    public static class DataLoggerService
+    public class DataLoggerService
     {
-        public static async Task SaveLogRequestAsync(LogRequest request)
+        public async Task SaveLogRequestAsync(LogRequest request)
         {
             await Task.Run(() =>
             {
@@ -34,7 +34,7 @@ namespace KQAnalytics3.Services.DataCollection
             });
         }
 
-        public static async Task SaveTagRequestAsync(TagRequest request)
+        public async Task SaveTagRequestAsync(TagRequest request)
         {
             await Task.Run(() =>
             {
@@ -55,7 +55,7 @@ namespace KQAnalytics3.Services.DataCollection
             });
         }
 
-        public static async Task<IEnumerable<LogRequest>> QueryRequestsAsync(int limit)
+        public async Task<IEnumerable<LogRequest>> QueryRequestsAsync(int limit)
         {
             var db = DatabaseAccessService.OpenOrCreateDefault();
             var result = await Task.Run(() =>
@@ -68,7 +68,7 @@ namespace KQAnalytics3.Services.DataCollection
             return result;
         }
 
-        public static async Task<IEnumerable<TagRequest>> QueryTaggedRequestsAsync(int limit, string[] filterTags = null)
+        public async Task<IEnumerable<TagRequest>> QueryTaggedRequestsAsync(int limit, string[] filterTags = null)
         {
             var db = DatabaseAccessService.OpenOrCreateDefault();
             var result = await Task.Run(() =>

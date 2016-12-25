@@ -10,10 +10,11 @@ namespace KQAnalytics3.Modules.Api.Query
     {
         public TagRequestQueryModule() : base("/api")
         {
-            this.RequiresAllClaims(ClientApiAccessValidator.GetAccessClaimListFromScopes(new[] {
+            var accessValidator = new ClientApiAccessValidator();
+            this.RequiresAllClaims(accessValidator.GetAccessClaimListFromScopes(new[] {
                 ApiAccessScope.Read,
                 ApiAccessScope.QueryTagRequests
-            }), ClientApiAccessValidator.GetAccessClaim(ApiAccessScope.Admin));
+            }), accessValidator.GetAccessClaim(ApiAccessScope.Admin));
 
             // Query Tagged Requests
             // Tag is the tag to filter by
@@ -22,7 +23,8 @@ namespace KQAnalytics3.Modules.Api.Query
             {
                 var itemLimit = args.limit as int? ?? 100;
                 var filterTags = (args.tags != null) ? ((string)args.tags).Split(',') : null;
-                var data = await DataLoggerService.QueryTaggedRequestsAsync(itemLimit, filterTags);
+                var dataLoggerService = new DataLoggerService();
+                var data = await dataLoggerService.QueryTaggedRequestsAsync(itemLimit, filterTags);
                 return Response.AsJsonNet(data);
             });
         }

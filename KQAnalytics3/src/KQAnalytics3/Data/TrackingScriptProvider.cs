@@ -9,7 +9,7 @@ namespace KQAnalytics3.Data
 
         public static Stream CreateTrackingScript()
         {
-            return ResourceProviderService.GetResource(TrackingScriptName);
+            return new ResourceProviderService().GetResource(TrackingScriptName);
         }
     }
 }

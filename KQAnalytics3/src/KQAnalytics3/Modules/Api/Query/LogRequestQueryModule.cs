@@ -10,17 +10,19 @@ namespace KQAnalytics3.Modules.Api.Query
     {
         public LogRequestQueryModule() : base("/api")
         {
-            this.RequiresAllClaims(ClientApiAccessValidator.GetAccessClaimListFromScopes(new[] {
+            var accessValidator = new ClientApiAccessValidator();
+            this.RequiresAllClaims(accessValidator.GetAccessClaimListFromScopes(new[] {
                 ApiAccessScope.Read,
                 ApiAccessScope.QueryLogRequests
-            }), ClientApiAccessValidator.GetAccessClaim(ApiAccessScope.Admin));
+            }), accessValidator.GetAccessClaim(ApiAccessScope.Admin));
 
             // Query Log Requests
             // Limit is the max number of log requests to return. Default 100
             Get("/query/logrequests/{limit:int}", async args =>
             {
                 var itemLimit = args.limit as int? ?? 100;
-                var data = await DataLoggerService.QueryRequestsAsync(itemLimit);
+                var dataLoggerService = new DataLoggerService();
+                var data = await dataLoggerService.QueryRequestsAsync(itemLimit);
                 return Response.AsJsonNet(data);
             });
         }

@@ -70,10 +70,11 @@ namespace KQAnalytics3.Modules
             var newSession = true; // Whether the session is new
             // Check if a stored session is available
             var storedSessData = Request.Session[SessionStorageService.SessionUserCookieStorageKey] as string;
+            var sessionStorageService = new SessionStorageService();
             if (storedSessData != null && customId == null)
             {
                 // [Attempt to] Find matching session
-                ret = await SessionStorageService.GetSessionFromIdentifierAsync(storedSessData);
+                ret = await sessionStorageService.GetSessionFromIdentifierAsync(storedSessData);
                 if (ret != null)
                 {
                     // Session was already available
@@ -89,7 +90,7 @@ namespace KQAnalytics3.Modules
                     StartTime = DateTime.Now
                 };
                 // Register session in database
-                await SessionStorageService.SaveSessionAsync(session);
+                await sessionStorageService.SaveSessionAsync(session);
 
                 // Store session data
                 Request.Session[SessionStorageService.SessionUserCookieStorageKey] = session.SessionId;
@@ -181,17 +182,18 @@ namespace KQAnalytics3.Modules
                     }
                     req = redirReq;
                 }
+                var dataLoggerService = new DataLoggerService();
                 // Save data using Logger service, on the thread pool
                 var saveDataTask = Task.Factory.StartNew(async () =>
                 {
-                    await DataLoggerService.SaveLogRequestAsync(req);
+                    await dataLoggerService.SaveLogRequestAsync(req);
                 });
                 // Custom saving
                 if (req is TagRequest)
                 {
                     var saveTagTask = Task.Factory.StartNew(async () =>
                     {
-                        await DataLoggerService.SaveTagRequestAsync((TagRequest)req);
+                        await dataLoggerService.SaveTagRequestAsync((TagRequest)req);
                     });
                 }
             }
