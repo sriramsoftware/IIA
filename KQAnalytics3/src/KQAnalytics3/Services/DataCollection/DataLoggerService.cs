@@ -11,15 +11,15 @@ namespace KQAnalytics3.Services.DataCollection
     /// <summary>
     /// A static instance of a logger service that can be used to log data to the database
     /// </summary>
-    public static class DataLoggerService
+    public class DataLoggerService
     {
-        public static async Task SaveLogRequestAsync(LogRequest request)
+        public async Task SaveLogRequestAsync(LogRequest request)
         {
             await Task.Run(() =>
             {
-                var db = DatabaseAccessService.OpenOrCreateDefault();
+                var db = KQRegistry.DatabaseAccessService.OpenOrCreateDefault();
                 // Get logged requests collection
-                var loggedRequests = db.GetCollection<LogRequest>(DatabaseAccessService.LoggedRequestDataKey);
+                var loggedRequests = db.GetCollection<LogRequest>(DatabaseConstants.LoggedRequestDataKey);
                 // Use ACID transaction
                 using (var trans = db.BeginTrans())
                 {
@@ -34,13 +34,13 @@ namespace KQAnalytics3.Services.DataCollection
             });
         }
 
-        public static async Task SaveTagRequestAsync(TagRequest request)
+        public async Task SaveTagRequestAsync(TagRequest request)
         {
             await Task.Run(() =>
             {
-                var db = DatabaseAccessService.OpenOrCreateDefault();
+                var db = KQRegistry.DatabaseAccessService.OpenOrCreateDefault();
                 // Get logged requests collection
-                var tagRequests = db.GetCollection<TagRequest>(DatabaseAccessService.TaggedRequestDataKey);
+                var tagRequests = db.GetCollection<TagRequest>(DatabaseConstants.TaggedRequestDataKey);
                 // Use ACID transaction
                 using (var trans = db.BeginTrans())
                 {
@@ -55,26 +55,26 @@ namespace KQAnalytics3.Services.DataCollection
             });
         }
 
-        public static async Task<IEnumerable<LogRequest>> QueryRequestsAsync(int limit)
+        public async Task<IEnumerable<LogRequest>> QueryRequestsAsync(int limit)
         {
-            var db = DatabaseAccessService.OpenOrCreateDefault();
+            var db = KQRegistry.DatabaseAccessService.OpenOrCreateDefault();
             var result = await Task.Run(() =>
             {
                 // Get logged requests collection
-                var loggedRequests = db.GetCollection<LogRequest>(DatabaseAccessService.LoggedRequestDataKey);
+                var loggedRequests = db.GetCollection<LogRequest>(DatabaseConstants.LoggedRequestDataKey);
                 // Log by descending timestamp
                 return loggedRequests.Find(Query.All(nameof(LogRequest.Timestamp), Query.Descending), limit: limit);
             });
             return result;
         }
 
-        public static async Task<IEnumerable<TagRequest>> QueryTaggedRequestsAsync(int limit, string[] filterTags = null)
+        public async Task<IEnumerable<TagRequest>> QueryTaggedRequestsAsync(int limit, string[] filterTags = null)
         {
-            var db = DatabaseAccessService.OpenOrCreateDefault();
+            var db = KQRegistry.DatabaseAccessService.OpenOrCreateDefault();
             var result = await Task.Run(() =>
             {
                 // Get tagged requests collection
-                var taggedRequests = db.GetCollection<TagRequest>(DatabaseAccessService.TaggedRequestDataKey);
+                var taggedRequests = db.GetCollection<TagRequest>(DatabaseConstants.TaggedRequestDataKey);
                 // Log by descending timestamp
                 return taggedRequests.Find(
                     Query.And(

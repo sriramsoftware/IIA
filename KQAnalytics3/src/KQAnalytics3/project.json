@@ -19,7 +19,9 @@
     "ImageSharp": "1.0.0-alpha-000126",
     "LiteDB": "3.0.0-beta2",
     "AutoMapper": "5.2.0",
-    "Nancy.Authentication.Stateless": "2.0.0-barneyrubble"
+    "Nancy.Authentication.Stateless": "2.0.0-barneyrubble",
+    "Iridium.PluginEngine": "1.2.1-*",
+    "Iridium.PluginCore": "1.0.0-*"
   },
 
   "tools": {

@@ -6,7 +6,7 @@ using System.Security.Claims;
 
 namespace KQAnalytics3.Services.Authentication
 {
-    public static class ClientApiAccessValidator
+    public class ClientApiAccessValidator
     {
         public static string AuthTypeKey => "authType";
         public static string AccessScopeKey => "accessScope";
@@ -16,7 +16,7 @@ namespace KQAnalytics3.Services.Authentication
         /// </summary>
         /// <param name="accessKey"></param>
         /// <returns></returns>
-        public static IEnumerable<Claim> GetAuthClaims(ApiAccessKey accessKey)
+        public IEnumerable<Claim> GetAuthClaims(ApiAccessKey accessKey)
         {
             var claimList = new List<Claim>
             {
@@ -32,7 +32,7 @@ namespace KQAnalytics3.Services.Authentication
         /// </summary>
         /// <param name="scope"></param>
         /// <returns></returns>
-        public static Claim GetAccessClaim(ApiAccessScope scope)
+        public Claim GetAccessClaim(ApiAccessScope scope)
         {
             return new Claim(AccessScopeKey, scope.ToString());
         }
@@ -42,7 +42,7 @@ namespace KQAnalytics3.Services.Authentication
         /// </summary>
         /// <param name="accessScopeClaim"></param>
         /// <returns></returns>
-        public static ApiAccessScope GetAccessScope(Claim accessScopeClaim)
+        public ApiAccessScope GetAccessScope(Claim accessScopeClaim)
         {
             return (ApiAccessScope)Enum.Parse(typeof(ApiAccessScope), accessScopeClaim.Value);
         }
@@ -52,7 +52,7 @@ namespace KQAnalytics3.Services.Authentication
         /// </summary>
         /// <param name="scopes"></param>
         /// <returns></returns>
-        public static IEnumerable<Claim> GetAccessClaimListFromScopes(ApiAccessScope[] scopes)
+        public IEnumerable<Claim> GetAccessClaimListFromScopes(ApiAccessScope[] scopes)
         {
             return scopes.Select(x => new Claim(AccessScopeKey, x.ToString()));
         }

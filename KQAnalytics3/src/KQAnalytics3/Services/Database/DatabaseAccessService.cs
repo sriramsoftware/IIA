@@ -2,14 +2,11 @@
 
 namespace KQAnalytics3.Services.Database
 {
-    public static class DatabaseAccessService
+    public class DatabaseAccessService : IDatabaseAccessService
     {
-        public static string LoggedRequestDataKey => "lrequests";
-        public static string TaggedRequestDataKey => "tagrequests";
+        private LiteDatabase _dbInstance;
 
-        private static LiteDatabase _dbInstance;
-
-        public static LiteDatabase OpenOrCreateDefault()
+        public LiteDatabase OpenOrCreateDefault()
         {
             if (_dbInstance == null)
             {
