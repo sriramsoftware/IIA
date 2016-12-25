@@ -18,10 +18,12 @@ KQAnalytics3 is still in an early development phase.
 **Preview** and **Alpha** builds are now
 [available from the official website](https://iridiumion.xyz/#/projects/kqanalytics3).
 
-1. Install .NET Core tooling vLatest
+### Build on your own
+
+1. Install .NET Core tooling vLatest (For **Linux**, see the Travis build script)
 1. `git clone --recursive https://github.com/0xFireball/KQAnalytics3.git`
-1. `dotnet restore` to get dependencies (you may need ImageSharp NuGet feed)
-1. `dotnet publish -c Release` to build portable binaries
+1. `dotnet restore --configfile ./build/NuGet.config` to get dependencies, with custom NuGet sources
+1. `dotnet publish -c Release KQAnalytics3/src/KQAnalytics3` to build portable binaries
 1. `dotnet KQAnalytics3.dll` to run the portable application. 
 
 ## Features
