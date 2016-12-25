@@ -9,6 +9,7 @@ namespace KQAnalytics3.Configuration
         {
             // Load default configuration
             KQRegistry.ServerConfiguration = new KQServerConfiguration();
+            Reload();
         }
 
         public static void LoadConfiguration(KQServerConfiguration conf)

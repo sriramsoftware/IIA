@@ -15,7 +15,7 @@ namespace KQAnalytics3
         public static string KQBasePath { get; set; } = "/kq";
 
         // Database access
-        public static IDatabaseAccessService DatabaseAccessService = new DatabaseAccessService();
+        public static IDatabaseAccessService DatabaseAccessService { get; } = new DatabaseAccessService();
 
         public static void UpdateKeyCache()
         {

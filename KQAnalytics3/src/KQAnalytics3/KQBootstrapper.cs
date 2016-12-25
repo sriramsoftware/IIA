@@ -11,7 +11,7 @@ using Nancy.TinyIoc;
 
 namespace KQAnalytics3
 {
-    public class Bootstrapper : DefaultNancyBootstrapper
+    public class KQBootstrapper : DefaultNancyBootstrapper
     {
         protected override void ConfigureConventions(NancyConventions nancyConventions)
         {
