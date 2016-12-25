@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using KQAnalytics3.Configuration;
 using KQAnalytics3.Models.Data;
 using KQAnalytics3.Services.Authentication;
 using KQAnalytics3.Utilities;
@@ -9,8 +8,6 @@ using Nancy.Bootstrapper;
 using Nancy.Conventions;
 using Nancy.Session;
 using Nancy.TinyIoc;
-using Newtonsoft.Json;
-using System.IO;
 
 namespace KQAnalytics3
 {
@@ -24,18 +21,6 @@ namespace KQAnalytics3
         protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
         {
             base.ApplicationStartup(container, pipelines);
-
-            // Load default configuration
-            KQRegistry.ServerConfiguration = new KQServerConfiguration();
-            // Read KQConfig configuration file
-            if (File.Exists(KQRegistry.CommonConfigurationFileName))
-            {
-                var configFileCont = File.ReadAllText(KQRegistry.CommonConfigurationFileName);
-                JsonConvert.PopulateObject(configFileCont, KQRegistry.ServerConfiguration); // Merge with custom configuration
-            }
-
-            // Reload caches
-            KQRegistry.UpdateKeyCache();
 
             // Enable cookie sessions
             CookieBasedSessions.Enable(pipelines);

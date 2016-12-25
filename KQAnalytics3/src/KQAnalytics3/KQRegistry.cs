@@ -17,5 +17,11 @@ namespace KQAnalytics3
         {
             KeyCache = new ApiKeyCache(ServerConfiguration.ApiKeys);
         }
+
+        public static void PropagateConfiguration()
+        {
+            // See if configuration overrides base path
+            KQBasePath = ServerConfiguration?.BasePathPrefix ?? KQBasePath;
+        }
     }
 }
