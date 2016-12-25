@@ -10,12 +10,29 @@ namespace KQAnalytics3
         public static KQServerConfiguration ServerConfiguration { get; set; }
         public static IMapper RequestDataMapper { get; set; }
         public static string CommonConfigurationFileName => "kqconfig.json";
-        public static ApiKeyCache KeyCache { get; private set; } = new ApiKeyCache();
+        public static ApiKeyCache KeyCache { get; private set; }
         public static string CurrentDirectory { get; set; }
-        public static string KQBasePath { get; set; } = "/kq";
+        public static string KQBasePath { get; set; }
+
+        static KQRegistry()
+        {
+            Initialize();
+        }
 
         // Database access
-        public static IDatabaseAccessService DatabaseAccessService { get; } = new DatabaseAccessService();
+        public static IDatabaseAccessService DatabaseAccessService { get; set; }
+
+        public static void Initialize()
+        {
+            // Values
+            ServerConfiguration = null;
+            RequestDataMapper = null;
+            KeyCache = new ApiKeyCache();
+            KQBasePath = "/kq";
+
+            // Database
+            DatabaseAccessService = new DatabaseAccessService();
+        }
 
         public static void UpdateKeyCache()
         {
