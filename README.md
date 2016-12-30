@@ -1,5 +1,5 @@
 
-# KQAnalytics 3
+# KQAnalytics3
 
 A versatile application for analytics and telemetry collection and analysis
 
@@ -14,15 +14,20 @@ KQ can be used everywhere from webpages to desktop apps to mobile apps to gain v
 
 ## Install
 
+### Official Release
+
 KQAnalytics3 is still in an early development phase.
 **Preview** and **Alpha** builds are now
 [available from the official website](https://iridiumion.xyz/#/projects/kqanalytics3).
 
-1. Install .NET Core tooling vLatest
-1. `git clone --recursive https://github.com/0xFireball/KQAnalytics3.git`
-1. `dotnet restore` to get dependencies (you may need ImageSharp NuGet feed)
-1. `dotnet publish -c Release` to build portable binaries
-1. `dotnet KQAnalytics3.dll` to run the portable application. 
+### From Source
+
+1. Install latest .NET Core tooling (SDK >1.1)
+1. Clone the sources: `git clone --recursive https://github.com/0xFireball/KQAnalytics3.git`
+1. `./build/build.sh` Use the included build/test script (requires `dotnet`). This
+  script is used in automated CI builds and will also run tests and publish portable release binaries
+  to a `publish/` subdirectory in the output path.
+1. `dotnet KQAnalytics3.dll` to run the portable application.
 
 ## Features
 
