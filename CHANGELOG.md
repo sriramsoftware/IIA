@@ -5,7 +5,11 @@
 
 ### v0.6.0-a1 (Due December 26, 2016)
 
-## Development Stage (v0.x)
+## Development Stage (v0.dx)
+
+### v0.7.0-d [develop]
+
+- TODO: Basic plugin support through Iridium.PluginEngine
 
 ### v0.5.1-dev
 

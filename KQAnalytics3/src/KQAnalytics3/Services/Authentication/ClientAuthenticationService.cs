@@ -10,7 +10,8 @@ namespace KQAnalytics3.Services.Authentication
             if (currentKey != null)
             {
                 // Give client identity
-                var keyAuthClaims = ClientApiAccessValidator.GetAuthClaims(currentKey);
+                var accessValidator = new ClientApiAccessValidator();
+                var keyAuthClaims = accessValidator.GetAuthClaims(currentKey);
                 return new ClaimsPrincipal(new ClaimsIdentity(keyAuthClaims));
                 //return new ClaimsPrincipal(new GenericIdentity("data client", "stateless"));
             }

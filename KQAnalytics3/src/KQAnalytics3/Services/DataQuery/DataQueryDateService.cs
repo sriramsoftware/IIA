@@ -5,12 +5,12 @@ using System.Collections.Generic;
 
 namespace KQAnalytics3.Services.DataQuery
 {
-    public static class DataQueryDateService
+    public class DataQueryDateService
     {
-        public static IEnumerable<LogRequest> GetAllRequestsAfterDate(DateTime startDate)
+        public IEnumerable<LogRequest> GetAllRequestsAfterDate(DateTime startDate)
         {
-            var db = DatabaseAccessService.OpenOrCreateDefault();
-            var loggedRequests = db.GetCollection<LogRequest>(DatabaseAccessService.LoggedRequestDataKey);
+            var db = KQRegistry.DatabaseAccessService.OpenOrCreateDefault();
+            var loggedRequests = db.GetCollection<LogRequest>(DatabaseConstants.LoggedRequestDataKey);
             return loggedRequests.Find(x => x.Timestamp > startDate);
         }
     }

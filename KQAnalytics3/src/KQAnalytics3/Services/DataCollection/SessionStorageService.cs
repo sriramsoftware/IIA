@@ -8,16 +8,16 @@ namespace KQAnalytics3.Services.DataCollection
     {
         public static string SessionUserCookieStorageKey => "kq_session";
 
-        public static async Task<UserSession> GetSessionFromIdentifierAsync(string identifier)
+        public async Task<UserSession> GetSessionFromIdentifierAsync(string identifier)
         {
             return await Task.Run(() =>
             {
                 UserSession ret = null;
 
-                var db = DatabaseAccessService.OpenOrCreateDefault();
+                var db = KQRegistry.DatabaseAccessService.OpenOrCreateDefault();
 
                 // Get stored sessions collection
-                var storedSessions = db.GetCollection<UserSession>(DatabaseAccessService.LoggedRequestDataKey);
+                var storedSessions = db.GetCollection<UserSession>(DatabaseConstants.LoggedRequestDataKey);
 
                 ret = storedSessions.FindOne(x => x.SessionId == identifier);
 
@@ -25,13 +25,13 @@ namespace KQAnalytics3.Services.DataCollection
             });
         }
 
-        public static async Task SaveSessionAsync(UserSession session)
+        public async Task SaveSessionAsync(UserSession session)
         {
             await Task.Run(() =>
             {
-                var db = DatabaseAccessService.OpenOrCreateDefault();
+                var db = KQRegistry.DatabaseAccessService.OpenOrCreateDefault();
                 // Get logged requests collection
-                var loggedRequests = db.GetCollection<UserSession>(DatabaseAccessService.LoggedRequestDataKey);
+                var loggedRequests = db.GetCollection<UserSession>(DatabaseConstants.LoggedRequestDataKey);
                 // Use ACID transaction
                 using (var trans = db.BeginTrans())
                 {

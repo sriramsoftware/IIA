@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using KQAnalytics3.Configuration;
 using KQAnalytics3.Models.Data;
+using KQAnalytics3.PluginCore;
 using KQAnalytics3.Services.Authentication;
 using KQAnalytics3.Utilities;
 using Nancy;
@@ -9,12 +9,10 @@ using Nancy.Bootstrapper;
 using Nancy.Conventions;
 using Nancy.Session;
 using Nancy.TinyIoc;
-using Newtonsoft.Json;
-using System.IO;
 
 namespace KQAnalytics3
 {
-    public class Bootstrapper : DefaultNancyBootstrapper
+    public class KQBootstrapper : DefaultNancyBootstrapper
     {
         protected override void ConfigureConventions(NancyConventions nancyConventions)
         {
@@ -25,17 +23,8 @@ namespace KQAnalytics3
         {
             base.ApplicationStartup(container, pipelines);
 
-            // Load default configuration
-            KQRegistry.ServerConfiguration = new KQServerConfiguration();
-            // Read KQConfig configuration file
-            if (File.Exists(KQRegistry.CommonConfigurationFileName))
-            {
-                var configFileCont = File.ReadAllText(KQRegistry.CommonConfigurationFileName);
-                JsonConvert.PopulateObject(configFileCont, KQRegistry.ServerConfiguration); // Merge with custom configuration
-            }
-
-            // Reload caches
-            KQRegistry.UpdateKeyCache();
+            // Load plugins
+            KQPluginAggregator.LoadAllPlugins();
 
             // Enable cookie sessions
             CookieBasedSessions.Enable(pipelines);
