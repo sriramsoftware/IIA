@@ -1,0 +1,3 @@
+[submodule "Dependencies/ImageSharp"]
+	path = Dependencies/ImageSharp
+	url = https://github.com/JimBobSquarePants/ImageSharp.git
