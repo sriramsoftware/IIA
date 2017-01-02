@@ -1,9 +1,9 @@
 
-# KQAnalytics3
+# [KQAnalytics3](https://git.io/kq3)
 
 A versatile application for analytics and telemetry collection and analysis
 
-<https://iridiumion.xyz/#/projects/kqanalytics3>
+[Official Page](https://iridiumion.xyz/#/projects/kqanalytics3)
 
 [![Build Status](https://travis-ci.org/0xFireball/KQAnalytics3.svg?branch=master)](https://travis-ci.org/0xFireball/KQAnalytics3)
 
