@@ -71,10 +71,6 @@ The Enterprise edition is completely free while in the development phase!
 - Soon, integration with the platform of Project AlphaOsmium (unreleased)
 - More soon!
 
-### Notes
-
-#### The \* indicates that the feature will likely be merged back to Community when finished
-
 ## Rearchitecturing from v2
 
 [KQAnalytics2](https://github.com/exaphaser/KQAnalytics)
