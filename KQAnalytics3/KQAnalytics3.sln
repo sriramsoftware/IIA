@@ -1,32 +1,31 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26206.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{85B2D174-2A21-4745-9E83-B56096395711}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1CE0BBA9-E04A-45A2-8895-D148FD0AFDA2}"
 	ProjectSection(SolutionItems) = preProject
 		..\CHANGELOG.md = ..\CHANGELOG.md
-		global.json = global.json
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "KQAnalytics3", "src\KQAnalytics3\KQAnalytics3.xproj", "{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{CAC8C38D-74A3-46D6-91CE-7C7DF4C0577E}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "KQAnalytics3.Tests", "test\KQAnalytics3.Tests\KQAnalytics3.Tests.xproj", "{FBB11484-701A-475A-929F-7F07D6577E9B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deps", "deps", "{9781290F-49B7-493D-B5AE-937959BCAB11}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PluginEngine", "PluginEngine", "{9AA72C92-10E9-4EFF-AAA7-9578D41DD6BB}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CookieIoC", "..\Libraries\Iridium.PluginEngine\CookieIoC\CookieIoC\CookieIoC\CookieIoC.xproj", "{31418111-EDFB-48C7-BFE0-088DC8318117}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KQAnalytics3", "src\KQAnalytics3\KQAnalytics3.csproj", "{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Iridium.PluginCore", "..\Libraries\Iridium.PluginEngine\Iridium.PluginCore\Iridium.PluginCore\src\Iridium.PluginCore\Iridium.PluginCore.xproj", "{694A3FED-6447-47A0-A874-B50D1ABDCECE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KQAnalytics3.Tests", "test\KQAnalytics3.Tests\KQAnalytics3.Tests.csproj", "{FBB11484-701A-475A-929F-7F07D6577E9B}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Iridium.PluginEngine", "..\Libraries\Iridium.PluginEngine\Iridium.PluginEngine\src\Iridium.PluginEngine\Iridium.PluginEngine.xproj", "{EF7D6434-036F-4154-9BE0-AFD82A4AB496}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CookieIoC", "..\Libraries\Iridium.PluginEngine\CookieIoC\CookieIoC\CookieIoC\CookieIoC.xproj", "{31418111-EDFB-48C7-BFE0-088DC8318117}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iridium.PluginCore", "..\Libraries\Iridium.PluginEngine\Iridium.PluginCore\Iridium.PluginCore\src\Iridium.PluginCore\Iridium.PluginCore.xproj", "{694A3FED-6447-47A0-A874-B50D1ABDCECE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Iridium.PluginEngine", "..\Libraries\Iridium.PluginEngine\Iridium.PluginEngine\src\Iridium.PluginEngine\Iridium.PluginEngine.xproj", "{EF7D6434-036F-4154-9BE0-AFD82A4AB496}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,9 +58,9 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{9AA72C92-10E9-4EFF-AAA7-9578D41DD6BB} = {9781290F-49B7-493D-B5AE-937959BCAB11}
 		{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2} = {85B2D174-2A21-4745-9E83-B56096395711}
 		{FBB11484-701A-475A-929F-7F07D6577E9B} = {CAC8C38D-74A3-46D6-91CE-7C7DF4C0577E}
-		{9AA72C92-10E9-4EFF-AAA7-9578D41DD6BB} = {9781290F-49B7-493D-B5AE-937959BCAB11}
 		{31418111-EDFB-48C7-BFE0-088DC8318117} = {9AA72C92-10E9-4EFF-AAA7-9578D41DD6BB}
 		{694A3FED-6447-47A0-A874-B50D1ABDCECE} = {9AA72C92-10E9-4EFF-AAA7-9578D41DD6BB}
 		{EF7D6434-036F-4154-9BE0-AFD82A4AB496} = {9AA72C92-10E9-4EFF-AAA7-9578D41DD6BB}
