@@ -1,24 +1,14 @@
 
-# [KQAnalytics3](https://git.io/kq3)
+# [IridiumIon Analytics](#)
 
-A versatile application for analytics and telemetry collection and analysis
-
-[Official Page](https://iridiumion.xyz/#/projects/kqanalytics3)
-
-[![Build Status](https://travis-ci.org/0xFireball/KQAnalytics3.svg?branch=master)](https://travis-ci.org/0xFireball/KQAnalytics3)
+An analytics service, formerly KQAnalytics3. Under redesign for integration into the [AlphaOsmium](https://iridiumion.xyz/#/projects/alphaosmium) platform.
 
 ## About
 
-KQ Analytics provides a simple and open analytics solution for your internet service.
-KQ can be used everywhere from webpages to desktop apps to mobile apps to gain valuable analytics data.
+IridiumIon Analytics provides a simple and open analytics solution for your internet service.
+It can be used everywhere from webpages to desktop apps to mobile apps to gain valuable analytics data.
 
 ## Install
-
-### Official Release
-
-KQAnalytics3 is still in an early development phase.
-**Preview** and **Alpha** builds are now
-[available from the official website](https://iridiumion.xyz/#/projects/kqanalytics3).
 
 ### From Source
 
@@ -56,31 +46,6 @@ KQAnalytics3 is still in an early development phase.
 - Cross-platform service, deploy to cloud, Docker, and more
   - Built on the .NET Core platform
 - (WIP) Plugin support for dynamically loading custom code
-
-KQAnalytics3 Community edition is available under the AGPLv3 license!
-
-## Exclusive Enterprise Edition
-
-The exclusive, private enterprise edition of KQAnalytics3 will include the following additional features:
-
-The Enterprise edition is completely free while in the development phase!
-
-- **Everything in KQAnalytics3 Community Edition**
-- Built-in, integrated data analyzer and visualization tools
-- Web-based administration dashboard
-- Soon, integration with the platform of Project AlphaOsmium (unreleased)
-- More soon!
-
-## Rearchitecturing from v2
-
-[KQAnalytics2](https://github.com/exaphaser/KQAnalytics)
-was built on PHP.
-KQAnalytics3 is being rebuilt from scratch as a partial port of v2.0, but will be designed in a more extensible way.
-It will have its own standalone server which should be reverse proxied to the outside world. As a result:
-
-- Installation will be slightly more complex (it's no longer a simple bunch of PHP scripts)
-- KQ will be **much** more customizable
-- Overall security will be better (as a result of using a standalone application)
 
 ## Licensing (Community Edition)
 
