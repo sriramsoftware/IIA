@@ -1,10 +1,10 @@
-﻿using KQAnalytics3.Configuration;
+﻿using IridiumIon.Analytics.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 
-namespace KQAnalytics3
+namespace IridiumIon.Analytics
 {
     public class Program
     {

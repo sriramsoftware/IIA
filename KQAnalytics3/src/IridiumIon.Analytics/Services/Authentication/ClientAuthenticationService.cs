@@ -1,6 +1,6 @@
 ﻿using System.Security.Claims;
 
-namespace KQAnalytics3.Services.Authentication
+namespace IridiumIon.Analytics.Services.Authentication
 {
     public class ClientAuthenticationService
     {

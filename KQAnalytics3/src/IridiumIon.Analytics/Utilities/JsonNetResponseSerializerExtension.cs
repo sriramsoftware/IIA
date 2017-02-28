@@ -1,7 +1,7 @@
 ﻿using Nancy;
 using Newtonsoft.Json;
 
-namespace KQAnalytics3.Utilities
+namespace IridiumIon.Analytics.Utilities
 {
     public static class JsonNetResponseSerializerExtension
     {

@@ -1,7 +1,7 @@
-﻿using KQAnalytics3.Services.Resources;
+﻿using IridiumIon.Analytics.Services.Resources;
 using System.IO;
 
-namespace KQAnalytics3.Data
+namespace IridiumIon.Analytics.Data
 {
     public static class TrackingScriptProvider
     {

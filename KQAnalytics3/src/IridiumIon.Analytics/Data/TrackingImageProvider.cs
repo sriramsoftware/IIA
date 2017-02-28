@@ -2,7 +2,7 @@
 using ImageSharp.Formats;
 using System.IO;
 
-namespace KQAnalytics3.Data
+namespace IridiumIon.Analytics.Data
 {
     public static class TrackingImageProvider
     {

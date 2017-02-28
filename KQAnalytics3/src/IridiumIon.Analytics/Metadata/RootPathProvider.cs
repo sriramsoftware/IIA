@@ -1,7 +1,7 @@
 ﻿using Nancy;
 using System.IO;
 
-namespace KQAnalytics3.Metadata
+namespace IridiumIon.Analytics.Metadata
 {
     public class RootPathProvider : IRootPathProvider
     {

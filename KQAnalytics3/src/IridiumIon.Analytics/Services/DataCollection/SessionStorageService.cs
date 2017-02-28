@@ -1,8 +1,8 @@
-﻿using KQAnalytics3.Models.Data;
-using KQAnalytics3.Services.Database;
+﻿using IridiumIon.Analytics.Models.Data;
+using IridiumIon.Analytics.Services.Database;
 using System.Threading.Tasks;
 
-namespace KQAnalytics3.Services.DataCollection
+namespace IridiumIon.Analytics.Services.DataCollection
 {
     public class SessionStorageService
     {

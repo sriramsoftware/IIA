@@ -1,7 +1,7 @@
-﻿using KQAnalytics3.Configuration.Access;
+﻿using IridiumIon.Analytics.Configuration.Access;
 using Newtonsoft.Json;
 
-namespace KQAnalytics3.Configuration
+namespace IridiumIon.Analytics.Configuration
 {
     public class KQServerConfiguration
     {

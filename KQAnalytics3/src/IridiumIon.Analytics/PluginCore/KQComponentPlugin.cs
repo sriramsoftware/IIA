@@ -1,6 +1,6 @@
 ﻿using Iridium.PluginEngine.Types;
 
-namespace KQAnalytics3.PluginCore
+namespace IridiumIon.Analytics.PluginCore
 {
     public abstract class KQComponentPlugin<T> : ComponentPlugin<T>
     {

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 
-namespace KQAnalytics3.Models.Data
+namespace IridiumIon.Analytics.Models.Data
 {
     public class UserSession : DatabaseObject
     {

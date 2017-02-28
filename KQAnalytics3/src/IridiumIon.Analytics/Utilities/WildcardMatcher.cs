@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace KQAnalytics3.Utilities
+namespace IridiumIon.Analytics.Utilities
 {
     public class WildcardMatcher
     {

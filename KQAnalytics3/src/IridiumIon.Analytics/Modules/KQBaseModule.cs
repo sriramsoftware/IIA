@@ -1,6 +1,6 @@
 ﻿using Nancy;
 
-namespace KQAnalytics3.Modules
+namespace IridiumIon.Analytics.Modules
 {
     public class KQBaseModule : NancyModule
     {

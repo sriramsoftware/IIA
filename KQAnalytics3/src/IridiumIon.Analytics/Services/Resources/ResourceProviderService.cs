@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace KQAnalytics3.Services.Resources
+namespace IridiumIon.Analytics.Services.Resources
 {
     public class ResourceProviderService
     {

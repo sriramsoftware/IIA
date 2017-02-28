@@ -1,6 +1,6 @@
 ﻿using LiteDB;
 
-namespace KQAnalytics3.Services.Database
+namespace IridiumIon.Analytics.Services.Database
 {
     public interface IDatabaseAccessService
     {

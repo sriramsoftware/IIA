@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace KQAnalytics3.Configuration.Access
+namespace IridiumIon.Analytics.Configuration.Access
 {
     public class ApiKeyCache
     {

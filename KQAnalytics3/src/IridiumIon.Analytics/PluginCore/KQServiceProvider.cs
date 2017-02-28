@@ -1,8 +1,8 @@
-﻿using KQAnalytics3.Services.DataCollection;
-using KQAnalytics3.Services.DataQuery;
-using KQAnalytics3.Services.Resources;
+﻿using IridiumIon.Analytics.Services.DataCollection;
+using IridiumIon.Analytics.Services.DataQuery;
+using IridiumIon.Analytics.Services.Resources;
 
-namespace KQAnalytics3.PluginCore
+namespace IridiumIon.Analytics.PluginCore
 {
     public class KQServiceProvider : IKQServiceProvider
     {

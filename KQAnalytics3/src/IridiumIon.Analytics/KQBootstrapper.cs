@@ -2,7 +2,7 @@
 using Nancy.Bootstrapper;
 using Nancy.TinyIoc;
 
-namespace KQAnalytics3
+namespace IridiumIon.Analytics
 {
     public class KQBootstrapper : DefaultNancyBootstrapper
     {

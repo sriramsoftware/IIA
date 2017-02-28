@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace KQAnalytics3.Models.Data
+namespace IridiumIon.Analytics.Models.Data
 {
     public class RedirectRequest : LogRequest
     {

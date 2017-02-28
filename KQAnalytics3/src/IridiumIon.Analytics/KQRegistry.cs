@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Iridium.PluginEngine;
-using KQAnalytics3.Configuration;
-using KQAnalytics3.Configuration.Access;
-using KQAnalytics3.Services.Database;
+using IridiumIon.Analytics.Configuration;
+using IridiumIon.Analytics.Configuration.Access;
+using IridiumIon.Analytics.Services.Database;
 
-namespace KQAnalytics3
+namespace IridiumIon.Analytics
 {
     public static class KQRegistry
     {

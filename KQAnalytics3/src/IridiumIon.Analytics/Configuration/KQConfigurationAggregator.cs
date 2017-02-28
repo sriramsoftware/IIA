@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
 
-namespace KQAnalytics3.Configuration
+namespace IridiumIon.Analytics.Configuration
 {
     public static class KQConfigurationAggregator
     {

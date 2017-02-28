@@ -1,4 +1,4 @@
-﻿namespace KQAnalytics3.Services.Authentication
+﻿namespace IridiumIon.Analytics.Services.Authentication
 {
     public static class RemoteAuthTypes
     {

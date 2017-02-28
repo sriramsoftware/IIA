@@ -1,9 +1,9 @@
-﻿using KQAnalytics3.Models.Data;
-using KQAnalytics3.Services.Database;
+﻿using IridiumIon.Analytics.Models.Data;
+using IridiumIon.Analytics.Services.Database;
 using System;
 using System.Collections.Generic;
 
-namespace KQAnalytics3.Services.DataQuery
+namespace IridiumIon.Analytics.Services.DataQuery
 {
     public class DataQueryDateService
     {

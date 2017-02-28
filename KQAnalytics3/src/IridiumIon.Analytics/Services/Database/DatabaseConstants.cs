@@ -1,4 +1,4 @@
-﻿namespace KQAnalytics3.Services.Database
+﻿namespace IridiumIon.Analytics.Services.Database
 {
     public static class DatabaseConstants
     {

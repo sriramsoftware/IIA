@@ -1,12 +1,12 @@
-﻿using KQAnalytics3.Models.Data;
-using KQAnalytics3.Services.Database;
-using KQAnalytics3.Utilities;
+﻿using IridiumIon.Analytics.Models.Data;
+using IridiumIon.Analytics.Services.Database;
+using IridiumIon.Analytics.Utilities;
 using LiteDB;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace KQAnalytics3.Services.DataCollection
+namespace IridiumIon.Analytics.Services.DataCollection
 {
     /// <summary>
     /// A static instance of a logger service that can be used to log data to the database

@@ -2,13 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.0</TargetFramework>
-    <AssemblyName>KQAnalytics3.Tests</AssemblyName>
-    <PackageId>KQAnalytics3.Tests</PackageId>
+    <AssemblyName>IridiumIon.Analytics.Tests</AssemblyName>
+    <PackageId>IridiumIon.Analytics.Tests</PackageId>
     <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
     <RuntimeFrameworkVersion>1.1.0</RuntimeFrameworkVersion>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <Authors>0xFireball</Authors>
+    <Description />
   </PropertyGroup>
 
   <ItemGroup>

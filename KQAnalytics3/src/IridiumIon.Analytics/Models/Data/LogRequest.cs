@@ -1,8 +1,8 @@
-﻿using KQAnalytics3.Models.Requests;
+﻿using IridiumIon.Analytics.Models.Requests;
 using Newtonsoft.Json;
 using System;
 
-namespace KQAnalytics3.Models.Data
+namespace IridiumIon.Analytics.Models.Data
 {
     public class LogRequest : DatabaseObject
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 
-namespace KQAnalytics3.Services.Authentication.Security
+namespace IridiumIon.Analytics.Services.Authentication.Security
 {
     public static class ApiAccessModuleSecurityExtensions
     {

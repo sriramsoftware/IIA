@@ -1,10 +1,10 @@
-﻿using KQAnalytics3.Configuration.Access;
-using KQAnalytics3.Services.Authentication;
-using KQAnalytics3.Services.Authentication.Security;
-using KQAnalytics3.Services.DataCollection;
-using KQAnalytics3.Utilities;
+﻿using IridiumIon.Analytics.Configuration.Access;
+using IridiumIon.Analytics.Services.Authentication;
+using IridiumIon.Analytics.Services.Authentication.Security;
+using IridiumIon.Analytics.Services.DataCollection;
+using IridiumIon.Analytics.Utilities;
 
-namespace KQAnalytics3.Modules.Api.Query
+namespace IridiumIon.Analytics.Modules.Api.Query
 {
     public class TagRequestQueryModule : KQBaseModule
     {

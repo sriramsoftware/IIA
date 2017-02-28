@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using KQAnalytics3.Data;
-using KQAnalytics3.Models.Data;
-using KQAnalytics3.Models.Requests;
-using KQAnalytics3.Services.DataCollection;
+using IridiumIon.Analytics.Data;
+using IridiumIon.Analytics.Models.Data;
+using IridiumIon.Analytics.Models.Requests;
+using IridiumIon.Analytics.Services.DataCollection;
 using Nancy;
 using System;
 using System.Threading.Tasks;
 
-namespace KQAnalytics3.Modules
+namespace IridiumIon.Analytics.Modules
 {
     public class DataCollectEndpointModule : KQBaseModule
     {

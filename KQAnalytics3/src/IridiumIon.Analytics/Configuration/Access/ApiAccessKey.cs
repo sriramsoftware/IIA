@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace KQAnalytics3.Configuration.Access
+namespace IridiumIon.Analytics.Configuration.Access
 {
     /// <summary>
     /// An enumeration of access scope identifiers, used for granular permission grants on key access

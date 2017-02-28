@@ -1,16 +1,16 @@
 ﻿using System.Linq;
 using AutoMapper;
-using KQAnalytics3.Models.Data;
-using KQAnalytics3.PluginCore;
-using KQAnalytics3.Services.Authentication;
-using KQAnalytics3.Utilities;
+using IridiumIon.Analytics.Models.Data;
+using IridiumIon.Analytics.PluginCore;
+using IridiumIon.Analytics.Services.Authentication;
+using IridiumIon.Analytics.Utilities;
 using Nancy;
 using Nancy.Authentication.Stateless;
 using Nancy.Bootstrapper;
 using Nancy.Session;
 using Nancy.TinyIoc;
 
-namespace KQAnalytics3
+namespace IridiumIon.Analytics
 {
     public class KQBootstrapperHelper
     {

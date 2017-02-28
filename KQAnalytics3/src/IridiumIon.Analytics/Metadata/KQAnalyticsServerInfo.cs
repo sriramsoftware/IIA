@@ -1,4 +1,4 @@
-﻿namespace KQAnalytics3.Metadata
+﻿namespace IridiumIon.Analytics.Metadata
 {
     public static class KQAnalyticsServerInfo
     {

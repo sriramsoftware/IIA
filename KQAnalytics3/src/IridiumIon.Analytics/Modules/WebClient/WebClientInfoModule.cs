@@ -1,6 +1,6 @@
-﻿using KQAnalytics3.Metadata;
+﻿using IridiumIon.Analytics.Metadata;
 
-namespace KQAnalytics3.Modules.WebClient
+namespace IridiumIon.Analytics.Modules.WebClient
 {
     public class WebClientInfoModule : KQBaseModule
     {

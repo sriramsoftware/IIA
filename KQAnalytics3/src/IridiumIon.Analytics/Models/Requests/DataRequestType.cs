@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace KQAnalytics3.Models.Requests
+namespace IridiumIon.Analytics.Models.Requests
 {
     [Flags]
     public enum DataRequestType

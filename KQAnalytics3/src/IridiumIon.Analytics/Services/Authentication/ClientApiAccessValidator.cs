@@ -1,10 +1,10 @@
-﻿using KQAnalytics3.Configuration.Access;
+﻿using IridiumIon.Analytics.Configuration.Access;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 
-namespace KQAnalytics3.Services.Authentication
+namespace IridiumIon.Analytics.Services.Authentication
 {
     public class ClientApiAccessValidator
     {

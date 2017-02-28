@@ -1,4 +1,4 @@
-﻿namespace KQAnalytics3
+﻿namespace IridiumIon.Analytics
 {
     using Microsoft.AspNetCore.Builder;
     using Nancy.Owin;

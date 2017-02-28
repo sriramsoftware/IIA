@@ -2,7 +2,7 @@
 using Iridium.PluginEngine;
 using Iridium.PluginEngine.Types;
 
-namespace KQAnalytics3.PluginCore
+namespace IridiumIon.Analytics.PluginCore
 {
     public static class KQPluginAggregator
     {

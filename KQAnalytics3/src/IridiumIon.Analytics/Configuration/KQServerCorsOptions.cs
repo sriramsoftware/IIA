@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace KQAnalytics3.Configuration
+namespace IridiumIon.Analytics.Configuration
 {
     public class KQServerCorsOptions
     {
