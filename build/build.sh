@@ -20,14 +20,14 @@ dotnet restore --configfile ./build/NuGet.config
 echo "Building project..."
 
 # Build
-dotnet build -c Release KQAnalytics3/src/KQAnalytics3
+dotnet build -c Release IridiumIon.Analytics/src/IridiumIon.Analytics
 
 echo "Running tests..."
 
 # Run tests
-dotnet test KQAnalytics3/test/KQAnalytics3.Tests
+dotnet test IridiumIon.Analytics/test/IridiumIon.Analytics.Tests
 
 echo "Publishing project..."
 
 # Publish
-dotnet publish -c Release KQAnalytics3/src/KQAnalytics3
+dotnet publish -c Release IridiumIon.Analytics/src/IridiumIon.Analytics
