@@ -47,7 +47,15 @@ It can be used everywhere from webpages to desktop apps to mobile apps to gain v
   - Built on the .NET Core platform
 - (WIP) Plugin support for dynamically loading custom code
 
-## Licensing (Community Edition)
+## Editions
 
-Copyright &copy; 2016 0xFireball, IridiumIon Software. All Rights Reserved.  
+`IridiumIon.Analytics` comes in several editions for different purposes.
+
+- **`IridiumIon.Analytics` standalone community edition** - this project
+- **`IridiumIon.Analytics` integrated AlphaOsmium edition** - will be available exclusively as a component of the AlphaOsmium platform. It will be largely identical to the community edition except for changes needed to integrate into the larger project.
+
+## Licensing (Standalone Community Edition)
+
+Copyright &copy; 2016-2017 Nihal Talur (0xFireball), IridiumIon Software. All Rights Reserved.
+
 Licensed under the AGPLv3.
