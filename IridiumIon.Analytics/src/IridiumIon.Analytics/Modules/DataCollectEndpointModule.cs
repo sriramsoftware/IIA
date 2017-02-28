@@ -75,11 +75,8 @@ namespace IridiumIon.Analytics.Modules
             {
                 // [Attempt to] Find matching session
                 ret = await sessionStorageService.GetSessionFromIdentifierAsync(storedSessData);
-                if (ret != null)
-                {
-                    // Session was already available
-                    newSession = false;
-                }
+                // If return is not null, session was already available, don't create new session, reuse
+                newSession &= ret == null;
             }
             if (storedSessData == null || ret == null || customId != null)
             {
@@ -111,8 +108,7 @@ namespace IridiumIon.Analytics.Modules
             // TODO: Maybe validation to ensure SID is not being overwritten
             if (sentSessId != null)
             {
-                Guid resultSessGuid;
-                if (Guid.TryParse(sentSessId, out resultSessGuid))
+                if (Guid.TryParse(sentSessId, out Guid resultSessGuid))
                 {
                     // TODO: Possibly note that session used custom ID
                     sessionIdentifier = resultSessGuid;
