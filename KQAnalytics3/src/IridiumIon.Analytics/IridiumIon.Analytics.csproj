@@ -3,8 +3,7 @@
   <PropertyGroup>
     <Description>IridiumIon.Analytics Standalone Community Edition</Description>
     <Copyright>Copyright (c) 2016-2017 Nihal Talur (0xFireball), IridiumIon Software</Copyright>
-    <AssemblyTitle>KQAnalytics3 Community Edition</AssemblyTitle>
-    <VersionPrefix>0.5.0</VersionPrefix>
+    <AssemblyTitle>IridiumIon.Analytics Standalone Community Edition</AssemblyTitle>
     <TargetFramework>netcoreapp1.1</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <AssemblyName>IridiumIon.Analytics</AssemblyName>
