@@ -4,13 +4,13 @@ install:
 test: off
 build_script:
  - dotnet restore --configfile ./build/NuGet.config
- - dotnet build -c Release KQAnalytics3/src/KQAnalytics3
- - dotnet publish -c Release KQAnalytics3/src/KQAnalytics3
+ - dotnet build -c Release IridiumIon.Analytics/src/IridiumIon.Analytics
+ - dotnet publish -c Release IridiumIon.Analytics/src/IridiumIon.Analytics
 # Publish
 after_build:
- - 7z a -r KQAnalytics3-CE.zip %APPVEYOR_BUILD_FOLDER%\KQAnalytics3\src\KQAnalytics3\bin\Release\netcoreapp1.0\publish\*.*
+ - 7z a -r IridiumIon.Analytics_Standalone-CE.zip %APPVEYOR_BUILD_FOLDER%/IridiumIon.Analytics/src/IridiumIon.Analytics/bin/Release/netcoreapp1.0/publish/*.*
 
 # Artifacts
 artifacts:
- - path: KQAnalytics3-CE.zip
-   name: KQAnalytics3_CE_build
+ - path: IridiumIon.Analytics_Standalone-CE.zip
+   name: IridiumIon.Analytics_Standalone_CE_build

@@ -1,6 +1,0 @@
-[submodule "Dependencies/ImageSharp"]
-	path = Dependencies/ImageSharp
-	url = https://github.com/JimBobSquarePants/ImageSharp.git
-[submodule "Libraries/Iridium.PluginEngine"]
-	path = Libraries/Iridium.PluginEngine
-	url = https://github.com/0xFireball/Iridium.PluginEngine.git

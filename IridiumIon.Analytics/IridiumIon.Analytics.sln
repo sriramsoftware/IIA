@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26206.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{85B2D174-2A21-4745-9E83-B56096395711}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1CE0BBA9-E04A-45A2-8895-D148FD0AFDA2}"
+	ProjectSection(SolutionItems) = preProject
+		..\CHANGELOG.md = ..\CHANGELOG.md
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{CAC8C38D-74A3-46D6-91CE-7C7DF4C0577E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IridiumIon.Analytics", "src\IridiumIon.Analytics\IridiumIon.Analytics.csproj", "{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IridiumIon.Analytics.Tests", "test\IridiumIon.Analytics.Tests\IridiumIon.Analytics.Tests.csproj", "{FD5340B0-8047-4FCB-9FE7-A796D3146180}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}.Debug|x64.ActiveCfg = Debug|x64
+		{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}.Debug|x64.Build.0 = Debug|x64
+		{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}.Debug|x86.ActiveCfg = Debug|x86
+		{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}.Debug|x86.Build.0 = Debug|x86
+		{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}.Release|x64.ActiveCfg = Release|x64
+		{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}.Release|x64.Build.0 = Release|x64
+		{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}.Release|x86.ActiveCfg = Release|x86
+		{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}.Release|x86.Build.0 = Release|x86
+		{FD5340B0-8047-4FCB-9FE7-A796D3146180}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD5340B0-8047-4FCB-9FE7-A796D3146180}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD5340B0-8047-4FCB-9FE7-A796D3146180}.Debug|x64.ActiveCfg = Debug|x64
+		{FD5340B0-8047-4FCB-9FE7-A796D3146180}.Debug|x64.Build.0 = Debug|x64
+		{FD5340B0-8047-4FCB-9FE7-A796D3146180}.Debug|x86.ActiveCfg = Debug|x86
+		{FD5340B0-8047-4FCB-9FE7-A796D3146180}.Debug|x86.Build.0 = Debug|x86
+		{FD5340B0-8047-4FCB-9FE7-A796D3146180}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD5340B0-8047-4FCB-9FE7-A796D3146180}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD5340B0-8047-4FCB-9FE7-A796D3146180}.Release|x64.ActiveCfg = Release|x64
+		{FD5340B0-8047-4FCB-9FE7-A796D3146180}.Release|x64.Build.0 = Release|x64
+		{FD5340B0-8047-4FCB-9FE7-A796D3146180}.Release|x86.ActiveCfg = Release|x86
+		{FD5340B0-8047-4FCB-9FE7-A796D3146180}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2} = {85B2D174-2A21-4745-9E83-B56096395711}
+		{FD5340B0-8047-4FCB-9FE7-A796D3146180} = {CAC8C38D-74A3-46D6-91CE-7C7DF4C0577E}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <Description>IridiumIon.Analytics Standalone Community Edition</Description>
+    <Copyright>Copyright (c) 2016-2017 Nihal Talur (0xFireball), IridiumIon Software</Copyright>
+    <AssemblyTitle>IridiumIon.Analytics Standalone Community Edition</AssemblyTitle>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <AssemblyName>IridiumIon.Analytics</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>IridiumIon.Analytics</PackageId>
+    <RuntimeFrameworkVersion>1.1.0</RuntimeFrameworkVersion>
+    <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
+    <Version>0.7.0</Version>
+    <Authors>Nihal Talur (0xFireball)</Authors>
+    <Company>IridiumIon Software</Company>
+    <Product>IridiumIon.Analytics</Product>
+    <PackageProjectUrl>https://github.com/0xFireball/IIA</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/0xFireball/IIA</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot;web.config;hosting.json;Views;Resources\**\*">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ImageSharp" Version="1.0.0-alpha2-00117" />
+    <PackageReference Include="ImageSharp.Formats.Png" Version="1.0.0-alpha2-00113" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="1.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Owin" Version="1.1.0" />
+    <PackageReference Include="Nancy" Version="2.0.0-clinteastwood" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.0" />
+    <PackageReference Include="LiteDB" Version="3.0.1" />
+    <PackageReference Include="AutoMapper" Version="5.2.0" />
+    <PackageReference Include="Nancy.Authentication.Stateless" Version="2.0.0-clinteastwood" />
+    <PackageReference Include="Iridium.PluginEngine" Version="2.0.0" />
+    <PackageReference Include="Iridium.PluginCore" Version="2.0.1" />
+  </ItemGroup>
+
+</Project>

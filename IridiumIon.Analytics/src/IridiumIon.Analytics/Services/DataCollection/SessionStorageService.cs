@@ -1,0 +1,48 @@
+﻿using IridiumIon.Analytics.Models.Data;
+using IridiumIon.Analytics.Services.Database;
+using System.Threading.Tasks;
+
+namespace IridiumIon.Analytics.Services.DataCollection
+{
+    public class SessionStorageService
+    {
+        public const string SessionUserCookieStorageKey = "kq_session";
+
+        public async Task<UserSession> GetSessionFromIdentifierAsync(string identifier)
+        {
+            return await Task.Run(() =>
+            {
+                UserSession ret = null;
+
+                var db = KQRegistry.DatabaseAccessService.GetDatabase();
+
+                // Get stored sessions collection
+                var storedSessions = db.GetCollection<UserSession>(DatabaseConstants.LoggedRequestDataKey);
+
+                ret = storedSessions.FindOne(x => x.SessionId == identifier);
+
+                return ret;
+            });
+        }
+
+        public async Task SaveSessionAsync(UserSession session)
+        {
+            await Task.Run(() =>
+            {
+                var db = KQRegistry.DatabaseAccessService.GetDatabase();
+                // Get logged requests collection
+                var loggedRequests = db.GetCollection<UserSession>(DatabaseConstants.LoggedRequestDataKey);
+                // Use ACID transaction
+                using (var trans = db.BeginTrans())
+                {
+                    // Insert new session into database
+                    loggedRequests.Insert(session);
+
+                    trans.Commit();
+                }
+                // Index requests by identifier
+                loggedRequests.EnsureIndex(x => x.SessionId);
+            });
+        }
+    }
+}
