@@ -42,7 +42,7 @@ It can be used everywhere from webpages to desktop apps to mobile apps to gain v
   can be built on the API
 - Easy integration with existing webpages and applications with client libraries
   - Client side web library automatically sets up basic events, and provides
-  an client API allowing creators to integrate KQAnalytics3 into the application
+  an client API allowing creators to integrate `IridiumIon.Analytics` into the application
 - Cross-platform service, deploy to cloud, Docker, and more
   - Built on the .NET Core platform
 - (WIP) Plugin support for dynamically loading custom code
@@ -52,7 +52,7 @@ It can be used everywhere from webpages to desktop apps to mobile apps to gain v
 `IridiumIon.Analytics` comes in several editions for different purposes.
 
 - **`IridiumIon.Analytics` standalone community edition** - this project
-- **`IridiumIon.Analytics` integrated AlphaOsmium edition** - will be available exclusively as a component of the AlphaOsmium platform. It will be largely identical to the community edition except for changes needed to integrate into the larger project.
+- **`IridiumIon.Analytics` integrated AlphaOsmium edition** - will be available exclusively as a component of the [AlphaOsmium platform](https://iridiumion.xyz/#/projects/alphaosmium). It will be largely identical to the community edition except for changes needed to integrate into the larger project.
 
 ## Licensing (Standalone Community Edition)
 
