@@ -15,8 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{CAC8C38D-7
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IridiumIon.Analytics", "src\IridiumIon.Analytics\IridiumIon.Analytics.csproj", "{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IridiumIon.Analytics.Tests", "test\IridiumIon.Analytics.Tests\IridiumIon.Analytics.Tests.csproj", "{FBB11484-701A-475A-929F-7F07D6577E9B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,16 +25,11 @@ Global
 		{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FBB11484-701A-475A-929F-7F07D6577E9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FBB11484-701A-475A-929F-7F07D6577E9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FBB11484-701A-475A-929F-7F07D6577E9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FBB11484-701A-475A-929F-7F07D6577E9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2} = {85B2D174-2A21-4745-9E83-B56096395711}
-		{FBB11484-701A-475A-929F-7F07D6577E9B} = {CAC8C38D-74A3-46D6-91CE-7C7DF4C0577E}
 	EndGlobalSection
 EndGlobal
