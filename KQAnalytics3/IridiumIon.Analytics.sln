@@ -13,9 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{CAC8C38D-74A3-46D6-91CE-7C7DF4C0577E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KQAnalytics3", "src\KQAnalytics3\KQAnalytics3.csproj", "{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IridiumIon.Analytics", "src\IridiumIon.Analytics\IridiumIon.Analytics.csproj", "{5DD28A35-7579-43C9-80A5-A5CD2EB2BBE2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KQAnalytics3.Tests", "test\KQAnalytics3.Tests\KQAnalytics3.Tests.csproj", "{FBB11484-701A-475A-929F-7F07D6577E9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IridiumIon.Analytics.Tests", "test\IridiumIon.Analytics.Tests\IridiumIon.Analytics.Tests.csproj", "{FBB11484-701A-475A-929F-7F07D6577E9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
