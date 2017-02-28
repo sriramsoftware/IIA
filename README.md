@@ -13,11 +13,11 @@ It can be used everywhere from webpages to desktop apps to mobile apps to gain v
 ### From Source
 
 1. Install latest .NET Core tooling (SDK >1.1)
-1. Clone the sources: `git clone --recursive https://github.com/0xFireball/KQAnalytics3.git`
+1. Clone the sources: `git clone --recursive https://github.com/0xFireball/IridiumIon.Analytics.git`
 1. `./build/build.sh` Use the included build/test script (requires `dotnet`). This
   script is used in automated CI builds and will also run tests and publish portable release binaries
   to a `publish/` subdirectory in the output path.
-1. `dotnet KQAnalytics3.dll` to run the portable application.
+1. `dotnet IridiumIon.Analytics.dll` to run the portable application.
 
 ## Features
 
