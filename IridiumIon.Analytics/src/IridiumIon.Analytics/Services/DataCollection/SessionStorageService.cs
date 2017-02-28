@@ -6,7 +6,7 @@ namespace IridiumIon.Analytics.Services.DataCollection
 {
     public class SessionStorageService
     {
-        public static string SessionUserCookieStorageKey => "kq_session";
+        public const string SessionUserCookieStorageKey = "kq_session";
 
         public async Task<UserSession> GetSessionFromIdentifierAsync(string identifier)
         {
@@ -14,7 +14,7 @@ namespace IridiumIon.Analytics.Services.DataCollection
             {
                 UserSession ret = null;
 
-                var db = KQRegistry.DatabaseAccessService.OpenOrCreateDefault();
+                var db = KQRegistry.DatabaseAccessService.GetDatabase();
 
                 // Get stored sessions collection
                 var storedSessions = db.GetCollection<UserSession>(DatabaseConstants.LoggedRequestDataKey);
@@ -29,7 +29,7 @@ namespace IridiumIon.Analytics.Services.DataCollection
         {
             await Task.Run(() =>
             {
-                var db = KQRegistry.DatabaseAccessService.OpenOrCreateDefault();
+                var db = KQRegistry.DatabaseAccessService.GetDatabase();
                 // Get logged requests collection
                 var loggedRequests = db.GetCollection<UserSession>(DatabaseConstants.LoggedRequestDataKey);
                 // Use ACID transaction

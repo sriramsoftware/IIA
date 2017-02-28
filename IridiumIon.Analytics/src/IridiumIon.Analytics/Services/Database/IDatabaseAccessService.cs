@@ -4,6 +4,6 @@ namespace IridiumIon.Analytics.Services.Database
 {
     public interface IDatabaseAccessService
     {
-        LiteDatabase OpenOrCreateDefault();
+        LiteDatabase GetDatabase();
     }
 }

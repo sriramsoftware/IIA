@@ -17,7 +17,7 @@ namespace IridiumIon.Analytics.Services.DataCollection
         {
             await Task.Run(() =>
             {
-                var db = KQRegistry.DatabaseAccessService.OpenOrCreateDefault();
+                var db = KQRegistry.DatabaseAccessService.GetDatabase();
                 // Get logged requests collection
                 var loggedRequests = db.GetCollection<LogRequest>(DatabaseConstants.LoggedRequestDataKey);
                 // Use ACID transaction
@@ -38,7 +38,7 @@ namespace IridiumIon.Analytics.Services.DataCollection
         {
             await Task.Run(() =>
             {
-                var db = KQRegistry.DatabaseAccessService.OpenOrCreateDefault();
+                var db = KQRegistry.DatabaseAccessService.GetDatabase();
                 // Get logged requests collection
                 var tagRequests = db.GetCollection<TagRequest>(DatabaseConstants.TaggedRequestDataKey);
                 // Use ACID transaction
@@ -57,7 +57,7 @@ namespace IridiumIon.Analytics.Services.DataCollection
 
         public async Task<IEnumerable<LogRequest>> QueryRequestsAsync(int limit)
         {
-            var db = KQRegistry.DatabaseAccessService.OpenOrCreateDefault();
+            var db = KQRegistry.DatabaseAccessService.GetDatabase();
             var result = await Task.Run(() =>
             {
                 // Get logged requests collection
@@ -70,7 +70,7 @@ namespace IridiumIon.Analytics.Services.DataCollection
 
         public async Task<IEnumerable<TagRequest>> QueryTaggedRequestsAsync(int limit, string[] filterTags = null)
         {
-            var db = KQRegistry.DatabaseAccessService.OpenOrCreateDefault();
+            var db = KQRegistry.DatabaseAccessService.GetDatabase();
             var result = await Task.Run(() =>
             {
                 // Get tagged requests collection

@@ -2,7 +2,7 @@
 {
     public static class DatabaseConstants
     {
-        public static string LoggedRequestDataKey => "lrequests";
-        public static string TaggedRequestDataKey => "tagrequests";
+        public const string LoggedRequestDataKey = "lrequests";
+        public const string TaggedRequestDataKey = "tagrequests";
     }
 }

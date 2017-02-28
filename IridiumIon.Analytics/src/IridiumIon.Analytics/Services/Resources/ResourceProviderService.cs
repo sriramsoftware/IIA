@@ -15,7 +15,7 @@ namespace IridiumIon.Analytics.Services.Resources
         public string ReadResourceContents(string resourcePath)
         {
             var result = string.Empty;
-            using (var sr =new StreamReader(GetResource(resourcePath)))
+            using (var sr = new StreamReader(GetResource(resourcePath)))
             {
                 result = sr.ReadToEnd();
             }

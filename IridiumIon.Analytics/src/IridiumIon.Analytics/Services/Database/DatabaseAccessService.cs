@@ -6,7 +6,7 @@ namespace IridiumIon.Analytics.Services.Database
     {
         private LiteDatabase _dbInstance;
 
-        public LiteDatabase OpenOrCreateDefault()
+        public LiteDatabase GetDatabase()
         {
             if (_dbInstance == null)
             {
