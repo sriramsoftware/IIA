@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Iridium.PluginEngine;
 using KQAnalytics3.Configuration;
 using KQAnalytics3.Configuration.Access;
 using KQAnalytics3.Services.Database;
@@ -21,6 +22,9 @@ namespace KQAnalytics3
 
         // Database access
         public static IDatabaseAccessService DatabaseAccessService { get; set; }
+
+        // PluginEngine
+        public static ComponentRegistry DefaultComponentRegistry => new ComponentRegistry();
 
         public static void Initialize()
         {

@@ -13,7 +13,7 @@ namespace KQAnalytics3.PluginCore
             {
                 var loadedPlugins = pluginLoader.Factory.LoadPlugin(pluginPath);
             }
-            pluginLoader.RegisterAll();
+            pluginLoader.RegisterAll(KQRegistry.DefaultComponentRegistry);
         }
     }
 }
