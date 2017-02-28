@@ -1,5 +1,5 @@
 
-# [IridiumIon Analytics](#)
+# IridiumIon Analytics
 
 An analytics service, formerly KQAnalytics3. Under redesign for integration into the [AlphaOsmium](https://iridiumion.xyz/#/projects/alphaosmium) platform.
 
