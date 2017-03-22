@@ -7,17 +7,10 @@ namespace IridiumIon.Analytics.Configuration.Access
     /// </summary>
     public enum ApiAccessScope
     {
-        // General
-        Read,
-
-        Write,
-        Admin,
-
-        // Types of data
-
-        QueryLogRequests,
-        QueryTagRequests,
-        QuerySessionData,
+        None = 1 << 0,
+        Read = 1 << 1,
+        Query = Read,
+        Admin = 1 << 31,
     }
 
     public class NAAccessKey
