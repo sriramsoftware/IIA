@@ -1,13 +1,11 @@
 ﻿using AutoMapper;
 using Iridium.PluginEngine;
-using IridiumIon.Analytics.Services.Database;
 using LiteDB;
 
 namespace IridiumIon.Analytics.Configuration
 {
     public class NAServerContext : INAServerContext
     {
-
         public NAServerContext(NAServerParameters serverParameters)
         {
             Parameters = serverParameters;
@@ -23,7 +21,7 @@ namespace IridiumIon.Analytics.Configuration
         public NAServerState ServerState { get; internal set; }
 
         // Database access
-        public LiteDatabase Database { get; set; }
+        public LiteDatabase Database { get; private set; }
 
         // PluginEngine
         public ComponentRegistry DefaultComponentRegistry { get; } = new ComponentRegistry();

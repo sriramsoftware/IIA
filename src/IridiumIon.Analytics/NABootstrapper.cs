@@ -23,6 +23,9 @@ namespace IridiumIon.Analytics
         {
             base.ApplicationStartup(container, pipelines);
 
+            // Connect to database
+            ServerContext.ConnectDatabase();
+
             // TODO (Disabled): Load plugins
 
             // Enable cookie sessions

@@ -9,8 +9,7 @@ namespace IridiumIon.Analytics.Services.DataQuery
     {
         public IEnumerable<LogRequest> GetAllRequestsAfterDate(DateTime startDate)
         {
-            var db = KQRegistry.DatabaseAccessService.GetDatabase();
-            var loggedRequests = db.GetCollection<LogRequest>(DatabaseConstants.LoggedRequestDataKey);
+            var loggedRequests = ServerContext.Database.GetCollection<LogRequest>(DatabaseConstants.LoggedRequestDataKey);
             return loggedRequests.Find(x => x.Timestamp > startDate);
         }
     }
