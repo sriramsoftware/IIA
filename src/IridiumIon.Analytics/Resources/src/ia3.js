@@ -1,4 +1,4 @@
-﻿class KQUtils {
+﻿class IAUtils {
   static serialize (obj) {
     var str = []
     for (var p in obj) {
@@ -28,22 +28,22 @@
         callback(this.responseText)
       }
     }
-    xhr.send(KQUtils.serialize(data))
+    xhr.send(IAUtils.serialize(data))
   }
 }
 
-class KQApi {
+class IAApi {
   static configure (opts) {
     this.kc = opts
   }
   static sendHit (ul) {
-    KQUtils.sendPost(this.kc.s + 'k', {
+    IAUtils.sendPost(this.kc.s + 'k', {
       u: this.kc.ul,
       sid: this.kc.sid
     })
   }
   static sendTag (tag, data) {
-    KQUtils.sendPost(this.kc.s + 'c', {
+    IAUtils.sendPost(this.kc.s + 'c', {
       u: this.kc.ul,
       sid: this.kc.sid,
       tag: tag,
@@ -55,7 +55,7 @@ class KQApi {
   }
 }
 
-KQApi.Events = class {
+IAApi.Events = class {
   static click (e) {
     e = window.e || e
     if (e.target.tagName !== 'A') { // filter A elements
@@ -63,7 +63,7 @@ KQApi.Events = class {
     }
     let el = e.target
     let d = new Date().toISOString()
-    KQApi.sendTagData('linkClick', {
+    IAApi.sendTagData('linkClick', {
       tgt: el.href,
       tx: el.text,
       d: d
@@ -71,22 +71,22 @@ KQApi.Events = class {
   }
 }
 
-var sid = window.localStorage.getItem('sid') || KQUtils.mid()
+var sid = window.localStorage.getItem('sid') || IAUtils.mid()
 window.localStorage.setItem('sid', sid)
 
-var _kqd = window._kqd || {}
-var kqs = _kqd.s
-if (kqs.substr(-1) !== '/') kqs += '/'
-KQApi.configure({
-  s: kqs,
-  ul: _kqd.u,
-  sid: _kqd.sid || sid
+var _IAd = window._IAd || {}
+var IAs = _IAd.s
+if (IAs.substr(-1) !== '/') IAs += '/'
+IAApi.configure({
+  s: IAs,
+  ul: _IAd.u,
+  sid: _IAd.sid || sid
 })
 
-KQApi.sendHit()
+IAApi.sendHit()
 
 if (document.addEventListener) {
-  document.addEventListener('click', KQApi.Events.click, false)
+  document.addEventListener('click', IAApi.Events.click, false)
 } else {
-  document.attachEvent('onclick', KQApi.Events.click)
+  document.attachEvent('onclick', IAApi.Events.click)
 }
