@@ -11,6 +11,7 @@
     public class Startup
     {
         public const string ServerParametersConfigurationFileName = "iianalytics.json";
+        public const string ServerStateStorageFileName = "iiaserver_state.lidb";
 
         private readonly IConfigurationRoot config;
         private NAServerContext serverContext;
@@ -57,11 +58,16 @@
             // Register shutdown
             applicationLifetime.ApplicationStopping.Register(OnShutdown);
 
+            // Load persistent state data
+            NAServerConfigurator.LoadState(serverContext, ServerStateStorageFileName);
+
             app.UseOwin(x => x.UseNancy(opt => opt.Bootstrapper = new NABootstrapper(serverContext)));
         }
 
         private void OnShutdown()
         {
+            // Persist server state
+            serverContext.ServerState.Persist();
         }
     }
 }

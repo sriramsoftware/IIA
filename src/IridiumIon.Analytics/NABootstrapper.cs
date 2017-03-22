@@ -38,6 +38,18 @@ namespace IridiumIon.Analytics
                 return ClientAuthenticationService.ResolveClientIdentity(apiKey);
             }));
 
+            // Enable CORS
+            pipelines.AfterRequest.AddItemToEndOfPipeline((ctx) =>
+            {
+                foreach (var origin in OMServerContext.Parameters.CorsOrigins)
+                {
+                    ctx.Response.WithHeader("Access-Control-Allow-Origin", origin);
+                }
+                ctx.Response
+                    .WithHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE")
+                    .WithHeader("Access-Control-Allow-Headers", "Accept, Origin, Content-type");
+            });
+
             // Initialize object data mapper
             Mapper.Initialize(cfg =>
             {
