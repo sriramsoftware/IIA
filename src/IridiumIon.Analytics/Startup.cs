@@ -62,8 +62,6 @@
 
         private void OnShutdown()
         {
-            // Persist server state
-            serverContext.ServerState.Persist();
         }
     }
 }

@@ -1,6 +1,14 @@
 ﻿namespace IridiumIon.Analytics.Configuration
 {
-    public class NAServerConfigurator
+    public static class NAServerConfigurator
     {
+        internal static NAServerContext CreateContext(NAServerParameters serverParameters)
+        {
+            // load the configuration
+            var context = new NAServerContext(serverParameters)
+            {
+            };
+            return context;
+        }
     }
 }

@@ -2,13 +2,9 @@
 
 namespace IridiumIon.Analytics.Modules
 {
-    public class IIABaseModule : NancyModule
+    public abstract class IIABaseModule : NancyModule
     {
-        public IIABaseModule(string path) : base($"/iia/{path}")
-        {
-        }
-
-        public IIABaseModule() : base(KQRegistry.KQBasePath)
+        internal IIABaseModule(string path) : base($"/iia/{path}")
         {
         }
     }
