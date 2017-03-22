@@ -4,7 +4,7 @@ using IridiumIon.Analytics.Services.Database;
 
 namespace IridiumIon.Analytics.Configuration
 {
-    public class IIAServerContext
+    public class NAServerContext : INAServerContext
     {
         public KQServerConfiguration ServerConfiguration { get; private set; }
         public IMapper RequestDataMapper { get; set; }

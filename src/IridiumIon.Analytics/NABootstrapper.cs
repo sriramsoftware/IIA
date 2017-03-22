@@ -1,5 +1,5 @@
-﻿using System.Linq;
-using AutoMapper;
+﻿using AutoMapper;
+using IridiumIon.Analytics.Configuration;
 using IridiumIon.Analytics.Models.Data;
 using IridiumIon.Analytics.PluginCore;
 using IridiumIon.Analytics.Services.Authentication;
@@ -9,13 +9,23 @@ using Nancy.Authentication.Stateless;
 using Nancy.Bootstrapper;
 using Nancy.Session;
 using Nancy.TinyIoc;
+using System.Linq;
 
 namespace IridiumIon.Analytics
 {
-    public class KQBootstrapperHelper
+    public class NABootstrapper : DefaultNancyBootstrapper
     {
-        public static void HandleApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
+        public NAServerContext ServerContext { get; set; }
+
+        public NABootstrapper(NAServerContext serverContext)
         {
+            ServerContext = serverContext;
+        }
+
+        protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
+        {
+            base.ApplicationStartup(container, pipelines);
+
             // Load plugins
             KQPluginAggregator.LoadAllPlugins();
 
@@ -94,6 +104,14 @@ namespace IridiumIon.Analytics
                 cfg.CreateMap<LogRequest, RedirectRequest>();
                 cfg.CreateMap<LogRequest, TagRequest>();
             });
+        }
+
+        protected override void ConfigureApplicationContainer(TinyIoCContainer container)
+        {
+            base.ConfigureApplicationContainer(container);
+
+            // Register IoC components
+            container.Register<INAServerContext>(ServerContext);
         }
     }
 }
