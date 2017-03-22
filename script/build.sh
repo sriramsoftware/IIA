@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-PROJECT_NAME="OsmiumMine.Core"
-SOLUTION="OsmiumMine.Core/$PROJECT_NAME.sln"
-DEPLOY_PROJECT="OsmiumMine.Core/OsmiumMine.Core.Server"
+PROJECT_NAME="IridiumIon.Analytics"
+SOLUTION="src/$PROJECT_NAME.sln"
+DEPLOY_PROJECT="src/$PROJECT_NAME"
 
 ARTIFACTS_FOLDER="./artifacts"
 
