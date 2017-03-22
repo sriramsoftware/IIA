@@ -1,4 +1,5 @@
 ﻿using LiteDB;
+using System.IO;
 using System.Linq;
 
 namespace IridiumIon.Analytics.Configuration
@@ -8,6 +9,7 @@ namespace IridiumIon.Analytics.Configuration
         internal static NAServerContext CreateContext(NAServerParameters serverParameters)
         {
             // load the parameters
+            serverParameters.BaseDirectory = Directory.GetCurrentDirectory();
             var context = new NAServerContext(serverParameters);
             return context;
         }

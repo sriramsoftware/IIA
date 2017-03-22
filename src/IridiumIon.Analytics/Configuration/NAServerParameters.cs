@@ -16,5 +16,7 @@ namespace IridiumIon.Analytics.Configuration
 
         [JsonProperty("corsOrigins")]
         public string[] CorsOrigins { get; set; } = new string[0];
+
+        public string BaseDirectory { get; internal set; }
     }
 }

@@ -1,15 +1,23 @@
-﻿using IridiumIon.Analytics.Services.Resources;
+﻿using IridiumIon.Analytics.Configuration;
+using IridiumIon.Analytics.Services.Resources;
 using System.IO;
 
 namespace IridiumIon.Analytics.Data
 {
-    public static class TrackingScriptProvider
+    public class TrackingScriptProvider
     {
-        public static string TrackingScriptName => "kq3.js";
+        public string TrackingScriptName => "ia3.js";
 
-        public static Stream CreateTrackingScript()
+        public INAServerContext ServerContext { get; }
+
+        public TrackingScriptProvider(INAServerContext serverContext)
         {
-            return new ResourceProviderService().GetResource(TrackingScriptName);
+            ServerContext = serverContext;
+        }
+
+        public Stream CreateTrackingScript()
+        {
+            return new ResourceProviderService(ServerContext).GetResource(TrackingScriptName);
         }
     }
 }
