@@ -10,6 +10,7 @@ namespace IridiumIon.Analytics.Configuration
         public NAServerContext(NAServerParameters serverParameters)
         {
             Parameters = serverParameters;
+            ResourceProvider = new ResourceProviderService(this);
         }
 
         // Parameters (starting configuration)
