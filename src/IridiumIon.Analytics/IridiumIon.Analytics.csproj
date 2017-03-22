@@ -28,17 +28,14 @@
 
   <ItemGroup>
     <PackageReference Include="ImageSharp.Formats.Png" Version="1.0.0-alpha2-00113" />
-    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="1.2.0-preview1-24018" />
-    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.2.0-preview1-24018" />
-    <PackageReference Include="Microsoft.AspNetCore.Owin" Version="1.2.0-preview1-24018" />
-    <PackageReference Include="Nancy" Version="2.0.0-clinteastwood" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="1.2.0-preview1-24018" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="1.2.0-preview1-24018" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.2.0-preview1-24018" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.2.0-preview1-24018" />
     <PackageReference Include="LiteDB" Version="3.1.0" />
     <PackageReference Include="AutoMapper" Version="6.0.1" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Owin" Version="1.1.0" />
+    <PackageReference Include="Nancy" Version="2.0.0-clinteastwood" />
     <PackageReference Include="Nancy.Authentication.Stateless" Version="2.0.0-clinteastwood" />
+    <PackageReference Include="System.ValueTuple" Version="4.3.0" />
     <PackageReference Include="Iridium.PluginEngine" Version="2.0.0" />
     <PackageReference Include="Iridium.PluginCore" Version="2.0.1" />
   </ItemGroup>
