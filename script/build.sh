@@ -16,7 +16,7 @@ dotnet --version
 
 echo "Restoring packages for solution..."
 # Restore packages
-dotnet restore $SOLUTION --configfile src/NuGet.config
+dotnet restore $SOLUTION --configfile NuGet.config
 
 echo "Building $PROJECT_NAME..."
 

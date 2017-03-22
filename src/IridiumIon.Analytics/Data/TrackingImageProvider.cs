@@ -1,16 +1,20 @@
 ﻿using ImageSharp;
 using ImageSharp.Formats;
+using IridiumIon.Analytics.Configuration;
 using System.IO;
 
 namespace IridiumIon.Analytics.Data
 {
-    public static class TrackingImageProvider
+    public class TrackingImageProvider
     {
-        static TrackingImageProvider()
+        public INAServerContext ServerContext { get; }
+
+        public TrackingImageProvider(INAServerContext serverContext)
         {
+            ServerContext = serverContext;
         }
 
-        public static Stream CreateTrackingPixel()
+        public Stream CreateTrackingPixel()
         {
             // Create tracking pixel image
             var outputStream = new MemoryStream();

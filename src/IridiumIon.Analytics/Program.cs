@@ -1,5 +1,4 @@
-﻿using IridiumIon.Analytics.Configuration;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using System.IO;
@@ -10,17 +9,12 @@ namespace IridiumIon.Analytics
     {
         public static void Main(string[] args)
         {
-            // Run KQ Configurator
             var currentDir = Directory.GetCurrentDirectory();
-            KQRegistry.CurrentDirectory = currentDir;
-            KQConfigurationAggregator.Initialize();
-            KQConfigurationAggregator.LoadConfigurationFile();
-            KQConfigurationAggregator.Reload();
 
             // Start application
             var config = new ConfigurationBuilder()
                 .SetBasePath(currentDir)
-                .AddCommandLine(args)
+                .AddEnvironmentVariables()
                 .AddJsonFile(Path.Combine(currentDir, "hosting.json"), false)
                 .Build();
 

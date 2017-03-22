@@ -1,4 +1,5 @@
-﻿using IridiumIon.Analytics.Models.Data;
+﻿using IridiumIon.Analytics.Configuration;
+using IridiumIon.Analytics.Models.Data;
 using IridiumIon.Analytics.Services.Database;
 using System.Threading.Tasks;
 
@@ -8,16 +9,21 @@ namespace IridiumIon.Analytics.Services.DataCollection
     {
         public const string SessionUserCookieStorageKey = "kq_session";
 
+        public INAServerContext ServerContext { get; }
+
+        public SessionStorageService(INAServerContext serverContext)
+        {
+            ServerContext = serverContext;
+        }
+
         public async Task<UserSession> GetSessionFromIdentifierAsync(string identifier)
         {
             return await Task.Run(() =>
             {
                 UserSession ret = null;
 
-                var db = KQRegistry.DatabaseAccessService.GetDatabase();
-
                 // Get stored sessions collection
-                var storedSessions = db.GetCollection<UserSession>(DatabaseConstants.LoggedRequestDataKey);
+                var storedSessions = ServerContext.Database.GetCollection<UserSession>(DatabaseConstants.LoggedRequestDataKey);
 
                 ret = storedSessions.FindOne(x => x.SessionId == identifier);
 
@@ -29,11 +35,10 @@ namespace IridiumIon.Analytics.Services.DataCollection
         {
             await Task.Run(() =>
             {
-                var db = KQRegistry.DatabaseAccessService.GetDatabase();
                 // Get logged requests collection
-                var loggedRequests = db.GetCollection<UserSession>(DatabaseConstants.LoggedRequestDataKey);
+                var loggedRequests = ServerContext.Database.GetCollection<UserSession>(DatabaseConstants.LoggedRequestDataKey);
                 // Use ACID transaction
-                using (var trans = db.BeginTrans())
+                using (var trans = ServerContext.Database.BeginTrans())
                 {
                     // Insert new session into database
                     loggedRequests.Insert(session);

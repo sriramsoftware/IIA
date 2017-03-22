@@ -1,4 +1,5 @@
-﻿using IridiumIon.Analytics.Configuration.Access;
+﻿using IridiumIon.Analytics.Configuration;
+using IridiumIon.Analytics.Configuration.Access;
 using IridiumIon.Analytics.Services.Authentication;
 using IridiumIon.Analytics.Services.Authentication.Security;
 using IridiumIon.Analytics.Services.DataCollection;
@@ -6,10 +7,13 @@ using IridiumIon.Analytics.Utilities;
 
 namespace IridiumIon.Analytics.Modules.Api.Query
 {
-    public class LogRequestQueryModule : KQBaseModule
+    public class LogRequestQueryModule : NABaseModule
     {
-        public LogRequestQueryModule() : base("/api")
+        public INAServerContext ServerContext { get; }
+
+        public LogRequestQueryModule(INAServerContext serverContext) : base("/api")
         {
+            ServerContext = serverContext;
             var accessValidator = new ClientApiAccessValidator();
             this.RequiresAllClaims(accessValidator.GetAccessClaimListFromScopes(new[] {
                 ApiAccessScope.Read,
@@ -21,7 +25,7 @@ namespace IridiumIon.Analytics.Modules.Api.Query
             Get("/query/logrequests/{limit:int}", async args =>
             {
                 var itemLimit = args.limit as int? ?? 100;
-                var dataLoggerService = new DataLoggerService();
+                var dataLoggerService = new DataLoggerService(ServerContext);
                 var data = await dataLoggerService.QueryRequestsAsync(itemLimit);
                 return Response.AsJsonNet(data);
             });

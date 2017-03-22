@@ -16,7 +16,7 @@ namespace IridiumIon.Analytics.Services.Authentication
         /// </summary>
         /// <param name="accessKey"></param>
         /// <returns></returns>
-        public IEnumerable<Claim> GetAuthClaims(ApiAccessKey accessKey)
+        public IEnumerable<Claim> GetAuthClaims(NAAccessKey accessKey)
         {
             var claimList = new List<Claim>
             {

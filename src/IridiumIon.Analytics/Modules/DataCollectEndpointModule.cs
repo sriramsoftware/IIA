@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using IridiumIon.Analytics.Data;
+using IridiumIon.Analytics.Configuration;
 using IridiumIon.Analytics.Models.Data;
 using IridiumIon.Analytics.Models.Requests;
 using IridiumIon.Analytics.Services.DataCollection;
@@ -9,10 +9,13 @@ using System.Threading.Tasks;
 
 namespace IridiumIon.Analytics.Modules
 {
-    public class DataCollectEndpointModule : KQBaseModule
+    public class DataCollectEndpointModule : NABaseModule
     {
-        public DataCollectEndpointModule()
+        public INAServerContext ServerContext { get; }
+
+        public DataCollectEndpointModule(INAServerContext serverContext) : base("/")
         {
+            ServerContext = serverContext;
             // Tracking Post. Intended to be used from web apps
             // Data: u - the source URL
             // Data: sid - cross domain tracking id
@@ -38,14 +41,14 @@ namespace IridiumIon.Analytics.Modules
             {
                 await ProcessRequestDataAsync(DataRequestType.Log | DataRequestType.Hit | DataRequestType.Web);
                 // Send tracking pixel
-                return Response.FromStream(TrackingImageProvider.CreateTrackingPixel(), "image/png");
+                return Response.FromStream(ServerContext.ResourceProvider.TrackingImage.CreateTrackingPixel(), "image/png");
             });
             // Tracking script
             // Params: u - the source URL
             Get("k.js", async args =>
             {
                 await ProcessRequestDataAsync(DataRequestType.Log | DataRequestType.Hit | DataRequestType.Web | DataRequestType.FetchScript);
-                return Response.FromStream(TrackingScriptProvider.CreateTrackingScript(), "application/javascript");
+                return Response.FromStream(ServerContext.ResourceProvider.TrackingScript.CreateTrackingScript(), "application/javascript");
             });
             // Redirect
             // Params: t - The target URL
@@ -70,7 +73,7 @@ namespace IridiumIon.Analytics.Modules
             var newSession = true; // Whether the session is new
             // Check if a stored session is available
             var storedSessData = Request.Session[SessionStorageService.SessionUserCookieStorageKey] as string;
-            var sessionStorageService = new SessionStorageService();
+            var sessionStorageService = new SessionStorageService(ServerContext);
             if (storedSessData != null && customId == null)
             {
                 // [Attempt to] Find matching session
@@ -178,7 +181,7 @@ namespace IridiumIon.Analytics.Modules
                     }
                     req = redirReq;
                 }
-                var dataLoggerService = new DataLoggerService();
+                var dataLoggerService = new DataLoggerService(ServerContext);
                 // Save data using Logger service, on the thread pool
                 var saveDataTask = Task.Factory.StartNew(async () =>
                 {

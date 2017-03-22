@@ -1,4 +1,5 @@
-﻿using IridiumIon.Analytics.Configuration.Access;
+﻿using IridiumIon.Analytics.Configuration;
+using IridiumIon.Analytics.Configuration.Access;
 using IridiumIon.Analytics.Services.Authentication;
 using IridiumIon.Analytics.Services.Authentication.Security;
 using IridiumIon.Analytics.Services.DataCollection;
@@ -6,10 +7,13 @@ using IridiumIon.Analytics.Utilities;
 
 namespace IridiumIon.Analytics.Modules.Api.Query
 {
-    public class TagRequestQueryModule : KQBaseModule
+    public class TagRequestQueryModule : NABaseModule
     {
-        public TagRequestQueryModule() : base("/api")
+        public INAServerContext ServerContext { get; }
+
+        public TagRequestQueryModule(INAServerContext serverContext) : base("/api")
         {
+            ServerContext = serverContext;
             var accessValidator = new ClientApiAccessValidator();
             this.RequiresAllClaims(accessValidator.GetAccessClaimListFromScopes(new[] {
                 ApiAccessScope.Read,
@@ -23,7 +27,7 @@ namespace IridiumIon.Analytics.Modules.Api.Query
             {
                 var itemLimit = args.limit as int? ?? 100;
                 var filterTags = (args.tags != null) ? ((string)args.tags).Split(',') : null;
-                var dataLoggerService = new DataLoggerService();
+                var dataLoggerService = new DataLoggerService(ServerContext);
                 var data = await dataLoggerService.QueryTaggedRequestsAsync(itemLimit, filterTags);
                 return Response.AsJsonNet(data);
             });
