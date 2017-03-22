@@ -1,5 +1,6 @@
 ﻿using IridiumIon.Analytics.Configuration;
 using IridiumIon.Analytics.Configuration.Access;
+using System.Linq;
 using System.Security.Claims;
 
 namespace IridiumIon.Analytics.Services.Authentication

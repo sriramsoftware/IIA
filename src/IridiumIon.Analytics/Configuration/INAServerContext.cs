@@ -7,7 +7,8 @@ namespace IridiumIon.Analytics.Configuration
     {
         ComponentRegistry DefaultComponentRegistry { get; }
         IMapper RequestDataMapper { get; set; }
-        KQServerConfiguration ServerConfiguration { get; }
+        NAServerParameters Parameters { get; }
+        NAServerState ServerState { get; }
 
         void ConnectDatabase();
     }

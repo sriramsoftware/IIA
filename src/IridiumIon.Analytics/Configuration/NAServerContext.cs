@@ -6,15 +6,14 @@ namespace IridiumIon.Analytics.Configuration
 {
     public class NAServerContext : INAServerContext
     {
-        public NAServerParameters Parameters { get; }
 
         public NAServerContext(NAServerParameters serverParameters)
         {
             Parameters = serverParameters;
         }
 
-        // Configuration
-        public KQServerConfiguration ServerConfiguration { get; private set; }
+        // Parameters (starting configuration)
+        public NAServerParameters Parameters { get; }
 
         // AutoMapper
         public IMapper RequestDataMapper { get; set; }
