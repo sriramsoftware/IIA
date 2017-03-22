@@ -6,7 +6,7 @@ namespace IridiumIon.Analytics.Modules.WebClient
     {
         public WebClientInfoModule() : base("/")
         {
-            Get("/info", _ => $"{KQAnalyticsServerInfo.KQAnalyticsProductName}");
+            Get("/info", _ => $"{NAServerInfo.IIAProductName}");
         }
     }
 }

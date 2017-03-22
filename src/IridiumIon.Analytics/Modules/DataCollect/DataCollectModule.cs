@@ -7,7 +7,7 @@ using Nancy;
 using System;
 using System.Threading.Tasks;
 
-namespace IridiumIon.Analytics.Modules
+namespace IridiumIon.Analytics.Modules.DataCollect
 {
     public class DataCollectEndpointModule : NABaseModule
     {
