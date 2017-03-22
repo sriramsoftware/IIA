@@ -14,7 +14,7 @@ namespace IridiumIon.Analytics
             // Start application
             var config = new ConfigurationBuilder()
                 .SetBasePath(currentDir)
-                .AddCommandLine(args)
+                .AddEnvironmentVariables()
                 .AddJsonFile(Path.Combine(currentDir, "hosting.json"), false)
                 .Build();
 
