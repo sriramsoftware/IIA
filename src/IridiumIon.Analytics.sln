@@ -17,6 +17,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IridiumIon.Analytics", "Iri
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IridiumIon.Analytics.Tests", "IridiumIon.Analytics.Tests\IridiumIon.Analytics.Tests.csproj", "{AE5265B0-DAC1-410D-BE63-EB7496F61D50}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{FF3ACE1C-128B-4E2F-B88B-F4847CC16F05}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OsmiumSubstrate", "..\lib\OsmiumSubstrate\src\OsmiumSubstrate\OsmiumSubstrate.csproj", "{88862F90-7475-4414-8A46-35DD1DCDB981}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,10 @@ Global
 		{AE5265B0-DAC1-410D-BE63-EB7496F61D50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE5265B0-DAC1-410D-BE63-EB7496F61D50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE5265B0-DAC1-410D-BE63-EB7496F61D50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88862F90-7475-4414-8A46-35DD1DCDB981}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88862F90-7475-4414-8A46-35DD1DCDB981}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88862F90-7475-4414-8A46-35DD1DCDB981}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88862F90-7475-4414-8A46-35DD1DCDB981}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,5 +46,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{9F5C11CD-3E0B-436F-AAF9-92DCF0ECADF1} = {85B2D174-2A21-4745-9E83-B56096395711}
 		{AE5265B0-DAC1-410D-BE63-EB7496F61D50} = {CAC8C38D-74A3-46D6-91CE-7C7DF4C0577E}
+		{88862F90-7475-4414-8A46-35DD1DCDB981} = {FF3ACE1C-128B-4E2F-B88B-F4847CC16F05}
 	EndGlobalSection
 EndGlobal
