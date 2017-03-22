@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
 using IridiumIon.Analytics.Configuration;
+using IridiumIon.Analytics.Configuration.Access;
 using IridiumIon.Analytics.Models.Data;
-using IridiumIon.Analytics.Services.Authentication;
 using Nancy;
 using Nancy.Authentication.Stateless;
 using Nancy.Bootstrapper;
 using Nancy.Session;
 using Nancy.TinyIoc;
+using OsmiumSubstrate.Services.Authentication;
 
 namespace IridiumIon.Analytics
 {
@@ -38,7 +39,7 @@ namespace IridiumIon.Analytics
                 var apiKey = (string)ctx.Request.Query.apikey.Value;
 
                 // get user identity
-                var authenticator = new ClientAuthenticationService(ServerContext);
+                var authenticator = new StatelessAuthenticationService<NAAccessKey, NAApiAccessScope>(ServerContext);
                 return authenticator.ResolveClientIdentity(apiKey);
             }));
 

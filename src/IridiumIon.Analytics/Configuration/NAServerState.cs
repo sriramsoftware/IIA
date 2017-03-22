@@ -1,16 +1,21 @@
 ﻿using IridiumIon.Analytics.Configuration.Access;
 using LiteDB;
+using OsmiumSubstrate.Configuration;
+using OsmiumSubstrate.Configuration.Access;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace IridiumIon.Analytics.Configuration
 {
     /// <summary>
     /// Persisted state for the server
     /// </summary>
-    public class NAServerState
+    public class NAServerState : ISubstrateServerState<NAAccessKey, NAApiAccessScope>
     {
-        public List<NAAccessKey> ApiKeys { get; set; } = new List<NAAccessKey>();
+        public List<NAAccessKey> ApiKeys { get; set; }
+
+        IEnumerable<AccessKey<NAAccessKey>> ISubstrateServerState<NAAccessKey, NAApiAccessScope>.ApiKeys => ApiKeys.Cast<AccessKey<NAAccessKey>>();
 
         /// <summary>
         /// BsonDocument ID

@@ -1,9 +1,9 @@
 using IridiumIon.Analytics.Configuration;
 using IridiumIon.Analytics.Configuration.Access;
-using IridiumIon.Analytics.Services.Authentication;
-using IridiumIon.Analytics.Services.Authentication.Security;
 using IridiumIon.Analytics.Services.DataCollection;
 using IridiumIon.Analytics.Utilities;
+using OsmiumSubstrate.Services.Authentication;
+using OsmiumSubstrate.Services.Authentication.Security;
 
 namespace IridiumIon.Analytics.Modules.Api.Query
 {
@@ -14,9 +14,9 @@ namespace IridiumIon.Analytics.Modules.Api.Query
         public DataQueryModule(INAServerContext serverContext) : base("/qr")
         {
             ServerContext = serverContext;
-            var accessValidator = new ClientApiAccessValidator();
-            this.RequiresAllClaims(new[] { accessValidator.GetAccessClaim(ApiAccessScope.Query) },
-                accessValidator.GetAccessClaim(ApiAccessScope.Admin));
+            var accessValidator = new StatelessClientValidator<NAAccessKey, NAApiAccessScope>();
+            this.RequiresAllClaims(new[] { accessValidator.GetAccessClaim(NAApiAccessScope.Query) },
+                accessValidator.GetAccessClaim(NAApiAccessScope.Admin));
 
             // Query Log Requests
             // Limit is the max number of log requests to return. Default 100

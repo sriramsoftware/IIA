@@ -1,7 +1,8 @@
-﻿using AutoMapper;
-using Iridium.PluginEngine;
+﻿using Iridium.PluginEngine;
+using IridiumIon.Analytics.Configuration.Access;
 using IridiumIon.Analytics.Services.Resources;
 using LiteDB;
+using OsmiumSubstrate.Configuration;
 
 namespace IridiumIon.Analytics.Configuration
 {
@@ -18,6 +19,8 @@ namespace IridiumIon.Analytics.Configuration
 
         // Persistent State
         public NAServerState ServerState { get; internal set; }
+
+        ISubstrateServerState<NAAccessKey, NAApiAccessScope> ISubstrateServerContext<NAAccessKey, NAApiAccessScope>.SubstrateServerState => ServerState;
 
         // Database access
         public LiteDatabase Database { get; private set; }
