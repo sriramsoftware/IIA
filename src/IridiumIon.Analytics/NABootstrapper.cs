@@ -35,13 +35,14 @@ namespace IridiumIon.Analytics
                 var apiKey = (string)ctx.Request.Query.apikey.Value;
 
                 // get user identity
-                return ClientAuthenticationService.ResolveClientIdentity(apiKey);
+                var authenticator = new ClientAuthenticationService(OMServerContext);
+                return authenticator.ResolveClientIdentity(apiKey);
             }));
 
             // Enable CORS
             pipelines.AfterRequest.AddItemToEndOfPipeline((ctx) =>
             {
-                foreach (var origin in OMServerContext.Parameters.CorsOrigins)
+                foreach (var origin in ServerContext.Parameters.CorsOrigins)
                 {
                     ctx.Response.WithHeader("Access-Control-Allow-Origin", origin);
                 }
