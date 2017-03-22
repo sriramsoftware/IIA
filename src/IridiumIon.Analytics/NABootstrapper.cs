@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using IridiumIon.Analytics.Configuration;
 using IridiumIon.Analytics.Models.Data;
-using IridiumIon.Analytics.PluginCore;
 using IridiumIon.Analytics.Services.Authentication;
 using Nancy;
 using Nancy.Authentication.Stateless;
@@ -24,8 +23,7 @@ namespace IridiumIon.Analytics
         {
             base.ApplicationStartup(container, pipelines);
 
-            // Load plugins
-            KQPluginAggregator.LoadAllPlugins();
+            // TODO (Disabled): Load plugins
 
             // Enable cookie sessions
             CookieBasedSessions.Enable(pipelines);

@@ -15,7 +15,7 @@ namespace IridiumIon.Analytics.Configuration
         public FilterListConfiguration WhitelistConfiguration { get; set; }
 
         [JsonProperty("apiKeys")]
-        public ApiAccessKey[] ApiKeys { get; set; } = new ApiAccessKey[0];
+        public NAAccessKey[] ApiKeys { get; set; } = new NAAccessKey[0];
 
         [JsonProperty("databaseCryptoPass")]
         public string DatabaseEncryptionPassword { get; set; }

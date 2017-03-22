@@ -20,7 +20,7 @@ namespace IridiumIon.Analytics.Configuration.Access
         QuerySessionData,
     }
 
-    public class ApiAccessKey
+    public class NAAccessKey
     {
         [JsonProperty("key")]
         public string Key { get; set; }
