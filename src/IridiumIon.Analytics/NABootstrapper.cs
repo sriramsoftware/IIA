@@ -35,7 +35,7 @@ namespace IridiumIon.Analytics
                 var apiKey = (string)ctx.Request.Query.apikey.Value;
 
                 // get user identity
-                var authenticator = new ClientAuthenticationService(OMServerContext);
+                var authenticator = new ClientAuthenticationService(ServerContext);
                 return authenticator.ResolveClientIdentity(apiKey);
             }));
 
