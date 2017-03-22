@@ -3,6 +3,8 @@
 
 An analytics service, formerly KQAnalytics3. Under redesign for integration into the [AlphaOsmium](https://iridiumion.xyz/#/projects/alphaosmium) platform.
 
+[![Build Status](https://travis-ci.org/0xFireball/IIA.svg?branch=master)](https://travis-ci.org/0xFireball/IIA)
+
 ## About
 
 IridiumIon Analytics provides a simple and open analytics solution for your internet service.
