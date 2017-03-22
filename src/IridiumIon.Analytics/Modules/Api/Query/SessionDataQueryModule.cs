@@ -6,7 +6,7 @@ using IridiumIon.Analytics.Utilities;
 
 namespace IridiumIon.Analytics.Modules.Api.Query
 {
-    public class SessionDataQueryModule : IIABaseModule
+    public class SessionDataQueryModule : NABaseModule
     {
         public SessionDataQueryModule() : base("/api")
         {

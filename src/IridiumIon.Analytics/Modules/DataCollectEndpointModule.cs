@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace IridiumIon.Analytics.Modules
 {
-    public class DataCollectEndpointModule : IIABaseModule
+    public class DataCollectEndpointModule : NABaseModule
     {
-        public DataCollectEndpointModule()
+        public DataCollectEndpointModule() : base("/")
         {
             // Tracking Post. Intended to be used from web apps
             // Data: u - the source URL
