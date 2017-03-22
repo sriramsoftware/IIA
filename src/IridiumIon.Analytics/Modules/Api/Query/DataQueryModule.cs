@@ -1,9 +1,9 @@
 using IridiumIon.Analytics.Configuration;
 using IridiumIon.Analytics.Configuration.Access;
 using IridiumIon.Analytics.Services.DataCollection;
-using IridiumIon.Analytics.Utilities;
 using OsmiumSubstrate.Services.Authentication;
 using OsmiumSubstrate.Services.Authentication.Security;
+using OsmiumSubstrate.Utilities;
 
 namespace IridiumIon.Analytics.Modules.Api.Query
 {
