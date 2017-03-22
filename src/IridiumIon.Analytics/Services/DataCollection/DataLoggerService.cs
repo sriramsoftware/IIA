@@ -1,8 +1,8 @@
 ﻿using IridiumIon.Analytics.Configuration;
 using IridiumIon.Analytics.Models.Data;
 using IridiumIon.Analytics.Services.Database;
-using IridiumIon.Analytics.Utilities;
 using LiteDB;
+using OsmiumSubstrate.Utilities;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
