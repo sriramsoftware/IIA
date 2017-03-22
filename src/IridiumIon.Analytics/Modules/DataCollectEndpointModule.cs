@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace IridiumIon.Analytics.Modules
 {
-    public class DataCollectEndpointModule : KQBaseModule
+    public class DataCollectEndpointModule : IIABaseModule
     {
         public DataCollectEndpointModule()
         {

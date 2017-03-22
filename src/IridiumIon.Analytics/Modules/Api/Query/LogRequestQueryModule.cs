@@ -6,7 +6,7 @@ using IridiumIon.Analytics.Utilities;
 
 namespace IridiumIon.Analytics.Modules.Api.Query
 {
-    public class LogRequestQueryModule : KQBaseModule
+    public class LogRequestQueryModule : IIABaseModule
     {
         public LogRequestQueryModule() : base("/api")
         {

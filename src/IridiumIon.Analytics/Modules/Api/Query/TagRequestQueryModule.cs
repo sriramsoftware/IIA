@@ -6,7 +6,7 @@ using IridiumIon.Analytics.Utilities;
 
 namespace IridiumIon.Analytics.Modules.Api.Query
 {
-    public class TagRequestQueryModule : KQBaseModule
+    public class TagRequestQueryModule : IIABaseModule
     {
         public TagRequestQueryModule() : base("/api")
         {

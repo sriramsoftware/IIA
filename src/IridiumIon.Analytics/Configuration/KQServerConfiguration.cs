@@ -20,9 +20,6 @@ namespace IridiumIon.Analytics.Configuration
         [JsonProperty("databaseCryptoPass")]
         public string DatabaseEncryptionPassword { get; set; }
 
-        [JsonProperty("basePrefix")]
-        public string BasePathPrefix { get; set; } = "";
-
         [JsonProperty("pluginPaths")]
         public string[] PluginPaths { get; set; } = new string[0];
     }

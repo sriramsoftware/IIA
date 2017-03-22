@@ -2,7 +2,7 @@
 
 namespace IridiumIon.Analytics.Modules.WebClient
 {
-    public class WebClientInfoModule : KQBaseModule
+    public class WebClientInfoModule : IIABaseModule
     {
         public WebClientInfoModule()
         {
