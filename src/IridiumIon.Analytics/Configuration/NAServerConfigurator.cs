@@ -7,10 +7,8 @@ namespace IridiumIon.Analytics.Configuration
     {
         internal static NAServerContext CreateContext(NAServerParameters serverParameters)
         {
-            // load the configuration
-            var context = new NAServerContext(serverParameters)
-            {
-            };
+            // load the parameters
+            var context = new NAServerContext(serverParameters);
             return context;
         }
 

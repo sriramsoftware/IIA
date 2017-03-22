@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Iridium.PluginEngine;
 using IridiumIon.Analytics.Services.Database;
+using LiteDB;
 
 namespace IridiumIon.Analytics.Configuration
 {
@@ -22,7 +23,7 @@ namespace IridiumIon.Analytics.Configuration
         public NAServerState ServerState { get; internal set; }
 
         // Database access
-        public static IDatabaseAccessService Database { get; set; }
+        public LiteDatabase Database { get; set; }
 
         // PluginEngine
         public ComponentRegistry DefaultComponentRegistry { get; } = new ComponentRegistry();
@@ -30,7 +31,7 @@ namespace IridiumIon.Analytics.Configuration
         public void ConnectDatabase()
         {
             // Database
-            Database = new DatabaseAccessService();
+            Database = new LiteDatabase(Parameters.DatabaseConfiguration.FileName);
         }
     }
 }

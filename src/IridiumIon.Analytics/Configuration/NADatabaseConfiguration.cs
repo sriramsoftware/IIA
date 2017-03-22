@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace IridiumIon.Analytics.Configuration
 {
     public class NADatabaseConfiguration
     {
+        [JsonProperty("fileName")]
+        public string FileName { get; internal set; } = "ii-analytics.lidb";
     }
 }

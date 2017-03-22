@@ -9,6 +9,7 @@ namespace IridiumIon.Analytics.Configuration
         IMapper RequestDataMapper { get; set; }
         NAServerParameters Parameters { get; }
         NAServerState ServerState { get; }
+        LiteDatabase Database { get; set; }
 
         void ConnectDatabase();
     }
