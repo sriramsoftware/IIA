@@ -8,13 +8,13 @@ namespace IridiumIon.Analytics.Configuration.Access
     public enum NAApiAccessScope
     {
         None = 1 << 0,
-        Read = 1 << 1,
-        Query = Read,
+        Query = 1 << 1,
+        Full = 1 << 3,
         Admin = 1 << 31,
     }
 
     public class NAAccessKey : AccessKey<NAApiAccessScope>
     {
-        public override NAApiAccessScope[] AccessScopes { get; set; } = new[] { NAApiAccessScope.Read };
+        public override NAApiAccessScope[] AccessScopes { get; set; } = new[] { NAApiAccessScope.Query };
     }
 }
