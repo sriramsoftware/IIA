@@ -14,6 +14,11 @@ namespace IridiumIon.Analytics.Configuration
         [JsonProperty("apikeys")]
         public NAAccessKey[] ApiKeys { get; set; } = new NAAccessKey[0];
 
+        /// <summary>
+        /// If set to true, the keys will be reset upon a server start.
+        /// </summary>
+        public bool KeyReset { get; set; } = false;
+
         [JsonProperty("corsOrigins")]
         public string[] CorsOrigins { get; set; } = new string[0];
 
