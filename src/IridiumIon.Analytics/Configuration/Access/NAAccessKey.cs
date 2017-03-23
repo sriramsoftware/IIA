@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using OsmiumSubstrate.Configuration.Access;
+﻿using OsmiumSubstrate.Configuration.Access;
 
 namespace IridiumIon.Analytics.Configuration.Access
 {
