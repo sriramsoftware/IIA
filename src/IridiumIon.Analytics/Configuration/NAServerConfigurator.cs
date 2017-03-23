@@ -35,6 +35,11 @@ namespace IridiumIon.Analytics.Configuration
                 // Update in database
                 stateStorage.Upsert(savedState);
             };
+            // Check for the KeyReset flag
+            if (serverContext.Parameters.KeyReset)
+            {
+                savedState.ApiKeys.Clear();
+            }
             // Merge the API keys
             foreach (var paramKey in serverContext.Parameters.ApiKeys)
             {

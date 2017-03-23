@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Iridium.PluginEngine;
+﻿using Iridium.PluginEngine;
 using IridiumIon.Analytics.Configuration.Access;
 using IridiumIon.Analytics.Services.Resources;
 using LiteDB;
@@ -13,6 +12,7 @@ namespace IridiumIon.Analytics.Configuration
         NAServerParameters Parameters { get; }
         LiteDatabase Database { get; }
         ResourceProviderService ResourceProvider { get; }
+        NAServerState ServerState { get; }
 
         void ConnectDatabase();
     }

@@ -1,4 +1,9 @@
 
+
+# Server config/state
+*.lidb
+iianalytics.json
+
 # Created by https://www.gitignore.io/api/intellij+iml
 
 ### Intellij+iml ###

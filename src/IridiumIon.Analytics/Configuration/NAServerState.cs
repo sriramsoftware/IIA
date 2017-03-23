@@ -15,6 +15,7 @@ namespace IridiumIon.Analytics.Configuration
     {
         public List<NAAccessKey> ApiKeys { get; set; }
 
+        [BsonIgnore]
         IEnumerable<NAAccessKey> ISubstrateServerState<NAAccessKey, NAApiAccessScope>.ApiKeys => ApiKeys;
 
         /// <summary>
