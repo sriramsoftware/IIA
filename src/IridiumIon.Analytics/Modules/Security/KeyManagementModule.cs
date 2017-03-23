@@ -6,7 +6,6 @@ using OsmiumSubstrate.Services.Authentication.Security;
 using OsmiumSubstrate.Utilities;
 using System;
 using System.Linq;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace IridiumIon.Analytics.Modules.Security
@@ -25,6 +24,7 @@ namespace IridiumIon.Analytics.Modules.Security
             // API key management
             Post("/keys/create/{keyid}", HandleCreateKeyRequestAsync);
             Get("/keys/get/{keyid}", HandleGetKeyRequestAsync);
+            Get("/keys/list", HandleListKeyRequestAsync);
             Delete("/keys/delete/{keyid}", HandleDeleteKeyRequestAsync);
 
             // Persist state after successful request
@@ -41,22 +41,30 @@ namespace IridiumIon.Analytics.Modules.Security
         {
             // Parameters:
             var keyid = ((string)args.keyid);
-            var keyScopeParam = ((string)Request.Query.realms);
+            var keyScopeParam = ((string)Request.Query.scopes);
             if (keyScopeParam == null) return HttpStatusCode.BadRequest;
             var keyScopes = keyScopeParam.Split('|');
             return await Task.Run(() =>
             {
-                var key = new NAAccessKey
+                try
                 {
-                    Key = keyid,
-                    AccessScopes = keyScopes.Select(x => (NAApiAccessScope)Enum.Parse(typeof(NAApiAccessScope), x)).ToArray()
-                };
-                // Store key
-                lock (ServerContext.ServerState.ApiKeys)
-                {
-                    ServerContext.ServerState.ApiKeys.Add(key);
+                    var key = new NAAccessKey
+                    {
+                        Key = keyid,
+                        AccessScopes = keyScopes.Select(x => (NAApiAccessScope)Enum.Parse(typeof(NAApiAccessScope), x)).ToArray()
+                    };
+
+                    // Store key
+                    lock (ServerContext.ServerState.ApiKeys)
+                    {
+                        ServerContext.ServerState.ApiKeys.Add(key);
+                    }
+                    return Response.AsJsonNet(key);
                 }
-                return Response.AsJsonNet(key);
+                catch (ArgumentException)
+                {
+                    return HttpStatusCode.BadRequest;
+                }
             });
         }
 
@@ -68,6 +76,14 @@ namespace IridiumIon.Analytics.Modules.Security
                 var key = ServerContext.ServerState.ApiKeys.FirstOrDefault(x => x.Key == keyid);
                 if (key == null) return HttpStatusCode.NotFound;
                 return Response.AsJsonNet(key);
+            });
+        }
+
+        private async Task<Response> HandleListKeyRequestAsync(dynamic args)
+        {
+            return await Task.Run(() =>
+            {
+                return Response.AsJsonNet(ServerContext.ServerState.ApiKeys);
             });
         }
 
