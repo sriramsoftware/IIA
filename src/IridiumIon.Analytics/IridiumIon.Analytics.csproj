@@ -8,8 +8,6 @@
     <AssemblyName>IridiumIon.Analytics</AssemblyName>
     <OutputType>Exe</OutputType>
     <PackageId>IridiumIon.Analytics</PackageId>
-    <RuntimeFrameworkVersion>1.1.0</RuntimeFrameworkVersion>
-    <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
     <Version>0.7.0</Version>
     <Authors>Nihal Talur (0xFireball)</Authors>
     <Company>IridiumIon Software</Company>
@@ -26,9 +24,9 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.1.1" />
     <PackageReference Include="ImageSharp" Version="1.0.0-alpha9-00176" />
-    <PackageReference Include="LiteDB" Version="3.1.0" />
-    <PackageReference Include="Microsoft.AspNetCore" Version="1.0.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Owin" Version="1.1.0" />
+    <PackageReference Include="LiteDB" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Owin" Version="1.1.2" />
     <PackageReference Include="Nancy" Version="2.0.0-clinteastwood" />
     <PackageReference Include="Nancy.Authentication.Stateless" Version="2.0.0-clinteastwood" />
     <PackageReference Include="Iridium.PluginEngine" Version="2.0.0" />
