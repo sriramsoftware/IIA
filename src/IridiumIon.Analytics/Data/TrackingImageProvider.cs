@@ -18,11 +18,8 @@ namespace IridiumIon.Analytics.Data
         {
             // Create tracking pixel image
             var outputStream = new MemoryStream();
-            var trackingPixelImg = new Image(1, 1);
-            using (var imgPixels = trackingPixelImg.Lock())
-            {
-                imgPixels[0, 0] = Color.Transparent;
-            }
+            var trackingPixelImg = new Image<Rgba32>(1, 1);
+            trackingPixelImg[0, 0] = Rgba32.Transparent;
             trackingPixelImg.Save(outputStream, new PngEncoder());
             return outputStream;
         }
